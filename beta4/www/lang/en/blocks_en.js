@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file blocks_en.js
- * @version 0.1 (21-07-2021)
+ * @version 0.1 (23-07-2021)
  * @description Blockly messages
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -244,6 +244,8 @@ Blockly.Msg["SIZE"] = "Vector size";
 Blockly.Msg["SIZE_TOOLTIP"] = "Return the vector size";
 Blockly.Msg["ARRAY_DIMS"] = [["1", "1"],["2", "2"],["3", "3"]];
 Blockly.Msg["ARRAY_DROPDOWN_ITEMS"] = [["1", "1"],["2", "2"],["3", "3"],["4", "4"],["5", "5"],["6", "6"],["7", "7"],["8", "8"],["9", "9"],["10", "10"],["11", "11"],["12", "12"]];
+Blockly.Msg["ARRAY_GET_ARRAY_VECTOR"] = "Array/Vector";
+Blockly.Msg["ARRAY_GET_ARRAY_VECTOR_TOOLTIP"] = "Returns an array or vector";
 
 //--- Procedures ---//
 Blockly.Msg["CAT_FUNCTIONS"] = "Functions";

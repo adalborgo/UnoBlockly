@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file arrays.js
- * @version 0.1 (21-07-2021)
+ * @version 0.1 (23-07-2021)
  * @description Arrays of Blockly.Blocks & Blockly.Arduino
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  * @see https://developers.google.com/blockly/reference/js/Blockly.FieldVariable
@@ -430,12 +430,12 @@ Blockly.Arduino["array_getSize"]=function(block){ // array size
 Blockly.Blocks["getArray"] = {
     init: function() {
         this.appendDummyInput()
-			.appendField("Matrice/Vettore") //Blockly.Msg.ARRAY_GETINDEX_ITEM)
+			.appendField(Blockly.Msg.ARRAY_GET_ARRAY_VECTOR)
 			.appendField(new Blockly.FieldVariable(), 'VAR')
         this.setOutput(true);
         this.setInputsInline(true);
         this.setStyle("array_blocks");
-        this.setTooltip("") //Blockly.Msg.ARRAY_GETINDEX_TOOLTIP1);
+        this.setTooltip(Blockly.Msg.ARRAY_GET_ARRAY_VECTOR_TOOLTIP);
         this.setHelpUrl(Blockly.Msg.HELPURL);
     }
 };
