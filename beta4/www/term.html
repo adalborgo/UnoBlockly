@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<!-- 
+  package: UnoBlockly
+  file: term.html
+  version: 0.1 (13-07-2021)
+  description: Serial monitor (modified from OttoBlockly)
+  author Antonio Dal Borgo <adalborgo@gmail.com>
+-->
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	  <title></title>
+
+      <link rel="stylesheet" href="fonts/fork-awesome/css/fork-awesome.min.css">
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.min-4.6.css" />
+      <style type="text/css">
+         #send_term {
+            width: 96vw;
+            margin: 0 auto 5px auto;
+            border-radius: 3px;
+            overflow: auto;
+         }
+
+         #window_term {
+            width: 96vw;
+            height: 84vh;
+            border: 1px solid #aaa;
+            margin: 0 auto 5px auto;
+            border-radius: 3px;
+            overflow: auto;
+         }
+      </style>
+
+      <script>require('../resources/app/term-code.js')</script>
+      <script src="lib/jquery-3.4.1.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+      <script src="lang/languages.js" onload="Languages.getMessages(false);"></script>
+      <script type="text/javascript">
+         // Open term port
+         function termOpen() {
+            document.getElementById("btn_term_open").click();
+         }
+      </script>
+   </head>
+
+   <body style="overflow: hidden;" onload = "Languages.init(); termOpen();"></body>
+
+      <!-- Send area
+         id="send_term" (css)
+         id="btn_term_send" (tooltip)
+         id="btn_term_send_text" (text button)
+      -->
+      <div id="send_term" class="input-group input-group-md icon-addon addon-md">
+         <input type="text" id="schbox" class="form-control">
+         <span class="input-group-btn">
+         <button id="btn_term_send" type="button" class="btn btn-info" style="margin-left: 8px;">
+			   <span id="btn_term_send_text"></span>
+		   </button>
+         </span>
+      </div>
+
+      <!-- Receive area -->
+      <div id="window_term"></div>
+
+      <!-- Buttons row -->
+      <div class="d-flex justify-content-around">
+         <div class="col-3">
+            <select id = "speed" class="form-control" 
+               onchange = "localStorage.setItem('bitrate', document.getElementById('speed').value);">
+               <option value="300">300 b/s</option>
+               <option value="600">600 b/s</option>
+               <option value="1200">1200 b/s</option>
+               <option value="2400">2400 b/s</option>
+               <option value="4800">4800 b/s</option>
+               <option value="9600" selected>9600 b/s</option>
+               <option value="14400">14400 b/s</option>
+               <option value="19200">19200 b/s</option>
+               <option value="28800">28800 b/s</option>
+               <option value="31250">31250 b/s</option>
+               <option value="38400">38400 b/s</option>
+               <option value="57600">57600 b/s</option>
+               <option value="115200">115200 b/s</option>
+            </select>
+         </div>
+
+         <div class="col-5">
+            <div class="form-group">
+               <button id="btn_term_save" type="button" class="btn btn-info">
+                  <span class='fa fa-floppy-o'></span>
+               </button>
+               <button id="btn_term_clear" type="button" class="btn btn-info" style="margin-left: 12px; margin-right: 12px;">
+                  <span class='fa fa-eraser'></span>
+               </button>
+               <button id="btn_term_open" type="button" class="btn btn-info" style="margin-left: 8px;"></button>
+            </div>
+         </div>
+      </div>
+
+   </body>
+</html>

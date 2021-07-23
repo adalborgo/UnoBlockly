@@ -1,0 +1,58 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <toolbox xmlns="http://www.w3.org/1999/xhtml">arduino-toolbox</toolbox>
+  <block type="Remark" id=",I|P/}s`u}b0CG2WGb^f" x="30" y="30">
+    <field name="TEXT">Cancella il display</field>
+    <next>
+      <block type="SSD1315_init" id="rlfS|tggXAk2w_1x-U@o">
+        <field name="LOGIC">TRUE</field>
+      </block>
+    </next>
+  </block>
+  <block type="ArduinoLoop" id="9vKEmXY.C17|Z^EABdIg" x="30" y="130">
+    <statement name="LOOP">
+      <block type="Remark" id="40GOUp-s^U?BMDX)JR99">
+        <field name="TEXT">Grove Beginner Kit:&amp;#10;Fai lampeggiare il LED</field>
+        <next>
+          <block type="GroveseeedLed" id="n3JCAC^=m[c*v%j?B3pd">
+            <field name="STATUS">HIGH</field>
+            <value name="PIN">
+              <shadow type="math_number" id="}wAxoek[~%M9qt]Iu3YV">
+                <field name="NUM">4</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="ArduinobaseDelay" id="U`)pVH1=Z%5!}e97+]8u">
+                <field name="UNIT">m</field>
+                <value name="DELAY">
+                  <shadow type="math_number" id="t/;v%mj_mt/$K27=[?g2">
+                    <field name="NUM">1000</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="GroveseeedLed" id="+j0xi%k2j^0@i(?o@k]s">
+                    <field name="STATUS">LOW</field>
+                    <value name="PIN">
+                      <shadow type="math_number" id="%9B!afMI?%N*}Kd5-pYh">
+                        <field name="NUM">4</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="ArduinobaseDelay" id="L4dA}4kxfIcFo0Vw?[7@">
+                        <field name="UNIT">m</field>
+                        <value name="DELAY">
+                          <shadow type="math_number" id="hMBkH%s%LQeLZvu%6pVa">
+                            <field name="NUM">1000</field>
+                          </shadow>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

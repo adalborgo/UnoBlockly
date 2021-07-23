@@ -1,0 +1,17 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <toolbox xmlns="http://www.w3.org/1999/xhtml">arduino-toolbox</toolbox>
+  <block type="ottodiy_calibration" id="JP8{Dk{Ne;xs7G=-w/Zn" x="50" y="50">
+    <field name="LL">0</field>
+    <field name="RL">0</field>
+    <field name="LF">0</field>
+    <field name="RF">0</field>
+    <next>
+      <block type="ottodiy_eeprom" id="hfhIakPXxGSE5t/ecz87"></block>
+    </next>
+  </block>
+  <block type="ArduinoLoop" id="T}VK1|t04Dp!w$dP|a_B" x="50" y="190">
+    <statement name="LOOP">
+      <block type="ottodiy_home" id="c:{m1+Brbd2!st~AE}t="></block>
+    </statement>
+  </block>
+</xml>

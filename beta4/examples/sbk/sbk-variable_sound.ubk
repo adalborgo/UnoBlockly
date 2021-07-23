@@ -1,0 +1,128 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <toolbox xmlns="http://www.w3.org/1999/xhtml">arduino-toolbox</toolbox>
+  <variables>
+    <variable type="int" id="pFt@ju-4rgaVEr.SBRU}">angolo</variable>
+    <variable type="int" id="-#WqZ!Y(Az3-CS-)f(oC">frequenza</variable>
+  </variables>
+  <block type="Remark" id="gB2rBxaj*.xHg}#jcsD(" x="30" y="30">
+    <field name="TEXT">Cambia la frequenza del suono tramite il potenziometro</field>
+  </block>
+  <block type="ArduinoLoop" id="DHHamB]tPyKD?tfp_N:|" x="30" y="90">
+    <statement name="LOOP">
+      <block type="vars_set_int" id="OIA^]juRT^_pQsbhW3@;">
+        <field name="VAR_SET_INT" id="pFt@ju-4rgaVEr.SBRU}" variabletype="int">angolo</field>
+        <value name="VALUE">
+          <block type="math_arithmetic" id="i]]bp`:P6/ptX2-hUHWy">
+            <field name="OP">MINUS</field>
+            <value name="A">
+              <shadow type="math_number" id="Rfxlb1z`=wr+Sc-#ZV@7">
+                <field name="NUM">300</field>
+              </shadow>
+            </value>
+            <value name="B">
+              <shadow type="math_number" id="LP%}^~|!B,;$uWu,f!6x">
+                <field name="NUM">1</field>
+              </shadow>
+              <block type="GroveseeedPotentiometer" id="i%#w/|dl{nM={Z54[#tw">
+                <field name="PIN">14</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="vars_set_int" id="@o{[~k7elbXeQ$M,XrW[">
+            <field name="VAR_SET_INT" id="-#WqZ!Y(Az3-CS-)f(oC" variabletype="int">frequenza</field>
+            <value name="VALUE">
+              <block type="math_map" id="[0^1}:O6(P]jWm3p1I*U">
+                <value name="VALUE">
+                  <shadow type="math_number" id="p#Y!(]xJ6LvVe!-|t*y7">
+                    <field name="NUM">0</field>
+                  </shadow>
+                  <block type="vars_get_int" id=")/4xDH))R~~$W!IX?j!A">
+                    <field name="VAR_GET_INT" id="pFt@ju-4rgaVEr.SBRU}" variabletype="int">angolo</field>
+                  </block>
+                </value>
+                <value name="FROM_LOW">
+                  <shadow type="math_number" id="Mv(|:Qy5O/uER0nLUf0*">
+                    <field name="NUM">0</field>
+                  </shadow>
+                </value>
+                <value name="FROM_HIGH">
+                  <shadow type="math_number" id="m~ksVWIduIubdb{O)^3h">
+                    <field name="NUM">300</field>
+                  </shadow>
+                </value>
+                <value name="TO_LOW">
+                  <shadow type="math_number" id="lJEqHveBog21VcwT!Smb">
+                    <field name="NUM">0</field>
+                  </shadow>
+                </value>
+                <value name="TO_HIGH">
+                  <shadow type="math_number" id="b:TKUXr)~aN8^f!vyjL`">
+                    <field name="NUM">4000</field>
+                  </shadow>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="Tg9xW]+81eRyoxHuti46">
+                <mutation else="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="7AN[!0#K?I+rA8E):nZ`">
+                    <field name="OP">GT</field>
+                    <value name="A">
+                      <block type="vars_get_int" id="ht4.?*FFQ1w87.IFt6Lz">
+                        <field name="VAR_GET_INT" id="-#WqZ!Y(Az3-CS-)f(oC" variabletype="int">frequenza</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="HU7O@;T6:kJI7(QksEn[">
+                        <field name="NUM">30</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="ArduinobaseTone" id="h.frrvpjSI:(!L;AbA{d">
+                    <value name="PIN">
+                      <block type="ArduinobaseDPins" id="voy|^FXpW3y}71eT2r4b">
+                        <field name="PIN">5</field>
+                      </block>
+                    </value>
+                    <value name="FREQ">
+                      <shadow type="math_number" id="1)dsiPVm@R)Ow[:x,;Ux">
+                        <field name="NUM">1000</field>
+                      </shadow>
+                      <block type="vars_get_int" id="cd,aTJjHe{5j~xWM+FqJ">
+                        <field name="VAR_GET_INT" id="-#WqZ!Y(Az3-CS-)f(oC" variabletype="int">frequenza</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="ArduinobaseNotone" id="yn8dKNc`.9PD*Emquoe?">
+                    <value name="PIN">
+                      <block type="ArduinobaseDPins" id="pW;QM!@-T(NBx~wbfPb_">
+                        <field name="PIN">5</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <next>
+                  <block type="ArduinobaseDelay" id="}?;xB@8H!pCxJly|i.|V">
+                    <field name="UNIT">m</field>
+                    <value name="DELAY">
+                      <shadow type="math_number" id="|BKebsoe(l.)NILT8dmK">
+                        <field name="NUM">1000</field>
+                      </shadow>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

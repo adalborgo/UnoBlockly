@@ -1,0 +1,193 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <toolbox xmlns="http://www.w3.org/1999/xhtml">arduino-toolbox</toolbox>
+  <block type="Remark" id="lT~!uQ1Ucmq@ab^RYyNL" x="30" y="30">
+    <field name="TEXT">Grove Beginner Kit:&amp;#10;Temperatura, Umidità e Pressione</field>
+    <next>
+      <block type="SSD1315_init" id="(*.U.IKx|nI_ZY`iEgxJ">
+        <field name="LOGIC">TRUE</field>
+        <next>
+          <block type="SSD1315_setcursor_draw" id="d,fs;#F(]qrOMedWwI#Y">
+            <value name="ROW">
+              <block type="math_number" id="K4H2fW:NdKjkw$Sawgg5">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="COLUMN">
+              <block type="math_number" id="R8RmfA0fiR,Ghv{/[icV">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="TEXT_TO_PRINT">
+              <block type="text" id="QH%hd2|5C*[}1Awg?.47">
+                <field name="TEXT"> = Dati Meteo =</field>
+              </block>
+            </value>
+            <next>
+              <block type="SSD1315_setcursor_draw" id="-P?R|HP;C,nQ}M)T?{0S">
+                <value name="ROW">
+                  <block type="math_number" id="_!*I@A|bpQ(t![s8krVP">
+                    <field name="NUM">2</field>
+                  </block>
+                </value>
+                <value name="COLUMN">
+                  <block type="math_number" id="m1v^_kBH*rl0!,3-%l/g">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="TEXT_TO_PRINT">
+                  <block type="text" id="?nNX_P]e4{PTA_g1m6d;">
+                    <field name="TEXT">T (</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="SSD1315_print" id="AFYAyC=HO:yhZopbYlny">
+                    <comment pinned="false" h="80" w="160">Carattere '°'</comment>
+                    <value name="TEXT_TO_PRINT">
+                      <block type="text_char" id="Q;Nqde:HH?^F3QLG1,_m">
+                        <field name="CHAR">\xb0</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="SSD1315_print" id="L.A?I}W{rE|de],Jn!ov">
+                        <value name="TEXT_TO_PRINT">
+                          <block type="text" id="*a4wms)8fHq*FvPYJLNI">
+                            <field name="TEXT">C) = </field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="SSD1315_setcursor_draw" id="HYSSh.Tk[5{`vo4xA:lq">
+                            <value name="ROW">
+                              <block type="math_number" id="q@KW]s0XT^yk0,v$~bkN">
+                                <field name="NUM">4</field>
+                              </block>
+                            </value>
+                            <value name="COLUMN">
+                              <block type="math_number" id="X=Q+[!,}4,B9CUFzw(AS">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                            <value name="TEXT_TO_PRINT">
+                              <block type="text" id=".t#2ioL7Bhm.[x;exo5?">
+                                <field name="TEXT">U (%) = </field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="SSD1315_setcursor_draw" id="V}3z5hSF5.$ZK+j%3%#-">
+                                <value name="ROW">
+                                  <block type="math_number" id="JH.2~#H3{Kzl)l#pnyy!">
+                                    <field name="NUM">6</field>
+                                  </block>
+                                </value>
+                                <value name="COLUMN">
+                                  <block type="math_number" id="#wIY9?5.`IC%%hDfofRY">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                                <value name="TEXT_TO_PRINT">
+                                  <block type="text" id="J[``g6q%L/e*mvh;YCmj">
+                                    <field name="TEXT">P (Pa) = </field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+  <block type="ArduinoLoop" id="mGQde5%weeCf(bu8`Y9R" x="30" y="370">
+    <statement name="LOOP">
+      <block type="SSD1315_setcursor_draw" id="fT`)=1Fpb6hQS+)avcNw">
+        <value name="ROW">
+          <block type="math_number" id="nfM1]KBGavEs/2iwTHPM">
+            <field name="NUM">2</field>
+          </block>
+        </value>
+        <value name="COLUMN">
+          <block type="math_number" id="WIRxueoczcwsWX4C3M|_">
+            <field name="NUM">9</field>
+          </block>
+        </value>
+        <value name="TEXT_TO_PRINT">
+          <block type="math_round" id="=HK-*PMXwQlWOj.,9`NT">
+            <field name="OP">ROUND</field>
+            <value name="NUM">
+              <shadow type="math_number" id="kNOwsyjvfrVM;ojye4W}">
+                <field name="NUM">3.1</field>
+              </shadow>
+              <block type="GroveseeedDTH" id="nSgLK:[,UZ}`,U`mCx_Y">
+                <field name="OUTPUT_VALUE">0</field>
+                <field name="OUTPUT_TYPE">11</field>
+                <field name="PIN">3</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="SSD1315_setcursor_draw" id="7+A,5^@x1f{te@gRJNE2">
+            <value name="ROW">
+              <block type="math_number" id="wJg;(51-*QO!m[=M*lxI">
+                <field name="NUM">4</field>
+              </block>
+            </value>
+            <value name="COLUMN">
+              <block type="math_number" id="V1x@w4q?IWrXoc(]}SV}">
+                <field name="NUM">9</field>
+              </block>
+            </value>
+            <value name="TEXT_TO_PRINT">
+              <block type="math_round" id="NBU48.IsAQexc.,5,A*O">
+                <field name="OP">ROUND</field>
+                <value name="NUM">
+                  <shadow type="math_number" id="Rt:J)=@/hRZNPkR2VcFi">
+                    <field name="NUM">3.1</field>
+                  </shadow>
+                  <block type="GroveseeedDTH" id="76DtMDp!$urNV|Z[RYhS">
+                    <field name="OUTPUT_VALUE">1</field>
+                    <field name="OUTPUT_TYPE">11</field>
+                    <field name="PIN">3</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="SSD1315_setcursor_draw" id="[qx0LKQ`$8rrz6ua3u6C">
+                <value name="ROW">
+                  <block type="math_number" id="zHUW%L[7cCJ1P=Qo(GeM">
+                    <field name="NUM">6</field>
+                  </block>
+                </value>
+                <value name="COLUMN">
+                  <block type="math_number" id="l6k6p,aWUy-KJG/XFE}!">
+                    <field name="NUM">9</field>
+                  </block>
+                </value>
+                <value name="TEXT_TO_PRINT">
+                  <block type="bmp280_pressure" id="VBLrBu/BU*tqRzD-V}#v"></block>
+                </value>
+                <next>
+                  <block type="ArduinobaseDelay" id="-ILX3`0(;b8F^lkc%dIA">
+                    <field name="UNIT">m</field>
+                    <value name="DELAY">
+                      <shadow type="math_number" id="fK+S]o(4};jh,5@+(TP:">
+                        <field name="NUM">1000</field>
+                      </shadow>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

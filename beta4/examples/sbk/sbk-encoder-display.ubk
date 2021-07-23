@@ -1,0 +1,108 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <toolbox xmlns="http://www.w3.org/1999/xhtml">arduino-toolbox</toolbox>
+  <block type="Remark" id="lT~!uQ1Ucmq@ab^RYyNL" x="30" y="30">
+    <field name="TEXT">Grove Beginner Kit:&amp;#10;Mostra l'angolo di rotazione del potenziometro</field>
+    <next>
+      <block type="SSD1315_init" id="(*.U.IKx|nI_ZY`iEgxJ">
+        <field name="LOGIC">TRUE</field>
+        <next>
+          <block type="SSD1315_setcursor_draw" id="d,fs;#F(]qrOMedWwI#Y">
+            <value name="ROW">
+              <block type="math_number" id="]65yqY);a:yX7?yU6iFf">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="COLUMN">
+              <block type="math_number" id="BPlE(.0%`+`{}O5tO(J[">
+                <field name="NUM">2</field>
+              </block>
+            </value>
+            <value name="TEXT_TO_PRINT">
+              <block type="text" id="=wk@D;V!z!P6/$FSpMi0">
+                <field name="TEXT">= Encoder =</field>
+              </block>
+            </value>
+            <next>
+              <block type="SSD1315_setcursor_draw" id="-P?R|HP;C,nQ}M)T?{0S">
+                <value name="ROW">
+                  <block type="math_number" id="ZWvcPX_j9^[tmn2V_BIO">
+                    <field name="NUM">2</field>
+                  </block>
+                </value>
+                <value name="COLUMN">
+                  <block type="math_number" id="U;74=RRyKEf,]A(B5`;O">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <value name="TEXT_TO_PRINT">
+                  <block type="text" id="~mW4Y:TNNrnGP(64?:-N">
+                    <field name="TEXT">Angolo = </field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+  <block type="ArduinoLoop" id="mGQde5%weeCf(bu8`Y9R" x="30" y="230">
+    <statement name="LOOP">
+      <block type="SSD1315_setcursor_draw" id="fT`)=1Fpb6hQS+)avcNw">
+        <comment pinned="false" h="80" w="160">Pulisci il campo con 3 spazi</comment>
+        <value name="ROW">
+          <block type="math_number" id="uW8T2hh=n=bbE;V~;C-?">
+            <field name="NUM">2</field>
+          </block>
+        </value>
+        <value name="COLUMN">
+          <block type="math_number" id="!McQ[m@8.v_*uS1eB5+.">
+            <field name="NUM">9</field>
+          </block>
+        </value>
+        <value name="TEXT_TO_PRINT">
+          <block type="text" id="e}6CPtEzNX;,xA,yy,5k">
+            <field name="TEXT">   </field>
+          </block>
+        </value>
+        <next>
+          <block type="SSD1315_setcursor_draw" id="jtk7.Z.:/){tJf_Era|J">
+            <value name="ROW">
+              <block type="math_number" id="6B1G=H0^owlrNze[W~[9">
+                <field name="NUM">2</field>
+              </block>
+            </value>
+            <value name="COLUMN">
+              <block type="math_number" id="%%un=,KhkNGTgpQU|8(;">
+                <field name="NUM">9</field>
+              </block>
+            </value>
+            <value name="TEXT_TO_PRINT">
+              <block type="math_round" id="!8YmeCWWAvi3l{#C-b)P">
+                <field name="OP">ROUND</field>
+                <value name="NUM">
+                  <shadow type="math_number" id="~AHX`)j]1im[~Y{MwPup">
+                    <field name="NUM">3.1</field>
+                  </shadow>
+                  <block type="GroveseeedPotentiometer" id="L}fR|vg1I}dbQWWbell`">
+                    <field name="PIN">14</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="ArduinobaseDelay" id="-ILX3`0(;b8F^lkc%dIA">
+                <field name="UNIT">m</field>
+                <value name="DELAY">
+                  <shadow type="math_number" id="fK+S]o(4};jh,5@+(TP:">
+                    <field name="NUM">250</field>
+                  </shadow>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

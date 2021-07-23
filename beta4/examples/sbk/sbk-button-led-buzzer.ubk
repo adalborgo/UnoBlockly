@@ -1,0 +1,227 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <toolbox xmlns="http://www.w3.org/1999/xhtml">arduino-toolbox</toolbox>
+  <variables>
+    <variable type="$define" id="76tb6yKR*S~LE:$nWJon">Pulsante</variable>
+    <variable type="$define" id=",6-FPKCmFjuNOYKX+j`=">LED</variable>
+    <variable type="$define" id="?K*6gFJ9UFGE(V8P#K;b">Cicalino</variable>
+  </variables>
+  <block type="SSD1315_init" id="0k@npH$n;#Ry4rqg]wB]" x="30" y="30">
+    <field name="LOGIC">TRUE</field>
+    <next>
+      <block type="SSD1315_setcursor_draw" id="~_y_W%KdQ/zkET,onZq;">
+        <value name="ROW">
+          <block type="math_number" id="3,4k:7ksDRFfQlt?N7(h">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="COLUMN">
+          <block type="math_number" id="4#r(VPs7s]dAh|an(,04">
+            <field name="NUM">2</field>
+          </block>
+        </value>
+        <value name="TEXT_TO_PRINT">
+          <block type="text" id="G46ikoc=X|0o=-r*lFT~">
+            <field name="TEXT">= Pulsante =</field>
+          </block>
+        </value>
+        <next>
+          <block type="SSD1315_setcursor_draw" id="!J|k$=X4AUb2y#.bL{fH">
+            <value name="ROW">
+              <block type="math_number" id="L-E{fHe%-C:VPdgdz)VT">
+                <field name="NUM">3</field>
+              </block>
+            </value>
+            <value name="COLUMN">
+              <block type="math_number" id="/9uRR@*VPl(gtc`ZJ?LN">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <value name="TEXT_TO_PRINT">
+              <block type="text" id="@:0[%I)$9L0D)r_f^K.m">
+                <field name="TEXT">Pulsante: </field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+  <block type="set_define" id=";#obm:x-X|](g].1:3g`" x="670" y="30">
+    <field name="SET_DEFINE" id="76tb6yKR*S~LE:$nWJon" variabletype="$define">Pulsante</field>
+    <value name="VALUE">
+      <block type="math_number" id="o}^=ETn^x(L,y*T6c#G%">
+        <field name="NUM">6</field>
+      </block>
+    </value>
+  </block>
+  <block type="set_define" id="6,G[~UQ[%V`D;iYLjht+" x="670" y="70">
+    <field name="SET_DEFINE" id=",6-FPKCmFjuNOYKX+j`=" variabletype="$define">LED</field>
+    <value name="VALUE">
+      <block type="math_number" id="fs[#-g@^1UCMx/vH~Ke6">
+        <field name="NUM">4</field>
+      </block>
+    </value>
+  </block>
+  <block type="set_define" id="Z_QyTiqT??[LUWbusye}" x="670" y="110">
+    <field name="SET_DEFINE" id="?K*6gFJ9UFGE(V8P#K;b" variabletype="$define">Cicalino</field>
+    <value name="VALUE">
+      <block type="math_number" id="V_vI=Gd6*!+Z1=3kYV`_">
+        <field name="NUM">5</field>
+      </block>
+    </value>
+  </block>
+  <block type="ArduinoLoop" id="6x@n}Iii{M7c=4f*n)Hv" x="30" y="170">
+    <statement name="LOOP">
+      <block type="Remark" id="Z:@kE(rmqNQ(oV]m#$[o">
+        <field name="TEXT">Quando si preme il pulsante, si accende il LED e viene emesso un suono.</field>
+        <next>
+          <block type="controls_if" id="qbn[v/M0)Pn/m|Cx3#94">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="GroveseeedButton" id="I3qAX.NH]hSxs^GOWRCp">
+                <value name="PIN">
+                  <shadow type="math_number" id="9|2fUTe`9@w*D%n1Oe|D">
+                    <field name="NUM">6</field>
+                  </shadow>
+                  <block type="get_define" id="F}YDL?eL0W1.o(y^1x#;">
+                    <field name="GET_DEFINE" id="76tb6yKR*S~LE:$nWJon" variabletype="$define">Pulsante</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="GroveseeedLed" id="bdOxP9hl3Ef)A5(AxU5V">
+                <field name="STATUS">HIGH</field>
+                <value name="PIN">
+                  <shadow type="math_number" id="7OQ)V?ASg=XG!/Q4`^m@">
+                    <field name="NUM">4</field>
+                  </shadow>
+                  <block type="get_define" id="H`|]BRI=sj,DcgFNBA[=">
+                    <field name="GET_DEFINE" id=",6-FPKCmFjuNOYKX+j`=" variabletype="$define">LED</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="SSD1315_setcursor_draw" id="licU+b89n_08q#Z=ei/7">
+                    <value name="ROW">
+                      <block type="math_number" id="Y;)Q8v~wvXnqZRGF~W9+">
+                        <field name="NUM">3</field>
+                      </block>
+                    </value>
+                    <value name="COLUMN">
+                      <block type="math_number" id="^9Lbnofe[R4x*:xGD1nO">
+                        <field name="NUM">10</field>
+                      </block>
+                    </value>
+                    <value name="TEXT_TO_PRINT">
+                      <block type="text" id="/X;r1Q2X{Ymlzcck5}3n">
+                        <field name="TEXT">On </field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="ArduinobaseTone" id=":Hr/m6+%r)_FrGhTj18p">
+                        <value name="PIN">
+                          <shadow type="math_number" id="ZqU}U%DyQOOhbiaddRPw">
+                            <field name="NUM">5</field>
+                          </shadow>
+                          <block type="get_define" id="+cJ{h1`alJ1ROs^t+!Vt">
+                            <field name="GET_DEFINE" id="?K*6gFJ9UFGE(V8P#K;b" variabletype="$define">Cicalino</field>
+                          </block>
+                        </value>
+                        <value name="FREQ">
+                          <shadow type="math_number" id="8}I3*=TQ;?Aa}s|N5#ke">
+                            <field name="NUM">659</field>
+                          </shadow>
+                        </value>
+                        <next>
+                          <block type="ArduinobaseDelay" id="r?#YkkPDYzxR}*@^#S[P">
+                            <field name="UNIT">m</field>
+                            <value name="DELAY">
+                              <shadow type="math_number" id="+(STn=6mm|nhD,|@8w;g">
+                                <field name="NUM">500</field>
+                              </shadow>
+                            </value>
+                            <next>
+                              <block type="ArduinobaseTone" id="!|w(}`_|T6)V#wmKDQ{V">
+                                <value name="PIN">
+                                  <shadow type="math_number">
+                                    <field name="NUM">5</field>
+                                  </shadow>
+                                  <block type="get_define" id="dZbRohEdFs5D;ca/p:!9">
+                                    <field name="GET_DEFINE" id="?K*6gFJ9UFGE(V8P#K;b" variabletype="$define">Cicalino</field>
+                                  </block>
+                                </value>
+                                <value name="FREQ">
+                                  <shadow type="math_number" id="n3wgq-T_}5y.}~Njxkyg">
+                                    <field name="NUM">392</field>
+                                  </shadow>
+                                </value>
+                                <next>
+                                  <block type="ArduinobaseDelay" id="h[$|lr#1ns{jS?`-$Z`^">
+                                    <field name="UNIT">m</field>
+                                    <value name="DELAY">
+                                      <shadow type="math_number" id="YRM(3G[GbBb/q6W[$;V*">
+                                        <field name="NUM">500</field>
+                                      </shadow>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="ArduinobaseNotone" id="II)*GVuW59_*MQ`$9mpD">
+                <value name="PIN">
+                  <shadow type="math_number" id="!jCt`p(d@XIn4HRFc5Iq">
+                    <field name="NUM">5</field>
+                  </shadow>
+                  <block type="get_define" id="Z0,2z=c:0N:W_pP*.:@J">
+                    <field name="GET_DEFINE" id="?K*6gFJ9UFGE(V8P#K;b" variabletype="$define">Cicalino</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="GroveseeedLed" id="DrUH(nK_!d@3yp^cx4l3">
+                    <field name="STATUS">LOW</field>
+                    <value name="PIN">
+                      <shadow type="math_number" id="PP~F/obW[m=6m1vSn/MK">
+                        <field name="NUM">4</field>
+                      </shadow>
+                      <block type="get_define" id="`L~5C(l!zY[xdrNR-zj7">
+                        <field name="GET_DEFINE" id=",6-FPKCmFjuNOYKX+j`=" variabletype="$define">LED</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="SSD1315_setcursor_draw" id="7R)uTcBp:rC%CRI)2[M+">
+                        <value name="ROW">
+                          <block type="math_number" id="0,Yi-u!}~i#nwo2x0k{`">
+                            <field name="NUM">3</field>
+                          </block>
+                        </value>
+                        <value name="COLUMN">
+                          <block type="math_number" id="I10`rEZR,{P[z$E9I)2[">
+                            <field name="NUM">10</field>
+                          </block>
+                        </value>
+                        <value name="TEXT_TO_PRINT">
+                          <block type="text" id="]$2;Wqy^uZXQt|4:ic~;">
+                            <field name="TEXT">Off</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

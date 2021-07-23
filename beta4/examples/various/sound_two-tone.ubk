@@ -1,0 +1,85 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <toolbox xmlns="http://www.w3.org/1999/xhtml">arduino-toolbox</toolbox>
+  <variables>
+    <variable type="$define" id="Z*R+*ySW]x)WUD9NRF,d">Buzzer</variable>
+  </variables>
+  <block type="set_define" id="Kp2gK-!_;/TCC,6wy}b~" x="30" y="30">
+    <field name="SET_DEFINE" id="Z*R+*ySW]x)WUD9NRF,d" variabletype="$define">Buzzer</field>
+    <value name="VALUE">
+      <block type="ArduinobaseDPins" id="XXKxhC8__f)ecuZz]@6X">
+        <field name="PIN">5</field>
+      </block>
+    </value>
+  </block>
+  <block type="controls_for" id="CRfIl/El?zsJ,fAhSU6}" x="30" y="90">
+    <field name="VAR">cnt</field>
+    <field name="BY">1</field>
+    <value name="FROM">
+      <shadow type="math_number" id="I_@48yo*%LBo0@}rJX|,">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <value name="TO">
+      <shadow type="math_number" id="q=gg4-edS3[[gxa5C~[o">
+        <field name="NUM">5</field>
+      </shadow>
+    </value>
+    <statement name="DO">
+      <block type="ArduinobaseTone" id="_,Vmp:pe?cb{:S*ft+|!">
+        <value name="PIN">
+          <block type="get_define" id="eqk7t$_./|[TcjD+E#1I">
+            <field name="GET_DEFINE" id="Z*R+*ySW]x)WUD9NRF,d" variabletype="$define">Buzzer</field>
+          </block>
+        </value>
+        <value name="FREQ">
+          <shadow type="math_number" id="`cb^k9m^95Ysf;uUIF(+">
+            <field name="NUM">1500</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="ArduinobaseDelay" id="10s~ruYYe-T1g,+i=]]x">
+            <field name="UNIT">m</field>
+            <value name="DELAY">
+              <shadow type="math_number" id="$F-W_9?7hZ|0pvI:7zkf">
+                <field name="NUM">1000</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="ArduinobaseTone" id=";]B!CuQcmg{DxpuWM[T|">
+                <value name="PIN">
+                  <block type="get_define" id="OPIBl^K2}/^f9#E+BaJG">
+                    <field name="GET_DEFINE" id="Z*R+*ySW]x)WUD9NRF,d" variabletype="$define">Buzzer</field>
+                  </block>
+                </value>
+                <value name="FREQ">
+                  <shadow type="math_number" id=";H@sqpbn(q1oRb%gFyE:">
+                    <field name="NUM">1000</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="ArduinobaseDelay" id="M.Y}-eE^3B;K0zC$*-A!">
+                    <field name="UNIT">m</field>
+                    <value name="DELAY">
+                      <shadow type="math_number" id="FB%Q=qJgn(~Bza5~`O2$">
+                        <field name="NUM">1000</field>
+                      </shadow>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <next>
+      <block type="ArduinobaseNotone" id="+`8@_r/sh(1KtGX:~V-*">
+        <value name="PIN">
+          <block type="get_define" id="{=Q5Udz}Z,Nw.jrFT{G?">
+            <field name="GET_DEFINE" id="Z*R+*ySW]x)WUD9NRF,d" variabletype="$define">Buzzer</field>
+          </block>
+        </value>
+      </block>
+    </next>
+  </block>
+</xml>

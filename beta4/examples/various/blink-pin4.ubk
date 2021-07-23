@@ -1,0 +1,47 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <toolbox xmlns="http://www.w3.org/1999/xhtml">arduino-toolbox</toolbox>
+  <block type="ArduinoLoop" id="X.bSgwK[hA58^**DgwZM" x="30" y="30">
+    <statement name="LOOP">
+      <block type="GroveseeedLed" id="0!I0#Vcy+F{HF2Q5^Z5n">
+        <field name="STATUS">HIGH</field>
+        <comment pinned="false" h="80" w="160">Accendi il LED</comment>
+        <value name="PIN">
+          <block type="ArduinobaseDPins" id="HfY)M3[K@NiIJ;u_huhh">
+            <field name="PIN">4</field>
+          </block>
+        </value>
+        <next>
+          <block type="ArduinobaseDelay" id="62}M][6hB$=ZXTbM7a]W">
+            <field name="UNIT">m</field>
+            <value name="DELAY">
+              <shadow type="math_number" id="6ARy%lN5V)zJdu:PkGk3">
+                <field name="NUM">500</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="GroveseeedLed" id="OWK@nCUyG1.ef@^:p![8">
+                <field name="STATUS">LOW</field>
+                <comment pinned="false" h="80" w="160">Spegni il LED</comment>
+                <value name="PIN">
+                  <block type="ArduinobaseDPins" id="U`0TUb7v_K(e4:vifgXh">
+                    <field name="PIN">4</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="ArduinobaseDelay" id="gh9}iG:J{Xh_z]Ie/+Xb">
+                    <field name="UNIT">m</field>
+                    <value name="DELAY">
+                      <shadow type="math_number" id="FEuZGY7mT]b|q/;[by5X">
+                        <field name="NUM">500</field>
+                      </shadow>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

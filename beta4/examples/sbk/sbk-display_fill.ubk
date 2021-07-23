@@ -1,0 +1,62 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <toolbox xmlns="http://www.w3.org/1999/xhtml">arduino-toolbox</toolbox>
+  <block type="Remark" id="tS1*s6mMBcQZ~?OdufH;" x="30" y="30">
+    <field name="TEXT">Grove Beginner Kit:&amp;#10;Riempie il display con la lettera 'X'</field>
+    <next>
+      <block type="SSD1315_init" id="0k@npH$n;#Ry4rqg]wB]">
+        <field name="LOGIC">TRUE</field>
+        <next>
+          <block type="controls_for" id="~yekhs~=4[yGu8d)^;G/">
+            <field name="VAR">r</field>
+            <field name="BY">1</field>
+            <value name="FROM">
+              <shadow type="math_number" id="3o#x*6eWtP(4//[Xn2oh">
+                <field name="NUM">0</field>
+              </shadow>
+            </value>
+            <value name="TO">
+              <shadow type="math_number" id="R7k4/wZ}:lhFuZQ4JzyY">
+                <field name="NUM">7</field>
+              </shadow>
+            </value>
+            <statement name="DO">
+              <block type="controls_for" id=":]#hV@U!y{E5#Bb?~lp;">
+                <field name="VAR">c</field>
+                <field name="BY">1</field>
+                <value name="FROM">
+                  <shadow type="math_number" id="CyaI)cMmo8#q},@jf%Ml">
+                    <field name="NUM">0</field>
+                  </shadow>
+                </value>
+                <value name="TO">
+                  <shadow type="math_number" id="?BKmaK`E;qc_y=m~.~~.">
+                    <field name="NUM">15</field>
+                  </shadow>
+                </value>
+                <statement name="DO">
+                  <block type="SSD1315_setcursor_draw" id="~_y_W%KdQ/zkET,onZq;">
+                    <value name="ROW">
+                      <block type="loop_var" id="yDS_lLwAm$!G*7K%)zq#">
+                        <field name="VAR">r</field>
+                      </block>
+                    </value>
+                    <value name="COLUMN">
+                      <block type="loop_var" id="F$6tX.!8I8zaQQ;y6,b4">
+                        <field name="VAR">c</field>
+                      </block>
+                    </value>
+                    <value name="TEXT_TO_PRINT">
+                      <block type="text_char" id="-3zt//5/1f0nMs7=n+yK">
+                        <field name="CHAR">X</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>

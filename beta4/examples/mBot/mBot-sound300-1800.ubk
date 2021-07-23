@@ -1,0 +1,34 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <toolbox xmlns="http://www.w3.org/1999/xhtml">arduino-toolbox</toolbox>
+  <block type="controls_for" id="o1)x!0l/m*5g5p]?{}K!" x="30" y="30">
+    <field name="VAR">frequenza</field>
+    <field name="BY">1</field>
+    <value name="FROM">
+      <shadow type="math_number" id="-7d+yasa?uSib_y}r.XW">
+        <field name="NUM">300</field>
+      </shadow>
+    </value>
+    <value name="TO">
+      <shadow type="math_number" id="Y]^~zoU?O,)u5k`@Yjx#">
+        <field name="NUM">1800</field>
+      </shadow>
+    </value>
+    <statement name="DO">
+      <block type="mBotTone" id="3Tb^7F}).b8daxt:H(vh">
+        <value name="FREQUENCY">
+          <shadow type="math_number" id="ijr+j3H1ZUwWFb;hVDZ[">
+            <field name="NUM">1000</field>
+          </shadow>
+          <block type="loop_var" id="^o8$gs0j_w{e_({:3Nxc">
+            <field name="VAR">frequenza</field>
+          </block>
+        </value>
+        <value name="TIME">
+          <shadow type="math_number" id=",fR=y@p@{{S[P~0Z~T5P">
+            <field name="NUM">1000</field>
+          </shadow>
+        </value>
+      </block>
+    </statement>
+  </block>
+</xml>

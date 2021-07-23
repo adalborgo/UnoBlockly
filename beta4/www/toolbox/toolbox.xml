@@ -1,0 +1,739 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	package: UnoBlockly
+	file toolbox.xml
+	version 0.1 (22-07-2021)
+	author Antonio Dal Borgo <adalborgo@gmail.com>
+-->
+
+<xml id="toolbox" style="display: none;">
+   <toolbox>
+      <parameter id="defaultCategories">CAT_LOGIC,CAT_LOOPS,CAT_MATH,CAT_TEXT,CAT_VARIABLES,CAT_FUNCTIONS,CAT_ARRAYS,CAT_ARDUINO_BASE,CAT_ARDUINO_TIME,CAT_ARDUINO_SERIAL,CAT_SOUND,CAT_DEVICES,CAT_SEEED_BEG,CAT_MBOT,CAT_OTTO</parameter>
+
+      <category name="CAT_LOGIC" categorystyle="logic_category">
+         <block type="controls_if" />
+         <block type="logic_compare" />
+         <block type="logic_operation" />
+         <block type="logic_negate" />
+         <block type="logic_boolean" />
+         <block type="logic_null" />
+         <block type="logic_ternary" />
+      </category>
+
+      <category name="CAT_LOOPS" categorystyle="loop_category">
+         <block type="controls_whileUntil" />
+
+         <block type="controls_for">
+            <value name="FROM">
+               <shadow type="math_number">
+                  <field name="NUM">1</field>
+               </shadow>
+            </value>
+            <value name="TO">
+               <shadow type="math_number">
+                  <field name="NUM">10</field>
+               </shadow>
+            </value>
+         </block>
+
+         <block type="ArduinoLoop" />
+         <block type="loop_var" />
+
+         <block type="controls_flow_statements" />
+      </category>
+
+      <category name="CAT_MATH" categorystyle="math_category">
+         <block type="math_number">
+            <field name="NUM">0</field>
+         </block>
+         <block type="math_number">
+            <field name="NUM">1</field>
+         </block>
+         <block type="math_arithmetic">
+            <value name="A">
+               <shadow type="math_number">
+                  <field name="NUM">1</field>
+               </shadow>
+            </value>
+            <value name="B">
+               <shadow type="math_number">
+                  <field name="NUM">1</field>
+               </shadow>
+            </value>
+         </block>
+
+         <block type="math_inc" />
+         <block type="math_dec" />
+
+         <block type="math_map">
+            <value name="VALUE">
+               <shadow type="math_number">
+                  <field name="NUM">0</field>
+               </shadow>
+            </value>
+            <value name="FROM_LOW">
+               <shadow type="math_number">
+                  <field name="NUM">0</field>
+               </shadow>
+            </value>
+            <value name="FROM_HIGH">
+               <shadow type="math_number">
+                  <field name="NUM">100</field>
+               </shadow>
+            </value>
+            <value name="TO_LOW">
+               <shadow type="math_number">
+                  <field name="NUM">0</field>
+               </shadow>
+            </value>
+            <value name="TO_HIGH">
+               <shadow type="math_number">
+                  <field name="NUM">100</field>
+               </shadow>
+            </value>
+
+         </block>
+
+         <block type="math_single">
+            <value name="NUM">
+               <shadow type="math_number">
+                  <field name="NUM">9</field>
+               </shadow>
+            </value>
+         </block>
+         <block type="math_trig">
+            <value name="NUM">
+               <shadow type="math_number">
+                  <field name="NUM">45</field>
+               </shadow>
+            </value>
+         </block>
+         <block type="math_constant" />
+         <block type="math_number_property">
+            <value name="NUMBER_TO_CHECK">
+               <shadow type="math_number">
+                  <field name="NUM">0</field>
+               </shadow>
+            </value>
+         </block>
+         <block type="math_round">
+            <value name="NUM">
+               <shadow type="math_number">
+                  <field name="NUM">3.1</field>
+               </shadow>
+            </value>
+         </block>
+         <block type="math_modulo">
+            <value name="DIVIDEND">
+               <shadow type="math_number">
+                  <field name="NUM">64</field>
+               </shadow>
+            </value>
+            <value name="DIVISOR">
+               <shadow type="math_number">
+                  <field name="NUM">10</field>
+               </shadow>
+            </value>
+         </block>
+         <block type="math_constrain">
+            <value name="VALUE">
+               <shadow type="math_number">
+                  <field name="NUM">50</field>
+               </shadow>
+            </value>
+            <value name="LOW">
+               <shadow type="math_number">
+                  <field name="NUM">1</field>
+               </shadow>
+            </value>
+            <value name="HIGH">
+               <shadow type="math_number">
+                  <field name="NUM">100</field>
+               </shadow>
+            </value>
+         </block>
+         <block type="math_random_int">
+            <value name="FROM">
+               <shadow type="math_number">
+                  <field name="NUM">1</field>
+               </shadow>
+            </value>
+            <value name="TO">
+               <shadow type="math_number">
+                  <field name="NUM">100</field>
+               </shadow>
+            </value>
+         </block>
+         <block type="math_random_float" />
+      </category>
+
+      <category name="CAT_TEXT" categorystyle="text_category">
+	    <block type="text_char" />
+         <block type="text" />
+         <block type="text_join" />
+
+         <block type="text_from_number">
+            <value name="DATA">
+               <shadow type="math_number">
+                  <field name="NUM">1</field>
+               </shadow>
+            </value>
+         </block>
+         
+         <block type="text_length" />
+         <block type="text_isEmpty" />
+      </category>
+
+      <category name="CAT_VARIABLES" categorystyle="variable_category" toolboxitemid="CAT_VARIABLES">
+		   <category name="CAT_VAR_DEFINE" categorystyle="variable_category" custom="VARIABLE_TYPED_DEFINE"></category>
+	      <category name="CAT_VAR_NUM" categorystyle="variable_category" custom="VARIABLE_TYPED_NUM"></category>
+         <category name="CAT_VAR_TEXT" categorystyle="variable_category" custom="VARIABLE_TYPED_TEXT"></category>
+         <category name="CAT_VAR_BOOLEAN" categorystyle="variable_category" custom="VARIABLE_TYPED_BOOLEAN"></category>
+      </category>
+
+      <category name="CAT_FUNCTIONS" categorystyle="procedure_category" custom="PROCEDURE" />
+	  
+	   <category name="CAT_ARRAYS" categorystyle="array_category">
+	      <block type="array_create" />
+		   <block type="vector_create_with" />
+		   <block type="vector_create_with_string" />
+         <block type="array_setIndex" />
+         <block type="array_getIndex" />
+		   <block type="array_getSize" />
+         <block type="getArray">
+            <field name="VAR"> </field>
+         </block>
+      </category>
+
+      <category name="CAT_ARDUINO_BASE" categorystyle="arduino_category">
+	    <block type="ArduinobaseDPins" />
+		<block type="ArduinobaseAPins" />
+         <block type="ArduinobaseLed" />
+
+         <block type="ArduinobaseDigitalRead">
+            <value name="PIN">
+               <shadow type="math_number">
+                  <field name="NUM">2</field>
+               </shadow>
+            </value>
+		</block>
+		 
+         <block type="ArduinobaseDigitalWrite">
+            <value name="PIN">
+               <shadow type="math_number">
+                  <field name="NUM">2</field>
+               </shadow>
+            </value>
+		</block>
+
+         <block type="ArduinobaseAnalogRead" />
+         <block type="ArduinobaseAnalogWrite">
+            <value name="VALUE">
+               <shadow type="math_number">
+                  <field name="NUM">0</field>
+               </shadow>
+            </value>
+         </block>
+
+         <block type="ArduinoCodeData" />
+         <block type="ArduinoCode" />
+		   <block type="Remark" />
+         <block type="Remark_header" />
+         <!--block type="ArduinoDefine" / -->
+         <block type="ArduinoSetupLoop" />
+         <block type="ArduinobaseAttachInterrupt" />
+         <block type="ArduinobaseDetachInterrupt" />
+      </category>
+
+      <category name="CAT_ARDUINO_TIME" categorystyle="arduino_category">
+         <block type="ArduinobaseDelay">
+            <value name="DELAY">
+               <shadow type="math_number">
+                  <field name="NUM">1000</field>
+               </shadow>
+            </value>
+         </block>
+         <block type="ArduinobaseMillis" />
+         <block type="ArduinobaseMicros" />
+         <block type="ArduinobasePulsein">
+            <value name="PIN">
+               <shadow type="math_number">
+                  <field name="NUM">5</field>
+               </shadow>
+            </value>
+		</block>
+      </category>
+
+      <category name="CAT_ARDUINO_SERIAL" categorystyle="arduino_category">
+         <block type="ArduinoSerialBegin" />
+         <block type="ArduinoSerialRead" />
+         <block type="ArduinoSerialPrint" />
+         <block type="ArduinoSerialAvailable" />
+         <block type="ArduinoSerialFlush" />
+         <block type="ArduinoSerialTimeout" />
+      </category>
+
+      <category name="CAT_SOUND" categorystyle="arduino_category">
+         <block type="ArduinobaseToneTime">
+            <value name="PIN">
+               <shadow type="math_number">
+                  <field name="NUM">5</field>
+               </shadow>
+            </value>
+            <value name="FREQ">
+               <shadow type="math_number">
+                  <field name="NUM">1500</field>
+               </shadow>
+            </value>
+            <value name="TIME">
+               <shadow type="math_number">
+                  <field name="NUM">1000</field>
+               </shadow>
+            </value>
+         </block>
+
+         <block type="ArduinobaseTone">
+            <value name="PIN">
+               <shadow type="math_number">
+                  <field name="NUM">5</field>
+               </shadow>
+            </value>
+            <value name="FREQ">
+               <shadow type="math_number">
+                  <field name="NUM">1000</field>
+               </shadow>
+            </value>
+         </block>
+         <block type="ArduinobaseNotone">
+			<value name="PIN">
+               <shadow type="math_number">
+                  <field name="NUM">5</field>
+               </shadow>
+            </value>
+		</block>
+
+		   <block type="MelodyPlayer">
+			<value name="PIN">
+               <shadow type="math_number">
+                  <field name="NUM">5</field>
+               </shadow>
+            </value>
+            <value name="MELODY">
+               <shadow type="text">
+                  <field name="TEXT"></field>
+               </shadow>
+            </value>
+         </block>
+
+		   <block type="MelodyPlayer">
+			<value name="PIN">
+               <shadow type="math_number">
+                  <field name="NUM">5</field>
+               </shadow>
+            </value>
+            <value name="MELODY">
+               <shadow type="text">
+                  <field name="TEXT">cdefgac*</field>
+               </shadow>
+            </value>
+         </block>
+
+		   <block type="MelodyPlayerExamples">
+			<value name="PIN">
+               <shadow type="math_number">
+                  <field name="NUM">5</field>
+               </shadow>
+            </value>
+         </block>
+
+      </category>
+
+      <category name="CAT_DEVICES" categorystyle="devices_category">
+         <block type="Devices_Led" />
+         <block type="Devices_Button">
+            <value name="PIN">
+               <shadow type="math_number">
+                  <field name="NUM">2</field>
+               </shadow>
+            </value>
+         </block>
+
+		<block type="Devices_Potentiometer" />
+		
+		<block type="HCSR04_sensor">
+			<value name="TRIGGER">
+               <shadow type="math_number">
+                  <field name="NUM">3</field>
+               </shadow>
+            </value>
+            <value name="ECHO">
+               <shadow type="math_number">
+                  <field name="NUM">4</field>
+               </shadow>
+            </value>
+         </block>	
+
+		<block type="Devices_Servo">
+			<value name="PIN">
+               <shadow type="math_number">
+                  <field name="NUM">5</field>
+               </shadow>
+            </value>
+		</block>
+		<block type="Devices_Servo_var">
+			<value name="PIN">
+               <shadow type="math_number">
+                  <field name="NUM">5</field>
+               </shadow>
+            </value>
+            <value name="ANGLE">
+               <shadow type="math_number">
+                  <field name="NUM">90</field>
+               </shadow>
+            </value>
+         </block>
+
+			<block type="L298N_Motorx2_init">
+			   <value name="IN1">
+               <shadow type="math_number">
+                  <field name="NUM">7</field>
+               </shadow>
+            </value>
+			   <value name="IN2">
+               <shadow type="math_number">
+                  <field name="NUM">8</field>
+               </shadow>
+            </value>
+			   <value name="IN3">
+               <shadow type="math_number">
+                  <field name="NUM">9</field>
+               </shadow>
+            </value>
+			   <value name="IN4">
+               <shadow type="math_number">
+                  <field name="NUM">11</field>
+               </shadow>
+            </value>
+			   <value name="EN1">
+               <shadow type="math_number">
+                  <field name="NUM">5</field>
+               </shadow>
+            </value>
+			   <value name="EN2">
+               <shadow type="math_number">
+                  <field name="NUM">6</field>
+               </shadow>
+            </value>
+			</block>
+
+			<block type="L298N_Motorx2">
+   			<value name="SPEED">
+               <shadow type="math_number">
+                  <field name="NUM">75</field>
+               </shadow>
+            </value>
+			</block>
+
+	  </category>
+	  
+      <category name="CAT_SEEED_BEG" categorystyle="seeedbeg_category">
+ 
+		 <block type="GroveseeedLed">
+		  <value name="PIN">
+               <shadow type="math_number">
+                  <field name="NUM">4</field>
+               </shadow>
+            </value>
+		</block>
+
+         <block type="GroveseeedButton">
+		  <value name="PIN">
+               <shadow type="math_number">
+                  <field name="NUM">6</field>
+               </shadow>
+            </value>
+		</block>
+
+         <block type="GroveseeedPotentiometer" />
+		
+         <block type="GroveseeedMicrophone" />
+		 
+         <block type="GroveseeedLightsensor" />
+
+         <block type="GroveseeedToneTime">
+		      <value name="PIN">
+               <shadow type="math_number">
+                  <field name="NUM">5</field>
+               </shadow>
+            </value>
+            <value name="FREQ">
+               <shadow type="math_number">
+                  <field name="NUM">1500</field>
+               </shadow>
+            </value>
+            <value name="TIME">
+               <shadow type="math_number">
+                  <field name="NUM">1000</field>
+               </shadow>
+            </value>
+         </block>
+
+         <block type="GroveseeedTone">
+		      <value name="PIN">
+               <shadow type="math_number">
+                  <field name="NUM">5</field>
+               </shadow>
+            </value>
+            <value name="FREQ">
+               <shadow type="math_number">
+                  <field name="NUM">1000</field>
+               </shadow>
+            </value>
+         </block>
+
+         <block type="GroveseeedNotone">
+		  <value name="PIN">
+               <shadow type="math_number">
+                  <field name="NUM">5</field>
+               </shadow>
+            </value>
+         </block>
+
+         <block type="SSD1315_init" />
+         <block type="SSD1315_clear" />
+         <block type="SSD1315_print">
+            <value name="TEXT_TO_PRINT">
+               <shadow type="text">
+                  <field name="TEXT">Hello!</field>
+               </shadow>
+            </value>
+         </block>
+         <block type="SSD1315_setcursor">
+            <value name="COLUMN">
+               <shadow type="math_number">
+                  <field name="NUM">1</field>
+               </shadow>
+            </value>
+            <value name="ROW">
+               <shadow type="math_number">
+                  <field name="NUM">0</field>
+               </shadow>
+            </value>
+         </block>
+         <block type="SSD1315_setcursor_draw">
+            <value name="COLUMN">
+               <shadow type="math_number">
+                  <field name="NUM">0</field>
+               </shadow>
+            </value>
+            <value name="ROW">
+               <shadow type="math_number">
+                  <field name="NUM">0</field>
+               </shadow>
+            </value>
+            <value name="TEXT_TO_PRINT">
+               <shadow type="text">
+                  <field name="TEXT">Hello!</field>
+               </shadow>
+            </value>
+         </block>
+
+         <block type="GroveseeedDTH" />
+
+         <block type="bmp280_pressure" />
+
+         <block type="lis3dhtr_values" />
+      </category>
+      <!-- End CAT_SEEED_BEG category -->
+
+      <!-- Begin CAT_MBOT category -->
+      <category name="CAT_MBOT" categorystyle="mBot_category">
+
+         <block type="mBot_Rgbled">
+            <value name="IRED">
+               <shadow type="math_number">
+                  <field name="NUM">50</field>
+               </shadow>
+            </value>
+            <value name="IGREEN">
+               <shadow type="math_number">
+                  <field name="NUM">50</field>
+               </shadow>
+            </value>
+            <value name="IBLUE">
+               <shadow type="math_number">
+                  <field name="NUM">50</field>
+               </shadow>
+            </value>
+         </block>
+
+         <block type="mBot_Distance" />
+
+         <block type="mBot_Tone">
+            <value name="FREQUENCY">
+               <shadow type="math_number">
+                  <field name="NUM">1000</field>
+               </shadow>
+            </value>
+            <value name="TIME">
+               <shadow type="math_number">
+                  <field name="NUM">1500</field>
+               </shadow>
+            </value>
+         </block>
+
+         <block type="mBot_Notone" />
+
+         <block type="mBot_Button" />
+
+         <block type="mBot_RemoteIR" />
+		 
+         <block type="mBot_LightSensor" />
+
+         <block type="mBot_Motor">
+            <value name="SPEED">
+               <shadow type="math_number">
+                  <field name="NUM">75</field>
+               </shadow>
+            </value>
+         </block>
+
+         <block type="mBot_Linefollower" />
+
+         <block type="mBot_Temperature" />
+
+         <!-- LEDMatrix sub category -->
+         <category name="CAT_MBOT_LEDMatrix" categorystyle="mBot_category">
+
+         <block type="mBot_LEDMatrixData">
+            <value name="BRIGHTNESS">
+               <shadow type="math_number">
+                  <field name="NUM">3</field>
+               </shadow>
+            </value>
+            <value name="COORD_X">
+               <shadow type="math_number">
+                  <field name="NUM">0</field>
+               </shadow>
+            </value>
+            <value name="COORD_Y">
+               <shadow type="math_number">
+                  <field name="NUM">0</field>
+               </shadow>
+            </value>
+         </block>
+
+         <block type="mBot_LEDMatrixClear" />
+
+         <block type="mBot_LEDMatrixNumber">
+            <value name="BRIGHTNESS">
+               <shadow type="math_number">
+                  <field name="NUM">3</field>
+               </shadow>
+            </value>
+            <value name="DATA">
+               <shadow type="math_number">
+                  <field name="NUM">0</field>
+               </shadow>
+            </value>
+         </block>
+         
+         <block type="mBot_LEDMatrixText">
+            <value name="BRIGHTNESS">
+               <shadow type="math_number">
+                  <field name="NUM">3</field>
+               </shadow>
+            </value>
+            <value name="COORD_X">
+               <shadow type="math_number">
+                  <field name="NUM">0</field>
+               </shadow>
+            </value>
+            <value name="COORD_Y">
+               <shadow type="math_number">
+                  <field name="NUM">0</field>
+               </shadow>
+            </value>
+            <value name="TEXT">
+               <shadow type="text">
+                  <field name="TEXT">abc</field>
+               </shadow>
+            </value>
+         </block>
+
+         <block type="mBot_LEDMatrixSmileys">
+            <value name="BRIGHTNESS">
+               <shadow type="math_number">
+                  <field name="NUM">3</field>
+               </shadow>
+            </value>
+            <value name="COORD_X">
+               <shadow type="math_number">
+                  <field name="NUM">0</field>
+               </shadow>
+            </value>
+            <value name="COORD_Y">
+               <shadow type="math_number">
+                  <field name="NUM">0</field>
+               </shadow>
+            </value>
+         </block>
+
+         <block type="mBot_LEDMatrixDraw">
+            <value name="BRIGHTNESS">
+               <shadow type="math_number">
+                  <field name="NUM">3</field>
+               </shadow>
+            </value>
+            <value name="COORD_X">
+               <shadow type="math_number">
+                  <field name="NUM">0</field>
+               </shadow>
+            </value>
+            <value name="COORD_Y">
+               <shadow type="math_number">
+                  <field name="NUM">0</field>
+               </shadow>
+            </value>
+         </block>
+
+         </category>
+
+      </category>
+      <!-- End CAT_MBOT category -->
+
+	 <category name="CAT_OTTO" categorystyle="otto_category">
+
+		<block type="ottodiy_step" />
+		<block type="ottodiy_turn" />
+		<block type="ottodiy_bend" />
+		<block type="ottodiy_shake" />
+		<block type="ottodiy_up" />
+		<block type="ottodiy_home" />
+		<block type="ottodiy_dance" />
+		<block type="ottodiy_do" />
+		<block type="ottodiy_sound" />
+		<block type="ottodiy_tone" />
+		<block type="ottodiy_tonehz">
+			<value name="Hz1"><shadow type="math_number"><field name="NUM">100</field></shadow></value>
+			<value name="duration"><shadow type="math_number">	<field name="NUM">261</field>	</shadow></value>
+			<value name="silent"><shadow type="math_number"><field name="NUM">500</field></shadow></value>
+		</block>
+		<block type="ottodiy_bendtone">
+			<value name="Hz1"><shadow type="math_number"><field name="NUM">880</field></shadow></value>
+			<value name="Hz2"><shadow type="math_number"><field name="NUM">2093</field></shadow></value>
+			<value name="prop"><shadow type="math_number"><field name="NUM">1.02</field></shadow></value>
+			<value name="duration"><shadow type="math_number">	<field name="NUM">18</field>	</shadow></value>
+			<value name="silent"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
+		</block>
+		<block type="ottodiy_calibration" />
+		<block type="ottodiy_eeprom" />
+		<block type="ottodiy_getdistance" />
+
+	  </category>
+
+      <!-- End CAT_OTTO category -->
+
+   </toolbox>
+</xml>

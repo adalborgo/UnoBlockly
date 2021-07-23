@@ -1,0 +1,318 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    
+<!-- 
+  package: UnoBlockly
+  file: www/index.html
+  version:  beta0.3.8 (22-07-2021)
+  author Antonio Dal Borgo <adalborgo@gmail.com>
+-->
+
+    <link rel="stylesheet" href="fonts/fork-awesome/css/fork-awesome.min.css">
+    
+	<link rel="icon" type="image/png" href="media/icon-uno.png" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+	<title> Uno Blockly </title>
+
+	<script id="SCRIPT"></script>
+
+	<script src="../resources/app/globals.js"></script>
+
+	<script>
+		document.getElementById('SCRIPT').src = LATEST_URL;
+	</script>
+
+	<!-- script src="https://www.dibis.it/download/UnoBlockly/latest.js"></script -->
+			
+	<script src="lib/jquery-3.4.1.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+	<!-- script src="lib/jquery-3.6.0.min.js" onload="window.$ = window.jQuery = module.exports;"></script -->
+
+    <script>
+		require('../resources/app/index.js');
+
+		$(window).on('load', function() {$(".loading").fadeOut("slow")});
+
+		function setMsg() {
+			document.title = INDEX_MSG.appName + ' ' + APP_VERSION + ' ​​\u205f ​​\u205f ​​\u205f ​​\u205f' + fileToLoad;
+		}
+
+		// Check for updates
+		function checkUpdate() {
+			if (typeof LATEST_VERSION != 'undefined' && typeof(Storage) != 'undefined') {
+				//console.log(INDEX_MSG.updateModalLabel);
+				if (window.localStorage.update==="true" && LATEST_VERSION.length>3) {
+					//console.log('Ultima: ' + LATEST_VERSION + ' - Attuale: ' + APP_VERSION);
+					if (LATEST_VERSION != APP_VERSION) {
+						//console.log(INDEX_MSG.updateBody);
+						$("#updateModal").modal();
+					}
+				} 
+			}
+		}
+
+	</script>
+
+	<!--
+		https://getbootstrap.com/docs/4.6/getting-started/introduction/
+		https://github.com/twbs/bootstrap/releases/download/v4.6.0/bootstrap-4.6.0-dist.zip
+	 -->
+	<script src="lib/bootstrap.bundle.min-4.6.js"></script>
+	<script src="lib/prettify-r298.min.js"></script>
+
+	<script src="lib/blockly_compressed.js"></script>
+    <script src="lib/blocks_compressed.js"></script>
+
+	<!-- ----------------------- Arduino ----------------------- -->
+	<script src="toolbox/override-toolbox.js"></script>
+
+	<!-- ------------------- Arduino-Blockly ------------------- -->
+	<script src="arduino/blockly-arduino/header.js"></script>
+	<script src="arduino/blockly-arduino/themes.js"></script>
+	<script src="arduino/blockly-arduino/logic.js"></script>
+	<script src="arduino/blockly-arduino/loops.js"></script>
+	<script src="arduino/blockly-arduino/math.js"></script>
+	<script src="arduino/blockly-arduino/arrays.js"></script>
+	<script src="arduino/blockly-arduino/texts.js"></script>
+	<script src="arduino/blockly-arduino/variables.js"></script>
+	<script src="arduino/blockly-arduino/procedures.js"></script>
+    <script src="arduino/boards-profile.js"></script>
+    <script src="arduino/blockly-arduino/board.js"></script>
+    <script src="arduino/blockly-arduino/extra.js"></script>
+	<script src="arduino/blockly-arduino/music.js"></script>
+    <script src="arduino/blockly-arduino/serial.js"></script>
+
+	<!-- ----------------------- Others ----------------------- -->
+	<script src="arduino/others/devices.js"></script>
+    <script src="arduino/others/grove_beginner.js"></script>
+    <script src="arduino/others/mbot.js"></script>
+	<script src="arduino/others/ottodiy.js"></script>
+
+	<script src="arduino/index-code.js"></script>
+	<script src="toolbox/toolbox-code.js"></script>
+
+	<script src="lang/languages.js" onload="Languages.getMessages(true)"></script>
+       
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min-4.6.css" />
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<link rel="stylesheet" type="text/css" href="css/prettify.min.css"/>
+</head>
+
+<body onload="setMsg(); Languages.init(); IndexCode.init(); checkUpdate()">
+
+	<div class="loading"></div>
+	<div id="header">
+		<div class="btn_all" >
+			<ul class="nav nav-tabs" role="tablist" style="display: none;">
+				<li role="presentation" class="active"><a href="#content_blocks" aria-controls="content_blocks" role="tab" data-toggle="tab"></a></li>
+				<li role="presentation"><a href="#content_code" aria-controls="content_code" role="tab" data-toggle="tab"></a></li>
+			</ul>
+                          
+				<button id="btn_config" class="btn btn-rect" data-toggle="modal" data-target="#configModal">
+					<i class="fa fa-cog fa-std"></i>
+				</button>
+            
+				<span style="color:white;font-size:20">&nbsp;</span>
+            
+				<button id="btn_new" class="btn btn-rect">
+					<i class="fa fa-file"></i>
+				</button>
+
+				<button id="btn_load" class="btn btn-rect">
+					<i class="fa fa-folder-open fa-std"></i>
+				</button>
+            
+				<button id="btn_saveXML" class="btn btn-rect">
+					<i class="fa fa-floppy-o fa-std"></i>
+				</button>
+
+				<span style="color:white;font-size:4">&nbsp;</span>
+
+				<button id="btn_undo" class="btn btn-circle">
+					<i class="fa fa-undo"></i>
+                </button>
+				<button id="btn_redo" class="btn btn-circle">
+					<i class="fa fa-repeat"> </i>
+				</button>
+
+				<!-- see also: index.js: function getboardType(str) -->
+				<!-- Boards/Devices for <select> is loaded by the 'IndexCode.getBoards' function -->
+				<select id="boards" class="board-select" onchange="IndexCode.change_card();"></select>
+
+                <!-- Switch block/code -->
+				<button id="btn_code" class="btn btn-text">
+					<i class="fa fa-code">&nbsp;&nbsp;&nbsp;</i>
+					<script>document.write(INDEX_MSG.btn_code_text)</script>
+				</button>
+
+				<button id="btn_block" class="btn btn-text">
+					<i class="fa fa-puzzle-piece">&nbsp;&nbsp;&nbsp;</i>
+					<script>document.write(INDEX_MSG.btn_block_text)</script>
+				</button>
+
+				<!-- USB serial port -->
+            	<select id="serialport" class="serial-select" onchange="IndexCode.save_com();" ></select>
+
+				<button id="btn_verify" class="btn btn-circle" data-toggle="modal" data-target="#message">
+					<i class="fa fa-check fa-std"> </i>
+				</button>
+            
+				<button id="btn_upload" class='btn btn-circle' data-toggle="modal" data-target="#message">
+					<i class="fa fa-arrow-right fa-std"> </i>
+				</button>
+		</div>
+    
+        <!-- Button: Serial monitor, Arduino code, About -->
+		<div class="btn_group" role="group">
+			<button id="btn_term" class="btn btn-default"><i class="fa fa-tablet fa-rp"></i></button>
+			<button id="btn_preview" class="btn btn-default"><i class="fa fa-code fa-rp"></i></button>
+			<button id="btn_search" class='btn btn-default'><i class="fa fa-search fa-rp"> </i></button>
+			<button id="btn_about" class="btn btn-default" data-toggle="modal" data-target="#aboutModal">
+				<i class="fa fa-question fa-rp"></i>
+			</button>
+		</div>
+    
+	</div>
+    
+	<!-- pre_previewArduino -->
+	<div id="divBody" class="tab-content">
+		<div role="tabpanel" id="content_blocks" class="tab-pane fade in active" style="position: relative;">
+			<div id="toggle" class="modal-content" style="display: none;">
+				<pre id="pre_previewArduino"></pre>
+				<div class="btn_group" role="group">
+					<button id="btn_copy" class="btn btn-default">
+						<i class="fa fa-files-o"> </i>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Code editor (ace) -->
+		<div role="tabpanel" id="content_code" class="tab-pane fade"></div>
+	</div>
+
+	<!-- ============================== MODALS ============================== -->
+	<!-- Alert message modal: see 'index.js' -->
+	<div class="modal fade" id="message" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static" >
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-body" >
+					<div id = "messageDIV"></div>
+				</div>  
+			</div>
+		</div>
+	</div>
+
+	<!-- Update modal -->
+	<div class="modal" id="updateModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+		  <div class="modal-content">
+	
+			<div class="modal-header" style="color:#036; font-weight: bold; font-size:18px;">
+				<span class="modal-title w-100 text-center" id="updateModalLabel"></span>
+			</div>
+
+			<div class="modal-body">
+				<p><span id="updateBody"></span></p>
+				<p><script>document.write(INDEX_MSG.current_version) + document.write(APP_VERSION)</script></p>
+				<p>
+					<script>document.write(INDEX_MSG.new_version)</script>
+					<script>if (typeof LATEST_VERSION != 'undefined') document.write(LATEST_VERSION)</script>
+				</p>
+			</div> 
+
+			<div class="modal-footer">
+				<!-- Download new version -->
+				<button id="btn_update_download" type="button" class="btn btn-secondary"></button>
+				<button id="btn_update_close_msg" type="button" class="btn btn-secondary" data-dismiss="modal"></button>
+			</div>
+
+		  </div>
+		</div>
+	</div>
+
+	<!-- About modal -->
+	<div class="modal" id="aboutModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header" style="color:#036; font-weight: bold; font-size:18px;">
+					<span class="modal-title w-100 text-center"><script>document.write(INDEX_MSG.appName)</script></span>
+				</div>
+				<div class="modal-body">
+					<div class="container">
+						<div class="text-center">
+							<img src="media/appIcon.png" style="width:64px; height:64px;"/>
+						</div>
+						<br>
+						<p><span id="aboutBody"></span><br></p>
+						<p><script>document.write(INDEX_MSG.current_version) + document.write(APP_VERSION)</script></p>
+						<hr/>
+						<button type="button" id="btn_site" class="btn btn-text pull-left">
+							<script>document.write(INDEX_MSG.btn_site_text)</script>
+						</button>
+						<button type="button" id="btn_close_msg" type="button" class="btn btn-text pull-right" data-dismiss="modal"></button>
+					</div>
+				</div> 
+		    </div>
+	    </div>
+	</div>
+
+	<!-- Toolbox config modal -->
+	<div class="modal fade" id="configModal" tabindex="-1" role="dialog" aria-labelledby="configModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header" style="color:#036; font-weight: bold; font-size:18px;">
+				<span class="modal-title w-100 text-center" id="configModalLabel"></span>
+			</div>
+
+			<div class="modal-body">
+				<label style="margin-left:10px; margin-right:8px; font-weight: bold;" id="span_languageMenu"></label>
+				<select id="languageMenu"></select><br>
+
+				<input type="checkbox" name="select_all" id="select_all"/>&nbsp;&nbsp;<span id="span_select_all"></span>
+		  		<div class="modal-body" id="modal-body-config"></div>
+
+				<input style="margin-left:10px; margin-right:8px; font-weight: bold;" type="checkbox" id="checkUpdate">
+				<span id="span_update"></span><br />
+			</div>
+	
+		  <div class="modal-footer">
+			<button id="btn_valid_config" type="button" class="btn btn-primary"></button>
+
+		  </div>
+
+		</div>
+	  </div>
+	</div>
+	<!-- ============================End MODALS ============================ -->
+
+	<!--
+		=== ace editor ===
+		https://github.com/ajaxorg/ace-builds/tree/master/src-noconflict
+		https://ace.c9.io/#nav=howto;
+		http://ajaxorg.github.io/ace-builds/kitchen-sink.html
+		To cancel: editor.setValue("")
+	 -->
+	<script src="lib/ace/ace.js" charset="utf-8"></script>
+	<!-- script src="lib/ace/ext-searchbox.js" type="text/javascript"></script -->
+	<script src="lib/ace/ext-language_tools.js"></script>
+	<!-- script>var editor = ace.edit("content_code");</script -->
+	<script>
+		var editor = ace.edit("content_code");
+		editor.setTheme("ace/theme/chrome");
+		editor.session.setMode("ace/mode/c_cpp");
+		editor.session.setTabSize(2);
+		//document.getElementById('content_code').style.fontSize='12px';
+		document.getElementById('content_code').style.fontWeight="800";
+		editor.setHighlightActiveLine(true);
+		editor.setOption('showLineNumbers', true);
+		editor.setOptions({fontFamily: "monospace",fontSize: "12pt"});
+		editor.setShowPrintMargin(true);
+	</script>
+
+    </body>
+
+</html>

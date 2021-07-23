@@ -1,0 +1,28 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <toolbox xmlns="http://www.w3.org/1999/xhtml">arduino-toolbox</toolbox>
+  <block type="ArduinoSerialBegin" id="hWqHu_/f8]NnO_A_{y9U" x="30" y="30">
+    <field name="SPEED">9600</field>
+  </block>
+  <block type="ArduinoLoop" id="k?18UpfY+vA73BXFVS{*" x="30" y="90">
+    <statement name="LOOP">
+      <block type="ArduinoSerialPrint" id="l-clkR*E#9_w.Q9Pw#G_">
+        <field name="NEWLINE">TRUE</field>
+        <value name="DATA">
+          <block type="mBotDistance" id="7##+V+N(o5-y#@8]6W3a">
+            <field name="TypePort">3</field>
+          </block>
+        </value>
+        <next>
+          <block type="ArduinobaseDelay" id="X+Z8@cVu{5mMx#%aMgLm">
+            <field name="UNIT">m</field>
+            <value name="DELAY">
+              <shadow type="math_number" id="4D_xpE6r}II=DtzZUH~P">
+                <field name="NUM">1000</field>
+              </shadow>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

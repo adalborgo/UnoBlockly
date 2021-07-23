@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<!-- 
+  package: UnoBlockly
+  file: prompModal.html
+  date:  21-05-2021
+  author Antonio Dal Borgo <adalborgo@gmail.com>
+-->
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <title>Variable Prompt</title>
+
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.min-4.6.css" />
+      <style type="text/css">
+         .header_text {
+            margin-top: 0px;
+            margin-left: 18px;
+			   color: #fff!important;
+         }
+
+		   .header {
+			   color: #fff;
+			   background-color: #337ab7;
+			   border-radius: 0px;
+			   border: 1px solid #337ab7;
+			   margin: 0px;
+  			   padding: 3px 12px 5px 12px;
+		   }
+
+         .form-control {
+            border-color: #000;
+            border:1px solid #337ab7;
+            margin-left: 12px;
+            color: #337ab7!important;
+         }
+
+         .form-control:focus {
+            box-shadow: 0 0 2px #337ab7 inset;
+         }
+
+         .btn_confirm {
+            background-color: #337ab7;
+			   border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+  			   border-top-right-radius: 8px;
+			   border-bottom-right-radius: 8px;
+            margin-right: 12px;
+            margin-left:0px;
+         }
+      </style>
+
+   </head>
+
+   <body>
+      <div class="header">
+         <span id="title"></span>
+         <button type="button" class="close" onclick="cancel()">
+         <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+         </button>
+      </div>
+
+      <div class="input-group form-group" style="margin-top:20px;">
+         <input type="text" class="form-control" id="var_name" onfocus="this.value=''">
+         <button id="btn_ok" type="button" class="btn btn-info btn_confirm" onclick="response()"></button>
+      </div>
+
+      <!-- ======================================== -->
+      <script>
+         var { ipcRenderer } = require("electron");
+         
+         var input = document.getElementById("var_name");
+         console.log("var_name = ", input)
+         input.addEventListener("keyup", function(event) {
+         	if (event.keyCode === 13) document.getElementById("btn_ok").click();
+         })
+         
+         function cancel() {
+         	ipcRenderer.send("closeDialog", "") ;
+         	this.close()
+         }
+         
+
+         function response() {
+            let varname = document.getElementById("var_name").value;
+
+            // Check/adjust variable name
+            let checked;
+            if (varname.length) {
+               let  strArr = varname.split("");
+	            let found = varname[0].search(/[a-zA-Z_]/);
+	            if (found>-1) strArr[0] = varname[0]; else strArr[0] = "_";
+	            for (let i=1; i<varname.length; i++) {
+		            found = varname[i].search(/[0-9a-zA-Z_]/);
+		            if (found>-1) strArr[i] = varname[i]; else strArr[i] = "_";
+	            }
+               checked = strArr.join("");
+            }
+
+         	ipcRenderer.send("closeDialog", checked);
+         	this.close()
+         }
+
+         window.onload=function() {
+         	var options = ipcRenderer.sendSync("openDialog", ""); // See: main.js
+         	var params = JSON.parse(options);
+            //console.log("params: ", params);
+         	document.getElementById("var_name").focus();
+         	document.getElementById("title").innerHTML = params.label ;
+         	document.getElementById("var_name").value = params.value ;
+         	document.getElementById("btn_ok").innerText = params.ok 
+         }
+      </script>
+   </body>
+</html>

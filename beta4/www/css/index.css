@@ -1,0 +1,319 @@
+/**
+ * @package: UnoBlockly
+ * @file index.css
+ * @version 0.1 (10-07-2021)
+ * @description css of index.html (Charset: UTF-8)
+ * @author Antonio Dal Borgo <adalborgo@gmail.com>
+ */
+
+::-webkit-scrollbar { width: 0px; }
+
+html,body {
+	height: 100%
+}
+
+body {
+	background-color: #ffffff;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	margin: 0
+}
+
+.loading {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url(../media/ajax-loading.gif) center no-repeat #2d2d64
+}
+
+/* All under the toolbar */
+#divBody {
+    position: absolute;
+    top: 42px;
+    bottom: 0px;
+    width: 100%
+}
+
+/* toolbar; see heigth of #divBody and #btn_all */
+#header {
+    position: relative;
+	vertical-align: middle;
+	margin-top: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	background: #E8E8E8;/*#2d2d64; */
+	height: 42px;
+    border-width:1px;
+    border-style:solid;
+}
+
+.div_close_modal {
+	padding-right: 10px;	
+	float: right;
+	bottom: 10px;
+	position: absolute;
+	text-align: center
+}
+
+.modal-body-config-global_left {
+    position: relative
+}
+
+/* @font-face */
+@font-face {
+	font-family: 'FontAwesome';
+	src: url('../fonts/fontawesome.woff?v=4.1.0') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+#modal-body-config {
+	-webkit-column-count: 3;
+	-moz-column-count: 3;
+	column-count: 3
+}
+
+#select_all {
+	margin-left: 15px
+}
+
+#span_select_all {
+	font-weight: bold
+}
+
+/* Toogle BlockToCode button */
+#toggle {
+	width: 25%;
+	position: absolute;
+	z-index: 1;
+	right: 15px;
+	top: 0px;
+	bottom: 80px;
+	opacity: 0.9
+}
+
+.toggle.round, .toggle-on.round, .toggle-off.round {
+	border-radius: 20rem;
+}
+
+.toggle.round .toggle-handle {
+	border-radius: 20rem;
+}
+
+#content_code {
+	font-size: 16px;
+    position: absolute;
+	border: 1px solid #727272;
+    top: 0px;
+    right: 5px;
+    bottom: 5px;
+    left: 5px
+}
+
+.board-select {
+	margin-left: 8px;
+	margin-right: 8px;
+	height: 30px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.serial-select {
+	margin-left: 8px;
+	margin-right: 8px;
+	height: 30px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+/* Define Buttons */
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+.btn-default:focus {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #8c8c8c;
+}
+.btn-default:hover {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+.btn-default:active {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+
+.btn_all {
+	position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0 5px 0 5px;
+	top: 5px;
+	z-index: 10
+}
+
+.btn_group {
+	position: absolute;
+	right: 5px;
+	top: 2px;
+	z-index: 10
+}
+
+.btn-circle {
+	color: #727272;
+	width: 30px;
+	height: 30px;
+	background-color: #fff;
+	border-color: #727272;
+	line-height: 30px;
+	padding: 0;
+	border-radius: 50%;
+}
+
+.btn-circle:focus {
+    color: #727272;
+    background-color: #e6e6e6;
+    border-color: #8c8c8c;
+}
+
+.btn-circle:hover,
+.btn-circle:active {
+    color: #727272;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+
+/* -------------------------- */
+.btn-text {
+    color: #fff;
+	height: 30px;
+    background-color: rgb(129, 185, 218);
+    border-color: #ccc;
+	line-height: 0px;
+	padding: 0 10px 0 10px;
+	border-radius: 5px;
+}
+
+/* -------------------------- */
+
+.btn-rect {
+    color: #727272;
+	width: 25px;
+	height: 30px;
+    background-color: #fff;
+    border-color: #ccc;
+	line-height: 0px;
+	padding: 0;
+	border-radius: 5px;
+}
+
+.btn-rect:focus {
+    color: #727272;
+    background-color: #e6e6e6;
+    border-color: #8c8c8c;
+}
+
+.btn-rect:hover,
+.btn-rect:active {
+    color: #727272;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+
+.fa-rp {
+	font-size: 1.25em;
+    text-align: center;
+    vertical-align: -15%;
+}
+
+.fa-std {
+	font-size: 1.20em;
+    text-align: center;
+}
+
+.fa-toggle {
+	font-size: 1.5em;
+    text-align: center;
+}
+
+
+/* Blockly */
+#content_blocks{
+	height: 100%;
+	width: 100%
+}
+
+.blocklySvg { /* blockly workspace */
+	border-top: none !important;
+	background-color: #cad4dd; /* #A9B9C9 */
+}
+
+.blocklyScrollbarHandle {
+	fill: #AAA; /* CCC */
+}
+
+.blocklyToolboxDiv {
+	background-color: #DCE1E0  !important;
+	font-weight: bold;
+	width: 180px;
+	margin: 0px 5px 5px 4px;
+	box-shadow: 5px 5px 5px gray !important;
+}
+
+/* Expansion space to the right of the toolbox */
+.blocklyFlyoutBackground {
+	fill: #E0E0E0 !important; /* #e6e6e6 */
+}
+
+.blocklyTreeRoot {
+	padding: 0 !important; /* ??? */
+}
+
+.blocklyToolboxDiv .blocklyTreeRoot [role="treeitem"] {
+	position: relative;
+}
+
+.blocklyToolboxDiv .blocklyTreeRoot [role="treeitem"].blocklyTreeRow {
+	line-height: normal !important;
+	padding: 6px 50px 6px 12px !important; /* ??? */
+}
+
+.blocklyTreeRow {
+	height: 30px !important;
+	line-height: 30px !important;
+}
+
+.blocklyTreeSeparator {
+	background: none repeat scroll 0 0 #e9f9f9 !important;
+	border-bottom: none !important;
+	height: 10px !important;
+}
+
+.blocklyScrollbarKnob {
+  fill: #2d2d64 !important;
+  fill-opacity: 0.7 !important
+}
+
+.blocklyScrollbarBackground {
+  stroke-width: 0px !important;
+  fill: none !important
+}
+
+.blocklyTreeLabel {
+  text-align: left;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* End Blockly */

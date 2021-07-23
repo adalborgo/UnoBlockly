@@ -1,0 +1,165 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <toolbox xmlns="http://www.w3.org/1999/xhtml">arduino-toolbox</toolbox>
+  <block type="Remark" id="S/[4:3CP1PL/9*M/!,r5" x="30" y="30">
+    <field name="TEXT">Grove Beginner Kit:&amp;#10;Misura dell'accelerazione</field>
+    <next>
+      <block type="SSD1315_init" id="(*.U.IKx|nI_ZY`iEgxJ">
+        <field name="LOGIC">TRUE</field>
+        <next>
+          <block type="SSD1315_setcursor_draw" id="{Te?({f{TeI-ga-sO_$F">
+            <value name="ROW">
+              <shadow type="math_number" id="Cuc!yD#u;V])yfLJcx75">
+                <field name="NUM">0</field>
+              </shadow>
+            </value>
+            <value name="COLUMN">
+              <shadow type="math_number" id=",9`uG.6fMZ;7S`jr$9lf">
+                <field name="NUM">0</field>
+              </shadow>
+            </value>
+            <value name="TEXT_TO_PRINT">
+              <shadow type="text" id="-!H$@Vp7lxGVj~u;$xUj">
+                <field name="TEXT"> Accelerazione</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="SSD1315_setcursor_draw" id="nGhyErpPIEnDM910[i1R">
+                <value name="ROW">
+                  <shadow type="math_number" id="7FY0S{nic`$x#1Ken_0c">
+                    <field name="NUM">2</field>
+                  </shadow>
+                </value>
+                <value name="COLUMN">
+                  <shadow type="math_number" id="bY!9{g$*:@[NShI!vz#x">
+                    <field name="NUM">0</field>
+                  </shadow>
+                </value>
+                <value name="TEXT_TO_PRINT">
+                  <shadow type="text" id="!v1pGOjjrKhL[{+4-0~r">
+                    <field name="TEXT">X = </field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="SSD1315_setcursor_draw" id="}NnJ$^5A(r%E+vyO9av-">
+                    <value name="ROW">
+                      <shadow type="math_number" id="65pAR5%G-)2lTfV#[y:C">
+                        <field name="NUM">4</field>
+                      </shadow>
+                    </value>
+                    <value name="COLUMN">
+                      <shadow type="math_number" id="^HBcbms^4d|jTgmg$kc5">
+                        <field name="NUM">0</field>
+                      </shadow>
+                    </value>
+                    <value name="TEXT_TO_PRINT">
+                      <shadow type="text" id="[gI+u4Q9b-ea*IxKHkAL">
+                        <field name="TEXT">Y = </field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="SSD1315_setcursor_draw" id="TBH[%DgA0DaM9IWDMLK=">
+                        <value name="ROW">
+                          <shadow type="math_number" id="NAnN^23h3m#5W|Orj!S^">
+                            <field name="NUM">6</field>
+                          </shadow>
+                        </value>
+                        <value name="COLUMN">
+                          <shadow type="math_number" id="x(13.??j2rQu,Kwi9?gk">
+                            <field name="NUM">0</field>
+                          </shadow>
+                        </value>
+                        <value name="TEXT_TO_PRINT">
+                          <shadow type="text" id="xrmCaz_KxmPisi=5bviE">
+                            <field name="TEXT">Z = </field>
+                          </shadow>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+  <block type="ArduinoLoop" id="j#hT]QUE8p-}%YkJT[gF" x="30" y="290">
+    <statement name="LOOP">
+      <block type="SSD1315_setcursor_draw" id="BIuO#B%53HwxW+^;8P$i">
+        <value name="ROW">
+          <shadow type="math_number" id="_T)hfn`jM1)RmSVhavWQ">
+            <field name="NUM">2</field>
+          </shadow>
+        </value>
+        <value name="COLUMN">
+          <shadow type="math_number" id="-GA2mj4)lQZzG^Agq4o[">
+            <field name="NUM">4</field>
+          </shadow>
+        </value>
+        <value name="TEXT_TO_PRINT">
+          <shadow type="text" id="c$/$=J,yr_vF}d1{W{sr">
+            <field name="TEXT">Hello!</field>
+          </shadow>
+          <block type="lis3dhtr_values" id="t%rq^_lS.=.XUtgQj*h`">
+            <field name="TypeAxis">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="SSD1315_setcursor_draw" id="+*nb5;tXqQW12Jf(9QG|">
+            <value name="ROW">
+              <shadow type="math_number" id="P+wMtDzU#*65Lb(XqtP$">
+                <field name="NUM">4</field>
+              </shadow>
+            </value>
+            <value name="COLUMN">
+              <shadow type="math_number" id="oB%4+$#nq^3HgU!jeLQ}">
+                <field name="NUM">4</field>
+              </shadow>
+            </value>
+            <value name="TEXT_TO_PRINT">
+              <shadow type="text">
+                <field name="TEXT">Hello!</field>
+              </shadow>
+              <block type="lis3dhtr_values" id="PVC1$a19[NTaWg0c{]-,">
+                <field name="TypeAxis">1</field>
+              </block>
+            </value>
+            <next>
+              <block type="SSD1315_setcursor_draw" id="vTAqhd.lb%zPKt`;q$-R">
+                <value name="ROW">
+                  <shadow type="math_number" id="pECgg]^=,^1YkX#J7}[T">
+                    <field name="NUM">6</field>
+                  </shadow>
+                </value>
+                <value name="COLUMN">
+                  <shadow type="math_number" id="u^_dRkCx+va!];p?!`9b">
+                    <field name="NUM">4</field>
+                  </shadow>
+                </value>
+                <value name="TEXT_TO_PRINT">
+                  <shadow type="text">
+                    <field name="TEXT">Hello!</field>
+                  </shadow>
+                  <block type="lis3dhtr_values" id="O%Xti:;:N*f--dHEIUb;">
+                    <field name="TypeAxis">2</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="ArduinobaseDelay" id="Iw0:}y0|:jBOS;8c3X6-">
+                    <field name="UNIT">m</field>
+                    <value name="DELAY">
+                      <shadow type="math_number" id="*M)|rg$[EXB`WC`T{GqL">
+                        <field name="NUM">250</field>
+                      </shadow>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

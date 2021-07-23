@@ -1,0 +1,77 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <toolbox xmlns="http://www.w3.org/1999/xhtml">arduino-toolbox</toolbox>
+  <block type="ArduinoLoop" id="u@ptd]7|{d|:xWsQZ$:$" x="50" y="50">
+    <statement name="LOOP">
+      <block type="Remark" id="q@zZ:P/x1ES~S7K7Z7n3">
+        <field name="TEXT">Otto comincia a ballare se metti una mano ad una distanza minore di 20 cm</field>
+        <next>
+          <block type="controls_if" id="ws{-cYDIz{X0Xx%#[IF!">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="logic_compare" id="4r0{E8QL]T?lVzH-T+bh">
+                <field name="OP">LT</field>
+                <value name="A">
+                  <block type="ottodiy_getdistance" id="~W[3ZP_!G?%:u_F~[f8k"></block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="sU%?3U5/H0h^d]GEm(wP">
+                    <field name="NUM">20</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="ottodiy_sound" id="w857bR5cYLp:2Pu;MWqe">
+                <field name="otto_sound">S_superHappy</field>
+                <next>
+                  <block type="controls_for" id="!=+G|h|T6Zi_m)X5+dO+">
+                    <field name="VAR">cnt</field>
+                    <field name="BY">1</field>
+                    <value name="FROM">
+                      <shadow type="math_number" id="xEVMn:Uu.dL=X,?FfINV">
+                        <field name="NUM">1</field>
+                      </shadow>
+                    </value>
+                    <value name="TO">
+                      <shadow type="math_number" id="$lPbVCml1t4+=nQn||9j">
+                        <field name="NUM">3</field>
+                      </shadow>
+                    </value>
+                    <statement name="DO">
+                      <block type="ottodiy_dance" id="[/V*.Mq1JRHU+Pi%KU:Q">
+                        <field name="otto_dance_movement">moonwalkerLEFT</field>
+                        <field name="otto_move_speed">1000</field>
+                        <field name="otto_dance_size">25</field>
+                        <next>
+                          <block type="ottodiy_dance" id="MDz.~vdX$Ag*;%[E,(8s">
+                            <field name="otto_dance_movement">moonwalkerRIGHT</field>
+                            <field name="otto_move_speed">1000</field>
+                            <field name="otto_dance_size">25</field>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="ottodiy_home" id="U4V^485a(0h#OVY0Ok?R">
+                <next>
+                  <block type="ArduinobaseDelay" id="kqURT@R[y5l8b~P/rbAK">
+                    <field name="UNIT">m</field>
+                    <value name="DELAY">
+                      <shadow type="math_number" id="bkw%LXdMN`#)gi_(5,U+">
+                        <field name="NUM">250</field>
+                      </shadow>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

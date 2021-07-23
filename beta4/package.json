@@ -1,0 +1,57 @@
+{
+   "name": "UnoBlockly",
+   "version": "0.4.0",
+   "description": "Blockly for Arduino UNO and Arduino Nano",
+   "author": "Antonio Dal Borgo",
+   "license": "MIT",
+   "main": "main.js",
+   "scripts": {
+      "postinstall": "install-app-deps",
+      "start": "electron ../dist/win-unpacked/resources/app",
+      "pack": "electron-builder --dir",
+      "dist": "electron-builder",
+      "compile": "electron-builder  --win --x64"
+   },
+   "build": {
+      "appId": "it.dibis.unoblockly",
+      "asar": false,
+      "directories": {
+         "buildResources": "./build",
+         "output": "../dist"
+      },
+      "productName": "UnoBlockly",
+      "nsis": {
+         "installerIcon": "build/install.ico",
+         "uninstallerIcon": "build/app.ico",
+         "oneClick": false,
+         "perMachine": true,
+         "allowToChangeInstallationDirectory": true,
+         "artifactName": "UnoBlockly_x64-Install-beta0.3.8.exe",
+         "runAfterFinish": true,
+         "deleteAppDataOnUninstall": true
+      },
+      "win": {
+         "target": [
+            "nsis"
+         ],
+         "icon": "build/appIcon.png"
+      },
+      "fileAssociations": {
+         "ext": "ubk",
+         "name": "UBK File",
+         "icon": "build/icon.ico"
+      },
+      "extraFiles": [
+         "www",
+         "compilation",
+         "config.json"
+      ]
+   },
+   "devDependencies": {
+      "electron": "^11.2.1",
+      "electron-builder": "^22.11.7"
+   },
+   "dependencies": {
+      "serialport": "^9.2.0"
+   }
+}

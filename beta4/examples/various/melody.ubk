@@ -1,0 +1,16 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <toolbox xmlns="http://www.w3.org/1999/xhtml">arduino-toolbox</toolbox>
+  <block type="MelodyPlayer" id="4Gi!.|+c7is4=?0fj3hE" x="50" y="50">
+    <field name="TIME">180</field>
+    <value name="PIN">
+      <block type="ArduinobaseDPins" id="dW(+|UJ%6m_vf,/*QZS)">
+        <field name="PIN">5</field>
+      </block>
+    </value>
+    <value name="MELODY">
+      <shadow type="text" id=":0H0]ZM-n_Ft~j|J]N*3">
+        <field name="TEXT">( (cccde+dr  ceddc+.r)x2  dddd (a+ar)_ dc(b a g+.r)_ cccde+dr ceddc+.r )*</field>
+      </shadow>
+    </value>
+  </block>
+</xml>

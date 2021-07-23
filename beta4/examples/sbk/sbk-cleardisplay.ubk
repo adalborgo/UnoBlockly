@@ -1,0 +1,14 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <toolbox xmlns="http://www.w3.org/1999/xhtml">arduino-toolbox</toolbox>
+  <block type="Remark" id="S/[4:3CP1PL/9*M/!,r5" x="30" y="30">
+    <field name="TEXT">Cancella il display</field>
+    <next>
+      <block type="SSD1315_init" id="(*.U.IKx|nI_ZY`iEgxJ">
+        <field name="LOGIC">TRUE</field>
+        <next>
+          <block type="SSD1315_clear" id="$ifU!ppFq74=gRXDQlfo"></block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>

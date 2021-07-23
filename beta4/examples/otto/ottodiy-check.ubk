@@ -1,0 +1,9 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <toolbox xmlns="http://www.w3.org/1999/xhtml">arduino-toolbox</toolbox>
+  <block type="ottodiy_calibration" id="ZfYuNF~K[,=$GQW~b0;B" x="400" y="250">
+    <field name="LL">0</field>
+    <field name="RL">0</field>
+    <field name="LF">0</field>
+    <field name="RF">0</field>
+  </block>
+</xml>

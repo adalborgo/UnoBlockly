@@ -1,0 +1,9 @@
+Alcuni semplici esempi per OttoDIY (esempi-ottodiy.zip)
+
+1. Controllo della posizione di gambe e piedi (ottodiy-check.ubk)
+2. Calibrazione di gambe e piedi (ottodiy-calibrate.ubk)
+3. Otto comincia a ballare se metti una mano ad una distanza minore di 20 cm (ottodiy-distance_dance.ubk)
+4. Movimenti vari (ottodiy-dance1.ubk)
+5. Movimenti vari (ottodiy-dance2.ubk)
+6. Movimenti vari (ottodiy-dance3.ubk)
+7. Se otto incontra un ostacolo ad una distanza non inferiore a 10 cm ruota verso sinistra, se l'ostacolo è troppo vicino si ferma (ottodiy-avoid_obstacle.ubk)
