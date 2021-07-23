@@ -26,7 +26,7 @@
          "oneClick": false,
          "perMachine": true,
          "allowToChangeInstallationDirectory": true,
-         "artifactName": "UnoBlockly_x64-Install-beta0.3.8.exe",
+         "artifactName": "UnoBlockly_x64-Install-beta0.4.0.exe",
          "runAfterFinish": true,
          "deleteAppDataOnUninstall": true
       },

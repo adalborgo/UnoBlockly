@@ -1,13 +1,13 @@
 /**
  * @package: UnoBlockly
  * @file globals.js
- * @version 0.1 (21-07-2021)
+ * @version 0.1 (23-07-2021)
  * @note Global variables for the package
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
 
 const APP_NAME = 'UnoBlockly'; // Important!!!
-const APP_VERSION = '(Beta0.3.8)';
+const APP_VERSION = '(Beta0.4.0)';
 const EXTENSION = "ubk";
 const LATEST_URL = "https://www.dibis.it/download/UnoBlockly/latest.js";
 
