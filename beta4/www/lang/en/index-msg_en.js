@@ -53,7 +53,7 @@ const INDEX_MSG = {
   current_version: "Current version: ",
   new_version: "New version: ",
   aboutModalLabel: "About",
-  appSite: "https://www.dibis.it/cms/index.php/unoblockly",
+  appSite: "https://github.com/adalborgo/UnoBlockly/blob/v0-beta4.0/README.md",
   appName: "UnoBlockly",
   aboutBody: "UnoBlockly is a visual programming language based on Google Blockly, the Arduino code is created automatically by combining the blocks."
 };
