@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/adalborgo/UnoBlockly/blob/images/beta4/appIcon.png" alt="logo" width="8%"/>
+  <img src="https://github.com/adalborgo/UnoBlockly/blob/beta4/images/appIcon.png" alt="logo" width="8%"/>
 </p>
 
 <h1 align="center">UnoBlockly</h1>
