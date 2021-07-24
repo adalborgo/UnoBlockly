@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file index-code.js
- * @version 0.1 (20-07-2021)
+ * @version 0.1 (24-07-2021)
  * @description Main index.html functions
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -13,16 +13,17 @@
 */
 'use strict';
 
-// Define global variables
-let blockLen = 0;
-let blockHash = 0;
-
 // Override Blockly.confirm() with custom implementation
 const { ipcRenderer } = require("electron");
 const fs = require('fs');
 
 const toolbox_filename = "toolbox";
 const toolbox_path = "./toolbox/";
+const ZOOM_START = 0.8;
+
+// Global variables
+let blockLen = 0;
+let blockHash = 0;
 
 Blockly.prompt = function (message, defaultValue, callback) {
 	callback(ipcRenderer.sendSync("varPrompt", message));
@@ -62,7 +63,7 @@ IndexCode.init = function() {
 			zoom:{ // https://developers.google.com/blockly/guides/configure/web/zoom
 				controls:true,
 				wheel:true,
-				startScale: 0.9,
+				startScale: ZOOM_START,
 				maxScale: 3,
 				minScale: 0.3,
 				scaleSpeed: 1.2,

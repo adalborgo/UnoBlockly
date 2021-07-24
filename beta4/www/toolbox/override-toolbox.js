@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file override-toolbox.js
- * @version 0.1 (25-05-2021)
+ * @version 0.1 (24-07-2021)
  * @description Toolbox modification: extends Blockly.ToolboxCategory (⚙)
  * @see www/arduino/blockly-arduino/themes.js
  	https://blocklycodelabs.dev/codelabs/custom-toolbox
@@ -16,7 +16,7 @@
 const CAT_TEXT_COLOR = '#FFF';
 const CAT_SELECTED_BKG_COLOR = '#DCE0E5';
 
-class TweakCategories extends Blockly.ToolboxCategory {
+class CustomCategories extends Blockly.ToolboxCategory {
 	
 	// Constructor for a custom category
 	constructor(categoryDef, toolbox, opt_parent) {
@@ -49,17 +49,15 @@ class TweakCategories extends Blockly.ToolboxCategory {
 			this.iconDom_.style.color = CAT_TEXT_COLOR; // If used
 		}
 
-		// This is used for accessibility purposes.
-		Blockly.utils.aria.setState((this.htmlDiv_),
-			Blockly.utils.aria.State.SELECTED, isSelected);
+		// For accessibility purposes.
+		Blockly.utils.aria.setState((this.htmlDiv_), Blockly.utils.aria.State.SELECTED, isSelected);
 	}
-
 }
 
 Blockly.registry.register(
 	Blockly.registry.Type.TOOLBOX_ITEM,
 	Blockly.ToolboxCategory.registrationName,
-	TweakCategories, true);
+	CustomCategories, true);
 
 function classMixin(target, src) {
 	for (var key of Object.getOwnPropertyNames(src.prototype)) {
@@ -67,4 +65,4 @@ function classMixin(target, src) {
 	}
 }
 
-classMixin(Blockly.CollapsibleToolboxCategory, TweakCategories);
+classMixin(Blockly.CollapsibleToolboxCategory, CustomCategories);

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://www.dibis.it/cms/images/unoblockly/images/appIcon.png" alt="drawing" width="8%"/>
+  <img src="https://github.com/adalborgo/UnoBlockly/blob/beta4/beta4/images/appIcon.png" alt="logo" width="8%"/>
 </p>
 
 <h1 align="center">UnoBlockly</h1>
@@ -8,7 +8,7 @@ UnoBlockly is a visual programming language, based on Google&#39;s Blockly, for 
 
 Block programming is particularly useful for those who undertake a learning path, moreover, the possibility of being able to work at the same time even with the generated code, facilitates the transition to programming with traditional languages.
 
-<p align="center"><img src="https://www.dibis.it/cms/images/unoblockly/images/Esempio1.png" alt="Block" width="80%"/></p>
+<p align="center"><img src="https://github.com/adalborgo/UnoBlockly/blob/beta4/beta4/images/example-block1.png" alt="Block" width="80%"/></p>
 
 The software uses visual blocks that connect to each other and automatically generates the Arduino code, which can be shown through a convenient preview window or edited directly by switching from graphics to text mode.
 
@@ -16,7 +16,7 @@ The Arduino code can be edited and saved on files with the standard extension **
 UnoBlockly supports direct connection to the Arduino board via USB port, so the product code can be compiled and uploaded directly to the board.
  The software also integrates a simple monitor for communications with the serial port.
 
-<p align="center"><img src="https://www.dibis.it/cms/images/unoblockly/images/Esempio3.png" alt="Code" width="80%"/></p>
+<p align="center"><img src="https://github.com/adalborgo/UnoBlockly/blob/beta4/beta4/images/example-code1.png" alt="Code" width="80%"/></p>
 
 This project has been inspired by **OttoBlockly** , of which he uses some pieces of code. Compared to OttoBlockly, however, it has some significant differences: while OttoBlockly inserts by default the instructions in the **loop ()** function, UnoBlockly inserts them in the **setup ()** function, an optional block is still available to insert the instructions inside the chosen function.
 
