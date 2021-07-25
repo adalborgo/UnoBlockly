@@ -14,9 +14,14 @@ The software uses visual blocks that connect to each other and automatically gen
 
 The Arduino code can be edited and saved on files with the standard extension **.ino** , but any changes in &#39;text&#39; mode will be deleted by switching to &#39;block&#39; mode, if they have not been previously saved on file.
 UnoBlockly supports direct connection to the Arduino board via USB port, so the product code can be compiled and uploaded directly to the board.
- The software also integrates a simple monitor for communications with the serial port.
 
 <p align="center"><img src="https://github.com/adalborgo/UnoBlockly/blob/beta4/images/example-code1.png" alt="Code" width="80%"/></p>
+
+The software also integrates a simple monitor for communications with the serial port. The data read on the serial monitor can be saved in .csv format.
+
+<p align="center"><img src="https://github.com/adalborgo/UnoBlockly/blob/beta4/images/serial_monitor.png" alt="Code" width="66%"/></p>
+
+**The project**
 
 This project has been inspired by **OttoBlockly** , of which he uses some pieces of code. Compared to OttoBlockly, however, it has some significant differences: while OttoBlockly inserts by default the instructions in the **loop ()** function, UnoBlockly inserts them in the **setup ()** function, an optional block is still available to insert the instructions inside the chosen function.
 
