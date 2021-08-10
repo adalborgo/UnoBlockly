@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file main.js
- * @version 0.1 (21-06-2021)
+ * @version 0.1 (10-08-2021)
  * @description Electron main file
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -114,7 +114,10 @@ function promptModal(options, callback) {
 }
 
 function refresh(mainWindow = BrowserWindow.getFocusedWindow()) {
-	if (mainWindow) mainWindow.webContents.reloadIgnoringCache()
+	if (mainWindow) {
+		if (process.argv.length >= 2) process.argv[1] = "";
+		mainWindow.webContents.reloadIgnoringCache();
+	}
 }
 
 // DevTools
