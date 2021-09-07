@@ -4,9 +4,9 @@
 
 <h1 align="center">UnoBlockly</h1>
 
-UnoBlockly is a visual programming language, based on Google&#39;s Blockly, for programming Arduino boards and devices based on the Atmega328 microcontroller, such as Arduino UNO, Arduino Nano. In particular, some modules dedicated to Seeed Studio Grove Beginner Kit, Makeblock mBot, OttoDIY are available.
+UnoBlockly is a visual programming environment, based on Google&#39;s Blockly, for programming Arduino boards and devices based on the Atmega328 microcontroller, such as Arduino UNO, Arduino Nano. In particular, some modules dedicated to Seeed Studio Grove Beginner Kit, Makeblock mBot, OttoDIY are available.
 
-Block programming is particularly useful for those who undertake a learning path, moreover, the possibility of being able to work at the same time even with the generated code, facilitates the transition to programming with traditional languages.
+The software can be useful above all for beginners but also for teachers of Arduino courses, moreover, the possibility of being able to work at the same time even with the generated code, facilitates the transition to programming with traditional languages.
 
 <p align="center"><img src="https://github.com/adalborgo/UnoBlockly/blob/beta4/images/example-block1.png" alt="Block" width="80%"/></p>
 
