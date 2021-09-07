@@ -61,9 +61,9 @@ For immediate use and educational purposes, some sample sketches are available.
 5. Fill the display with the &#39;X&#39; character (sbk-display\_fill.ubk)
 6. Shows the rotation angle of the potentiometer on the display (sbk-encoder-display.ubk)
 7. Shows the temperature, humidity and pressure data on the display (sbk-meteo.ubk)
-8. Shows the values ??detected by the accelerometer on the display (sbk-acceleration.ubk)
-9. Gives an indication of the light intensity of the environment (sbk-light\_intensity.ubk)
-10. Gives an indication of the ambient noise (sbk-microphone.ubk)
+8. Shows the acceleration on the display (sbk-acceleration.ubk)
+9. Indicates the light intensity of the environment (sbk-light\_intensity.ubk)
+10. Indicates the ambient noise (sbk-microphone.ubk)
 
 **Makeblock mBot examples** ([examples-mBot.zip](https://www.dibis.it/j4/images/unoblockly/examples/en/examples-mBot.zip))
 1. Generate a sequence of sounds from 300 to 1800 Hz (mBot-sound300-1800.ubk)
@@ -71,7 +71,7 @@ For immediate use and educational purposes, some sample sketches are available.
 3. Generates sounds with a frequency that varies according to the distance measured by the ultrasonic sensor (mBot-Theremin.ubk)
 4. Turn on RGB LEDs with different colors (mBot-RGB.ubk)
 5. By pressing the button, the LEDs emit red light otherwise green light (mBot-button.ubk)
-6. Gives an indication of the ambient light intensity (mBot-light\_intensity.ubk)
+6. Indicates the light intensity of the environment (mBot-light\_intensity.ubk)
 
 **Examples for OttoDIY** ([examples-ottodiy.zip](https://www.dibis.it/j4/images/unoblockly/examples/en/examples-ottodiy.zip))
 1. Checking the position of legs and feet (ottodiy-check.ubk)
