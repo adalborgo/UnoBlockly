@@ -47,13 +47,13 @@ At the moment UnoBlockly only supports English and Italian languages, I hope soo
 
 For immediate use and educational purposes, some sample sketches are available.
 
-**Generic examples** (examples.zip)
+**Generic examples** ([examples.zip](https://www.dibis.it/j4/images/unoblockly/examples/en/examples.zip))
 1. Blink the LED on the board (blink.ubk)
 2. Blink a LED connected to digital pin 4 (blink-pin4.ubk)
 3. Repeat a two-tone sound 5 times (sound\_two-tone.ubk)
 4. Play a short melody using Melody notation (melody.ubk)
 
-**Examples for the Grove Beginner Kit** (examples-sbk.zip)
+**Examples for the Grove Beginner Kit** ([examples-sbk.zip](https://www.dibis.it/j4/images/unoblockly/examples/en/examples-sbk.zip))
 1. Blink the red LED (sbk-blink.ubk)
 2. Generate a variable sound (sbk-variable\_sound.ubk)
 3. By pressing the button, the LED turns on and a two-tone sound is generated (sbk-button-led-buzzer.ubk)
@@ -65,7 +65,7 @@ For immediate use and educational purposes, some sample sketches are available.
 9. Gives an indication of the light intensity of the environment (sbk-light\_intensity.ubk)
 10. Gives an indication of the ambient noise (sbk-microphone.ubk)
 
-**Makeblock mBot examples** (examples-mBot.zip)
+**Makeblock mBot examples** ([examples-mBot.zip](https://www.dibis.it/j4/images/unoblockly/examples/en/examples-mBot.zip))
 1. Generate a sequence of sounds from 300 to 1800 Hz (mBot-sound300-1800.ubk)
 2. Measure the distance to an object via the ultrasonic sensor and send the data to the serial port (mBot-distance.ubk)
 3. Generates sounds with a frequency that varies according to the distance measured by the ultrasonic sensor (mBot-Theremin.ubk)
@@ -73,7 +73,7 @@ For immediate use and educational purposes, some sample sketches are available.
 5. By pressing the button, the LEDs emit red light otherwise green light (mBot-button.ubk)
 6. Gives an indication of the ambient light intensity (mBot-light\_intensity.ubk)
 
-**Examples for OttoDIY** (examples-ottodiy.zip)
+**Examples for OttoDIY** ([examples-ottodiy.zip](https://www.dibis.it/j4/images/unoblockly/examples/en/examples-ottodiy.zip))
 1. Checking the position of legs and feet (ottodiy-check.ubk)
 2. Leg and foot calibration (ottodiy-calibrate.ubk)
 3. Ottodiy starts dancing if you put your hand at a distance of less than 20 cm (ottodiy-distance\_dance.ubk)
