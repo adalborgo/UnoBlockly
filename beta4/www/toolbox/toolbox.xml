@@ -3,7 +3,7 @@
 <!-- 
 	package: UnoBlockly
 	file toolbox.xml
-	version 0.1 (22-07-2021)
+	version 0.1 (07-10-2021)
 	author Antonio Dal Borgo <adalborgo@gmail.com>
 -->
 
@@ -603,6 +603,16 @@
 
          <block type="mBot_Temperature" />
 
+         <block type="mBot_Sound" />
+
+         <block type="mBot_Seg7">
+            <value name="DATA">
+               <shadow type="math_number">
+                  <field name="NUM">0</field>
+               </shadow>
+            </value>
+         </block>
+
          <!-- LEDMatrix sub category -->
          <category name="CAT_MBOT_LEDMatrix" categorystyle="mBot_category">
 
@@ -653,11 +663,6 @@
             <value name="COORD_Y">
                <shadow type="math_number">
                   <field name="NUM">0</field>
-               </shadow>
-            </value>
-            <value name="TEXT">
-               <shadow type="text">
-                  <field name="TEXT">abc</field>
                </shadow>
             </value>
          </block>

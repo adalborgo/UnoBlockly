@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file mbot.js
- * @version 0.1 (22-07-2021)
+ * @version 0.1 (07-10-2021)
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  * @description Code for Makeblock mBot
 
@@ -26,6 +26,8 @@
 		["mBotDistance"] = 'MeUltrasonicSensor ultraSensor(PORT_' + code + ');';
 		["mBotLinefollower"] = 'MeLineFollower lineFinder(PORT_' + code + ');';
 		["mBotBuzzer"] =  'MeBuzzer buzzer;';
+		["mBotSound"] = 'MeSoundSensor soundSensor(PORT_' + port + ');';
+		["mBotSeg7"] = 'Me7SegmentDisplay seg7_' + port + '(' + port + ');';
 	
 	Setups:
 		["mBotRgbled"] = 'rgbled.reset(' + port + ',' + slot+');';
@@ -314,7 +316,7 @@ Blockly.Arduino['mBot_RemoteIR'] = function (block) {
 	return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
-// Read ultrasonic distance
+// Read temperature sensor
 Blockly.Blocks["mBot_Temperature"] = {
 	init: function () {
 		this.setStyle("mBot_blocks");
@@ -332,7 +334,7 @@ Blockly.Blocks["mBot_Temperature"] = {
 		this.setOutput(true, "Number");
 		this.setTooltip(Blockly.Msg.mBotTemperature);
 		this.setTooltip(Blockly.Msg.mBotTemperature_tooltip);
-		this.setHelpUrl("");
+		this.setHelpUrl("https://www.makeblock.com/project/temperature-sensor-waterproofds18b20");
 	}
 };
 
@@ -340,12 +342,69 @@ Blockly.Arduino["mBot_Temperature"] = function (block) {
 	let port = this.getFieldValue('PORT');
 	let slot = this.getFieldValue('SLOT');
 	let slotId = (slot=='1') ? 1 : 2;
-
 	Blockly.Arduino.includes_["mBotMeMCore"]='#include <MeMCore.h>';
 	Blockly.Arduino.variables_["mBotTemperature_" + port + "_" + slotId] = 'MeTemperature temperature_' + port + '_' + slotId + '(' + port + ',' + slotId +');\n'
-
 	let code = 'temperature_' + port + '_' + slotId + '.temperature()';
 	return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+// Sound sensor (microphone)
+// https://www.makeblock.com/project/me-sound-sensor
+// Connect on J3(pin A3) or J4(pin A1)
+Blockly.Blocks["mBot_Sound"] = {
+	init: function () {
+		this.setStyle("mBot_blocks");
+		this.appendDummyInput()
+			.appendField(new Blockly.FieldImage("media/devices/mBot-bianco.png",32, 28))
+			.appendField(Blockly.Msg.mBotSound)
+			.appendField(Blockly.Msg.mbot_port)
+			.appendField(new Blockly.FieldDropdown(Blockly.Msg.mbot_port_dropdown), "PORT");
+		this.setInputsInline(false);
+		this.setOutput(true, "Number");
+		this.setTooltip(Blockly.Msg.mBotSound);
+		this.setTooltip(Blockly.Msg.mBotSound_tooltip);
+		this.setHelpUrl("https://www.makeblock.com/project/me-sound-sensor");
+	}
+};
+
+Blockly.Arduino["mBot_Sound"] = function (block) {
+	let port = BlockSub.port(block);
+	let sound = 0;
+	Blockly.Arduino.includes_["mBotMeMCore"]='#include <MeMCore.h>';
+	Blockly.Arduino.variables_["mBotSound"] = 'MeSoundSensor soundSensor_' + port + '(' + port + ');';
+	sound = 'soundSensor_' + port + '.strength()'; // Quiet: 0-483; noisy: 483-980
+	return [ 'map(' + 'soundSensor_' + port + '.strength()' + ',0,1023,0,100)', Blockly.Arduino.ORDER_ATOMIC];
+};
+
+// Show data on 7-segment display
+Blockly.Blocks["mBot_Seg7"] = {
+	init: function () {
+		this.setStyle("mBot_blocks");
+		this.appendDummyInput()
+			.appendField(new Blockly.FieldImage("media/devices/mBot-bianco.png",32, 28))
+			.appendField(Blockly.Msg.mBotSeg7)
+			.appendField(Blockly.Msg.mbot_port)
+			.appendField(new Blockly.FieldDropdown(Blockly.Msg.mbot_port_dropdown), "PORT");
+
+		this.appendValueInput("DATA")
+			.appendField("  " + Blockly.Msg.mbot_number)
+			.setCheck("Number");
+
+		this.setInputsInline(true);
+		this.setPreviousStatement(true, null);
+		this.setNextStatement(true, null);
+		this.setTooltip(Blockly.Msg.mBotSeg7);
+		this.setTooltip(Blockly.Msg.mBotSeg7_tooltip);
+		this.setHelpUrl("https://www.makeblock.com/project/me-7-segment-display");
+	}
+};
+
+Blockly.Arduino["mBot_Seg7"] = function (block) {
+	let port = BlockSub.port(block);
+	let data = Blockly.Arduino.valueToCode(block, 'DATA', Blockly.Arduino.ORDER_ATOMIC);
+	Blockly.Arduino.includes_["mBotMeMCore"]='#include <MeMCore.h>';
+	Blockly.Arduino.variables_["mBotSeg7"] = 'Me7SegmentDisplay seg7_' + port + '(' + port + ');';
+	return 'seg7_' + port + '.display(' + data + ');\n';
 };
 
 //----- MeLEDMatrix -----//
@@ -391,7 +450,7 @@ Blockly.Blocks["mBot_LEDMatrixDraw"] = {
 		this.setPreviousStatement(true, null);
 		this.setNextStatement(true, null);
 		this.setTooltip(Blockly.Msg.mBotLEDMatrix_tooltip);
-		this.setHelpUrl("");
+		this.setHelpUrl("https://www.makeblock.com/project/me-led-matrix-8x16");
 	}
 };
 
@@ -407,8 +466,9 @@ Blockly.Arduino["mBot_LEDMatrixDraw"] = function (block) {
 		'unsigned char drawBuffer[16];\n' +
 		'unsigned char *drawTemp;';
 
+	Blockly.Arduino.setups_["mBotRgbled"] = 'ledMtx_' + port + '.setColorIndex(1);\n';
+
 	let code =
-		'ledMtx_' + port + '.setColorIndex(1);\n' +
 		'ledMtx_' + port + '.setBrightness(' + brightness + ');\n';
 
 	// Set matrix
@@ -459,8 +519,9 @@ Blockly.Arduino["mBot_LEDMatrixClear"] = function (block) {
 		'unsigned char drawBuffer[16];\n' +
 		'unsigned char *drawTemp;';
 
+	Blockly.Arduino.setups_["mBotRgbled"] = 'ledMtx_' + port + '.setColorIndex(1);\n';
+
 	let code =
-		'ledMtx_' + port + '.setColorIndex(1);\n' +
 		'ledMtx_' + port + '.setBrightness(0);\n' +
 		'drawTemp = new unsigned char[16]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};\n' +
 		'memcpy(drawBuffer,drawTemp,16);\n' +
@@ -485,7 +546,7 @@ Blockly.Blocks["mBot_LEDMatrixNumber"] = {
 			.setCheck("Number");
 
 		this.appendValueInput("DATA")
-			.appendField("  " + Blockly.Msg.mBotLEDMatrixNumber)
+			.appendField("  " + Blockly.Msg.mbot_number)
 			.setCheck("Number");
 
 			this.setInputsInline(true);
@@ -504,10 +565,16 @@ Blockly.Arduino["mBot_LEDMatrixNumber"] = function (block) {
 	Blockly.Arduino.includes_["mBotMeMCore"]='#include <MeMCore.h>';
 	Blockly.Arduino.variables_["mBotLEDMatrix"] = 'MeLEDMatrix ledMtx_' + port + '(' + port + ');\n';
 
+	Blockly.Arduino.variables_["mBotLEDMatrix"] = 
+	'MeLEDMatrix ledMtx_' + port + '(' + port + ');\n' +
+	'unsigned char drawBuffer[16];\n' +
+	'unsigned char *drawTemp;';
+
+	Blockly.Arduino.setups_["mBotRgbled"] = 'ledMtx_' + port + '.setColorIndex(1);\n';
+
 	let code =
-		'ledMtx_' + port + '.setColorIndex(1);\n' +
 		'ledMtx_' + port + '.setBrightness(' + brightness + ');\n' +
-		'ledMtx_' + port + '.showNum(' + data + ');';
+		'ledMtx_' + port + '.showNum(' + data + ');\n';
 
 	return  code;
 }
@@ -523,8 +590,10 @@ Blockly.Blocks["mBot_LEDMatrixText"] = {
 		BlockSub.block_port(this);
 		BlockSub.block_bright_coord(this);
 
-		this.appendValueInput("TEXT")
-			.appendField("  " + Blockly.Msg.mBotLEDMatrixText);
+		//this.appendValueInput("TEXT").appendField("  " + Blockly.Msg.mbot_text);
+		this.appendDummyInput()
+			.appendField("  " + Blockly.Msg.mbot_text)
+			.appendField(new Blockly.FieldTextInput("  "), "TEXT")
 
 		this.setInputsInline(true);
 		this.setPreviousStatement(true, null);
@@ -540,16 +609,24 @@ Blockly.Arduino["mBot_LEDMatrixText"] = function (block) {
 	let coord_x = BlockSub.coord_x(block);
 	let coord_y = BlockSub.coord_y(block);
 
-	let text = Blockly.Arduino.valueToCode(block, 'TEXT', Blockly.Arduino.ORDER_ATOMIC);
+	//let text = Blockly.Arduino.valueToCode(block, 'TEXT', Blockly.Arduino.ORDER_ATOMIC);
+	let text = block.getFieldValue("TEXT");
+	console.log(text);
 
 	Blockly.Arduino.includes_["mBotMeMCore"]='#include <MeMCore.h>';
 	Blockly.Arduino.variables_["mBotLEDMatrix"] = 'MeLEDMatrix ledMtx_' + port + '(' + port + ');\n';
 
+	Blockly.Arduino.variables_["mBotLEDMatrix"] = 
+	'MeLEDMatrix ledMtx_' + port + '(' + port + ');\n' +
+	'unsigned char drawBuffer[16];\n' +
+	'unsigned char *drawTemp;';
+
+	Blockly.Arduino.setups_["mBotRgbled"] = 'ledMtx_' + port + '.setColorIndex(1);\n';
+
 	// ledMtx_1.drawStr(2,5+7,"Hi"); // x=2, y=5
 	let code =
-		'ledMtx_' + port + '.setColorIndex(1);\n' +
 		'ledMtx_' + port + '.setBrightness(' + brightness + ');\n' +
-		'ledMtx_' + port + '.drawStr(' + coord_x + ',7+' + coord_y + ',' + text + ');';
+		'ledMtx_' + port + '.drawStr(' + coord_x + ',7+' + coord_y + ', \"' + text + '\");\n';
 
 	return  code;
 }
@@ -591,8 +668,9 @@ Blockly.Arduino["mBot_LEDMatrixSmileys"] = function (block) {
 		'unsigned char drawBuffer[16];\n' +
 		'unsigned char *drawTemp;';
 
+	Blockly.Arduino.setups_["mBotRgbled"] = 'ledMtx_' + port + '.setColorIndex(1);\n';
+
 	let code =
-		'ledMtx_' + port + '.setColorIndex(1);\n' +
 		'ledMtx_' + port + '.setBrightness(' + brightness + ');\n' +
 		'drawTemp = new unsigned char[16]{' + smile + '};\n' +
 		'memcpy(drawBuffer,drawTemp,16);\n' +
@@ -616,7 +694,7 @@ Blockly.Blocks["mBot_LEDMatrixData"] = {
 		BlockSub.block_bright_coord(this);
 
 		this.appendDummyInput()
-			.appendField(" " + Blockly.Msg.mBotLEDMatrixData)
+			.appendField(" " + Blockly.Msg.mbot_data)
 			.appendField(new Blockly.FieldTextInput("        "), "DATA");
 
 			this.setInputsInline(true);
@@ -640,8 +718,9 @@ Blockly.Arduino["mBot_LEDMatrixData"] = function (block) {
 		'unsigned char drawBuffer[16];\n' +
 		'unsigned char *drawTemp;';
 
+	Blockly.Arduino.setups_["mBotRgbled"] = 'ledMtx_' + port + '.setColorIndex(1);\n';
+
 	let code =
-		'ledMtx_' + port + '.setColorIndex(1);\n' +
 		'ledMtx_' + port + '.setBrightness(' + brightness + ');\n' +
 		'drawTemp = new unsigned char[16]{' + data + '};\n' +
 		'memcpy(drawBuffer,drawTemp,16);\n' +
@@ -680,11 +759,11 @@ BlockSub.block_bright_coord = function(block, align) {
 
 	block.appendValueInput("COORD_X", "Number").setCheck("Number")
 		.setAlign(align)
-		.appendField(Blockly.Msg.mBotLEDMatrixCoordX);
+		.appendField(Blockly.Msg.mbot_coordX);
 
 	block.appendValueInput("COORD_Y", "Number").setCheck("Number")
 		.setAlign(align)
-		.appendField(Blockly.Msg.mBotLEDMatrixCoordY);
+		.appendField(Blockly.Msg.mbot_coordY);
 };
 
 BlockSub.port = function(block) {

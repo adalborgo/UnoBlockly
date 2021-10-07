@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file mbot-msg_en.js
- * @version 0.1 (22-07-2021)
+ * @version 0.1 (07-10-2021)
  * @description Makeblock mBot messages
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -17,6 +17,13 @@ Blockly.Msg.mbot_slot_dropdown = [['1', '1'],['2', '2']];
 
 Blockly.Msg.mbot_port = "Port";
 Blockly.Msg.mbot_port_dropdown = [['1', '1'],['2', '2'],['3', '3'],['4', '4']];
+
+Blockly.Msg.mbot_number = "Number";
+Blockly.Msg.mbot_text = "Text";
+Blockly.Msg.mbot_data = "Data";
+
+Blockly.Msg.mbot_coordX = "x"
+Blockly.Msg.mbot_coordY = "y"
 
 // Ultrasonic distance sensor
 Blockly.Msg.mBotDistance = "Distance (cm)  |";
@@ -59,6 +66,14 @@ Blockly.Msg.mBotLinefollower_tooltip = "Line follow sensor (0: both black; 1: bl
 Blockly.Msg.mBotTemperature = "Temperature (°C)";
 Blockly.Msg.mBotTemperature_tooltip = "Temperature measurement (°C)";
 
+// Sound sensor
+Blockly.Msg.mBotSound = "Microphone (%)";
+Blockly.Msg.mBotSound_tooltip = "Ambient sound intensity (percentage)";
+
+// 7-segment display
+Blockly.Msg.mBotSeg7 = "7-segment display";
+Blockly.Msg.mBotSeg7_tooltip = "Shows a numeric value on the 7-segment display";
+
 // Remote IR
 Blockly.Msg.mbot_remoteIR = "Remote IR";
 Blockly.Msg.mbot_key1 = "Key";
@@ -75,13 +90,7 @@ Blockly.Msg.mbot_remoteIR_tooltip = "Remote IR: waits for the selected key to be
 Blockly.Msg.mBotLEDMatrix = "LED Matrix";
 Blockly.Msg.mBotLEDMatrixClear = Blockly.Msg.mBotLEDMatrix +": Clear";
 Blockly.Msg.mBotLEDMatrixDraw = Blockly.Msg.mBotLEDMatrix +": Draw";
-Blockly.Msg.mBotLEDMatrixNumber = "Number";
-Blockly.Msg.mBotLEDMatrixText = "Text";
-Blockly.Msg.mBotLEDMatrixData = "Data";
-
 Blockly.Msg.mBotLEDMatrixBright = "Brightness";
-Blockly.Msg.mBotLEDMatrixCoordX = "x"
-Blockly.Msg.mBotLEDMatrixCoordY = "y"
 
 Blockly.Msg.mBotLEDMatrixSmileys_dropdown = [
     ['Eyes 1', '0,0,60,98,94,94,60,1,1,60,94,94,98,60,0,0'],
