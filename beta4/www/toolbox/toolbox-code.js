@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file toolbox-code.js
- * @version 0.1 (28-06-2021)
+ * @version 0.1 (05-11-2021)
  * @description Manage the toolbox functions
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -14,7 +14,7 @@ var ToolboxCode = {};
 // Load configuration file
 ToolboxCode.openConfigToolbox = function() {
 	let modalbody = $("#modal-body-config");
-	let loadIds = window.localStorage.toolboxids;
+	let loadIds = window.localStorage.getItem("toolboxids");
 	if (!loadIds || loadIds === "") {
 		if ($('#defaultCategories').length) {
 			loadIds = $('#defaultCategories').html();
@@ -51,7 +51,7 @@ ToolboxCode.changeToolbox = function() {
 	});
 
     // Copy toolbox items to window.localStorage.toolboxids
-	window.localStorage.toolboxids = toolboxIds;
+	window.localStorage.setItem("toolboxids", toolboxIds);
 	Blockly.getMainWorkspace().updateToolbox(ToolboxCode.buildToolbox());
 
 	Blockly.mainWorkspace.render();
@@ -62,7 +62,7 @@ ToolboxCode.changeToolbox = function() {
 
 // Load default categories
 ToolboxCode.buildToolbox = function() {
-	let loadIds = window.localStorage.toolboxids;
+	let loadIds = window.localStorage.getItem("toolboxids");
 	if (!loadIds || loadIds === "") {
 		if ($('#defaultCategories').length) {
 			loadIds = $('#defaultCategories').html();

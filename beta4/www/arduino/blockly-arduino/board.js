@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file board.js
- * @version 0.1 (12-05-2021)
+ * @version 0.1 (05-11-2021)
  * @description Arduino base board command of Blockly.Blocks & Blockly.Arduino
  * @see https://arduino.cc/en/Reference/HomePage
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
@@ -306,12 +306,13 @@ Blockly.Arduino["ArduinobaseAnalogWrite"]=function(block){
 // ArduinobaseAttachInterrupt
 Blockly.Blocks["ArduinobaseAttachInterrupt"]={
 	init:function(){
-		let card=window.localStorage.card;
+		let index = $("#boards").val(); // int
+		let boardType = IndexCode.getBoardName(index);
 		this.setStyle("arduino_blocks");
 		this.appendDummyInput()
 			.setAlign(Blockly.ALIGN_RIGHT)
 			.appendField(Blockly.Msg.ArduinobaseAttachInterrupt)
-			.appendField(new Blockly.FieldDropdown(profile[card].interrupt), 'PIN');
+			.appendField(new Blockly.FieldDropdown(profile[boardType].interrupt), 'PIN');
 		this.appendDummyInput()
 			.appendField(Blockly.Msg.ArduinobaseAttachInterrupt_with)
 			.appendField(new Blockly.FieldDropdown(Blockly.Msg.ArduinobaseAttachInterrupt_mode), "MODE");
@@ -337,11 +338,12 @@ Blockly.Arduino["ArduinobaseAttachInterrupt"]=function(block){
 // ArduinobaseDetachInterrupt
 Blockly.Blocks["ArduinobaseDetachInterrupt"]={
 	init:function(){
-		let card=window.localStorage.card;
+		let index = $("#boards").val(); // int
+		let boardType = IndexCode.getBoardName(index);
 		this.setStyle("arduino_blocks");
 		this.appendDummyInput()
 			.appendField(Blockly.Msg.ArduinobaseDetachInterrupt)
-			.appendField(new Blockly.FieldDropdown(profile[card].interrupt), 'PIN')
+			.appendField(new Blockly.FieldDropdown(profile[boardType].interrupt), 'PIN')
 		this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.ArduinobaseDetachInterrupt_tooltip);

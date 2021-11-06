@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file index-msg_it.js
- * @version 0.1 (21-07-2021)
+ * @version 0.1 (05-11-2021)
  * @description Generic messages
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -42,7 +42,8 @@ const INDEX_MSG = {
   variableModalLabel: "Variabile",
   usbLabel: "USB",
   aboutusbLabel: "Comunicazione tra la scheda e il computer",
-  discard: "Sei sicuro di voler eliminare tutti i blocchi?",
+  clearWorkspace: "Sei sicuro di voler eliminare tutti i blocchi?",
+  clearCode: "Tutto il codice sarà cancellato. Confermi?",
   change_config: "Modificando la configurazione, tutti i blocchi saranno eliminati. Confermi?",
   code2block: "Le modifiche effettuate saranno eliminate. Confermi?",
   closing_notice: "Chiudendo l'app, tutti i blocchi saranno eliminati. Confermi?",

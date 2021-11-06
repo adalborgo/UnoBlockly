@@ -5,7 +5,7 @@
 <!-- 
   package: UnoBlockly
   file: www/index.html
-  version:  beta0.3.8 (22-07-2021)
+  version:  beta0.4.2 (05-11-2021)
   author Antonio Dal Borgo <adalborgo@gmail.com>
 -->
 
@@ -51,7 +51,6 @@
 				} 
 			}
 		}
-
 	</script>
 
 	<!--
@@ -109,12 +108,12 @@
 				<li role="presentation" class="active"><a href="#content_blocks" aria-controls="content_blocks" role="tab" data-toggle="tab"></a></li>
 				<li role="presentation"><a href="#content_code" aria-controls="content_code" role="tab" data-toggle="tab"></a></li>
 			</ul>
-                          
+
 				<button id="btn_config" class="btn btn-rect" data-toggle="modal" data-target="#configModal">
 					<i class="fa fa-cog fa-std"></i>
 				</button>
-            
-				<span style="color:white;font-size:20">&nbsp;</span>
+
+				<span style="color:white; font-size:20">&nbsp;</span>
             
 				<button id="btn_new" class="btn btn-rect">
 					<i class="fa fa-file"></i>
@@ -128,7 +127,7 @@
 					<i class="fa fa-floppy-o fa-std"></i>
 				</button>
 
-				<span style="color:white;font-size:4">&nbsp;</span>
+				<span style="color:white; font-size:4">&nbsp;</span>
 
 				<button id="btn_undo" class="btn btn-circle">
 					<i class="fa fa-undo"></i>
@@ -137,9 +136,9 @@
 					<i class="fa fa-repeat"> </i>
 				</button>
 
-				<!-- see also: index.js: function getboardType(str) -->
+				<!-- see also: index.js: function getBoardName(index) -->
 				<!-- Boards/Devices for <select> is loaded by the 'IndexCode.getBoards' function -->
-				<select id="boards" class="board-select" onchange="IndexCode.change_card();"></select>
+				<select id="boards" class="board-select" onchange="IndexCode.change_board();"></select>
 
                 <!-- Switch block/code -->
 				<button id="btn_code" class="btn btn-text">

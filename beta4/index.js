@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file index-code.js
- * @version 0.1 (21-07-2021)
+ * @version 0.1 (05-11-2021)
  * @description Compilation for Arduino board only
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -114,8 +114,8 @@ window.addEventListener('load', function load(event) {
 			}
 
 			// Remove all elements except the header (serialPort.options[0])
-			//while(menu_opt.length > 0) { menu_opt[0].remove(); }
-			//while(serialPort.options.length > 0) { serialPort.options[0].remove(); }
+			// while(menu_opt.length > 0) { menu_opt[0].remove(); }
+			// while(serialPort.options.length > 0) { serialPort.options[0].remove(); }
 			// while(menu_opt.length > 0) { serialPort.removeChild(menu_opt[0]); } // HTML DOM removeChild()
 			for(let i=serialPort.options.length-1; i>0; i--) {
 				// console.log(i);
@@ -234,9 +234,10 @@ window.addEventListener('load', function load(event) {
 		writeSketch(data);
 
 		// Compile file sketch.ino
-		let board = IndexCode.getboardType(localStorage.getItem('card'));
-		// console.log("238 Verify:", board, localStorage.getItem('card'))
-		let upload_arg = window.profile[board].upload_arg; // arduino:avr:uno
+		let index = $("#boards").val(); // int
+		let boardType = IndexCode.getBoardName(index);
+		let upload_arg = window.profile[boardType].upload_arg;
+		// console.log("upload_arg: ", upload_arg);
 		let cmd = compile_cmd + upload_arg + ' ' + sketchFolder + sketchFile;
 		exec(cmd, {
 			cwd: compiler_folder
@@ -284,8 +285,10 @@ window.addEventListener('load', function load(event) {
 
 		// Compile file sketch.ino
 		let errorFlag = 0;
-		let board = IndexCode.getboardType(localStorage.getItem('card'));
-		let upload_arg = window.profile[board].upload_arg;
+		let index = $("#boards").val(); // int
+		let boardType = IndexCode.getBoardName(index);
+		let upload_arg = window.profile[boardType].upload_arg;
+		// console.log("upload_arg: ", upload_arg);
 		let cmd = compile_cmd + upload_arg + ' ' + sketchFolder + sketchFile;
 		exec(cmd, {
 			cwd: compiler_folder
@@ -346,8 +349,8 @@ window.addEventListener('load', function load(event) {
 	})
 
 	$('#btn_new').on('click', function () {
-		if (IndexCode.checkToSave(INDEX_MSG['discard'])) {
-				// Reset
+		if (!code_editor) { // Blockly mode
+			if (IndexCode.checkToSave(INDEX_MSG['clearCode'])) { // Reset
 				setTitle('');
 				isSaved = !0;
 				blockLen = 0;
@@ -356,6 +359,16 @@ window.addEventListener('load', function load(event) {
 	  			// Blockly.mainWorkspace.trashcan.emptyContents(); // ???
 				Blockly.mainWorkspace.render();
 				//window.location.reload(); // Clear all (F5):
+			}
+
+		} else { // 'code_editor' is true
+			if (editor.getValue().length!=0) {
+				if (window.confirm(INDEX_MSG['clearCode'])) { // Reset
+					editor.setValue("");
+					editorLen = 0;
+					editorHash = 0;
+				}
+			}
 		}
 	})
 
@@ -408,11 +421,6 @@ window.addEventListener('load', function load(event) {
 		$("#toggle").toggle("slide");
 	});
 
-	// When click outside the modal window
-	$('#configModal').on('hidden.bs.modal', function(e) {
-		ToolboxCode.loadToolboxDefinition(IndexCode.selectedToolbox);
-	});
-
 	// Change the configuration
 	$('#btn_config').on("click", function () {
 		ToolboxCode.openConfigToolbox();
@@ -423,10 +431,10 @@ window.addEventListener('load', function load(event) {
 	// Confirm: change the configuration
 	$('#btn_valid_config').on("click", function () {
 		if (IndexCode.checkToSave(INDEX_MSG['change_config'])) {
-			ToolboxCode.changeToolbox();
 			isSaved = !0;
 			blockLen = 0;
 			blockHash = 0;
+			ToolboxCode.changeToolbox();
 		} else {
 			$('#configModal').modal('hide');
 		}
@@ -536,11 +544,10 @@ function loadfile(pathname) {
 }
 
 // Callback from main.js: ipcMain.on('updated-download', (event) => { }
-const TIMEOUT = 2000;
 ipcRenderer.on('updated-download', function (event, path) {
 	// console.log(LATEST_FILE_URL, LATEST_FILENAME);
 	if (path) {
-		download_from_url(LATEST_FILE_URL, path, TIMEOUT);
+		download_from_url(LATEST_FILE_URL, path, 2000); // TIMEOUT = 2000;
 	} else {
 		return;
 	}
@@ -641,6 +648,7 @@ function setTitle(pathname) {
 
 // Set Block/Code mode
 function setBlockCode(isBlock) {
+	$('#btn_new').show();
 	if(isBlock) {
 		// Set block workspace
 		$('a[href="#content_blocks"]').tab('show');
@@ -648,7 +656,6 @@ function setBlockCode(isBlock) {
 		$('#btn_block').hide();
 		$('#btn_search').hide();
 		$('#btn_preview').show();
-		$('#btn_new').show();
 		code_editor = false;
 	} else {
 		// Set code editor
@@ -657,7 +664,6 @@ function setBlockCode(isBlock) {
 		$('#btn_block').show();
 		$('#btn_search').show();
 		$('#btn_preview').hide();
-		$('#btn_new').hide();
 		code_editor = true;
 	}
 }

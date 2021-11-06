@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file index-code.js
- * @version 0.1 (24-07-2021)
+ * @version 0.1 (05-11-2021)
  * @description Main index.html functions
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -21,6 +21,15 @@ const toolbox_filename = "toolbox";
 const toolbox_path = "./toolbox/";
 const ZOOM_START = 0.8;
 
+// Board types
+// see: Blockly.Msg.option_texts
+const BOARD_TYPES = ["uno", "nano", "nano_old", "uno", "nano_old"];
+
+// Items of window.localStorage
+const STORAGE_LANG = "lang";
+const STORAGE_COM = "com_id";
+const STORAGE_UPDATE = "update";
+
 // Global variables
 let blockLen = 0;
 let blockHash = 0;
@@ -33,12 +42,11 @@ Blockly.prompt = function (message, defaultValue, callback) {
 var IndexCode = {};
 
 IndexCode.selectedToolbox = toolbox_filename;
-IndexCode.selectedCard = "uno"; // Init if window.localStorage.card is undefined
 IndexCode.workspace = null;
 
 IndexCode.init = function() {
-	//for (let [key, value] of Object.entries(localStorage)) console.log(`${key}: ${value}`);
-	///// for (let a in localStorage) console.log(a, ' = ', localStorage[a]);
+	// for (let [key, value] of Object.entries(localStorage)) console.log(`${key}: ${value}`);
+	////for (let a in localStorage) console.log(a, ' = ', localStorage[a]);
 	IndexCode.loadConfig();
 
 	/*
@@ -72,7 +80,7 @@ IndexCode.init = function() {
 		}
 	);
 
-	IndexCode.bindFunctions();
+	IndexCode.bindFunctions(); // ???
 
 	Blockly.mainWorkspace.render();
 
@@ -104,11 +112,11 @@ IndexCode.init = function() {
 };
 
 IndexCode.save_com = function() {
-	// #Serialport contiene la scelta del menu su index.html, anche Usb port selection
+	// #Serialport contains the menu choice on index.html, also the USB port selection
 	$("#serialport").blur();
 	let com = $("#serialport").val();
 	if (com.toUpperCase().indexOf("COM") == 0) {
-		window.localStorage.setItem("com_id", com);
+		window.localStorage.setItem(STORAGE_COM, com);
 	}
 	
 	// for (let [key, value] of Object.entries(localStorage)) console.log(`${key}: ${value}`);
@@ -145,66 +153,55 @@ IndexCode.loadConfig = function() {
 	$('#btn_new').show();
 
 	if (!window.localStorage.update) {
-		window.localStorage.setItem("update", "true"); // Set update = true
+		window.localStorage.setItem(STORAGE_UPDATE, "true"); // Set update = true
 		$('#checkUpdate').prop('checked', true);
 	}
 
 	// Load Boards/Devices for <select> in index.html
 	const boards = document.getElementById('boards');
-	let label = Blockly.Msg.optgroup; //'Schede Arduino'
+	let label = Blockly.Msg.optgroup; //'Arduino boards header'
 	let optgroup = $('<optgroup label="' + label + '" />');
 	optgroup.appendTo(boards);
 
 	// Add all options
 	let items = Blockly.Msg.option_texts.length;
 	for (let i=0; i<items; i++) {
-		let opt = document.createElement('option')
+		let opt = document.createElement('option');
 		opt.text = Blockly.Msg.option_texts[i];
 		opt.value = i;
-		// console.log("index:", i, opt.text);
 		boards.appendChild(opt);
 	}
-
-	// Default: IndexCode.selectedCard = "uno";
-	let card = window.localStorage.getItem("card");
-	if (!card) {
-		card = IndexCode.selectedCard;
-		window.localStorage.setItem("card", card); // IndexCode.selectedCard);
-	}
-	// console.log("card: ", card);
-	boards.selectedIndex = card;
 
 	// Load toolbox definitions
 	$("#toolboxes").val(IndexCode.selectedToolbox);
 	ToolboxCode.loadToolboxDefinition(toolbox_path, IndexCode.selectedToolbox);
 };
 
-IndexCode.change_card = function() {
+// <select id="boards" class="board-select" onchange="IndexCode.change_board();"></select>
+IndexCode.change_board = function() {
 	$("#boards").blur(); // Remove focus from the text input
-	let cardVal = $("#boards").val();
-	let selectedCard = IndexCode.getboardType(cardVal)
-	//console.log("selectedCard:", selectedCard)
-	window.localStorage.setItem("card", selectedCard);
+	let deviceIndex = $("#boards").val(); // int
+	let selectedBoard = IndexCode.getBoardName(deviceIndex); // Card name (String)
 };
 
 IndexCode.search = function() {
-	editor.execCommand("find")
+	editor.execCommand("find");
 };
 
 IndexCode.bindFunctions = function() {
 	$('.modal-child').on('show.bs.modal', function () {
 		let modalParent = $(this).attr('data-modal-parent');
-		$(modalParent).css('opacity', 0)
+		$(modalParent).css('opacity', 0);
 	});
 
 	$('.modal-child').on('hidden.bs.modal', function () {
 		let modalParent = $(this).attr('data-modal-parent');
-		$(modalParent).css('opacity', 1)
+		$(modalParent).css('opacity', 1);
 	});
 	
-	$('#boards').on("focus", function() {
-		IndexCode.selectedCard = $(this).val();
-	});
+	/*$('#boards').on("focus", function() {
+		IndexCode.selectedBoard = $(this).val();
+	});*/
 };
 
 IndexCode.checkAll = function() {
@@ -251,14 +248,22 @@ IndexCode.getXmlBlocks = function() {
 	return Blockly.Xml.domToPrettyText(xml);
 }
 
+
 // Convert indexBoard to board name
 // @see: 'Index-code.loadConfig' and 'Blockly.Msg.option_texts'
-// return BOARDS[indexBoard]
-IndexCode.getboardType = function(indexBoard) {
-	const BOARDS = ["uno", "nano", "nano_old", "uno", "nano_old"];
-	//console.log("indexBoard:", indexBoard, (indexBoard>=0 && indexBoard<BOARDS.length) ? BOARDS[indexBoard] : "uno")
-	return (indexBoard>=0 && indexBoard<BOARDS.length) ? BOARDS[indexBoard] : "uno";
+// return BOARD_TYPES[indexBoard]
+IndexCode.getBoardName = function(index) {
+	//console.log("index:", index, (index>=0 && index<BOARD_TYPES.length) ? BOARD_TYPES[index] : "uno")
+	return (index>=0 && index<BOARD_TYPES.length) ? BOARD_TYPES[index] : "uno";
 }
+
+// Convert index to board name
+// @see: 'Index-code.loadConfig' and 'Blockly.Msg.option_texts'
+IndexCode.getDeviceName = function(index) {
+	let len = Blockly.Msg.option_texts.length;
+	return (index>=0 && index<len) ? Blockly.Msg.option_texts[index] : "uno";
+}
+//---------------------------------//
 
 // hash of a string
 IndexCode.hashCode = function(str) {
