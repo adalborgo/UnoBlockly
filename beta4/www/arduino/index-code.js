@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file index-code.js
- * @version 0.1 (05-11-2021)
+ * @version 0.1 (08-11-2021)
  * @description Main index.html functions
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -101,6 +101,7 @@ IndexCode.init = function() {
 			Blockly.mainWorkspace.render();
 			// Set block workspace
 			$('a[href="#content_blocks"]').tab('show');
+			$('#btn_config').show();
 			$('#btn_code').show();
 			$('#btn_block').hide();
 			$('#btn_search').hide();

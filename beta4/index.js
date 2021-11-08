@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file index-code.js
- * @version 0.1 (05-11-2021)
+ * @version 0.1 (08-11-2021)
  * @description Compilation for Arduino board only
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -652,6 +652,7 @@ function setBlockCode(isBlock) {
 	if(isBlock) {
 		// Set block workspace
 		$('a[href="#content_blocks"]').tab('show');
+		$('#btn_config').show();
 		$('#btn_code').show();
 		$('#btn_block').hide();
 		$('#btn_search').hide();
@@ -660,6 +661,7 @@ function setBlockCode(isBlock) {
 	} else {
 		// Set code editor
 		$('a[href="#content_code"]').tab('show');
+		$('#btn_config').hide();
 		$('#btn_code').hide();
 		$('#btn_block').show();
 		$('#btn_search').show();
