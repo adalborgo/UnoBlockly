@@ -35,7 +35,7 @@ UnoBlockly is still under development and some features will be implemented in f
 
 **Installation**
 
-UnoBlockly (08-11-2021) was developed for Windows 10 and can be found at this link:
+UnoBlockly was developed for Windows 10 and can be found at this link:
 - for installation: ([UnoBlockly_x64-Install-beta0.4.2.exe](https://www.dibis.it/UnoBlockly/UnoBlockly_x64-Install-beta0.4.2.exe))
 - portable version: ([UnoBlockly_x64-beta0.4.2.zip](https://www.dibis.it/UnoBlockly/UnoBlockly_x64-beta0.4.2.zip))
 
