@@ -35,7 +35,10 @@ UnoBlockly is still under development and some features will be implemented in f
 
 **Installation**
 
-UnoBlockly has been developed and tested on Windows 10. It can be installed by unzipping the zipped file or using the **.exe** file for installation, this second option is the recommended one.
+UnoBlockly (08-11-2021) was developed for Windows 10 and can be found at this link:
+- for installation: ([UnoBlockly_x64-Install-beta0.4.2.exe](https://www.dibis.it/UnoBlockly/UnoBlockly_x64-Install-beta0.4.2.exe))
+- portable version: ([UnoBlockly_x64-beta0.4.2.zip](https://www.dibis.it/UnoBlockly/UnoBlockly_x64-beta0.4.2.zip))
+
 
 The software integrates the Arduino compiler and the necessary libraries, so once installed it is ready for use; only if the computer does not automatically recognize the USB port is it necessary to install the appropriate driver, in this case it is advisable to download it from the following link:
 
