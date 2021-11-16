@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file index-code.js
- * @version 0.1 (08-11-2021)
+ * @version 0.1 (16-11-2021)
  * @description Main index.html functions
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -29,10 +29,13 @@ const BOARD_TYPES = ["uno", "nano", "nano_old", "uno", "nano_old"];
 const STORAGE_LANG = "lang";
 const STORAGE_COM = "com_id";
 const STORAGE_UPDATE = "update";
+const STORAGE_SELECTED_DEVICE = "deviceIndex";
 
 // Global variables
 let blockLen = 0;
 let blockHash = 0;
+
+var deviceIndex = 0; // Default 'uno'
 
 Blockly.prompt = function (message, defaultValue, callback) {
 	callback(ipcRenderer.sendSync("varPrompt", message));
@@ -119,8 +122,6 @@ IndexCode.save_com = function() {
 	if (com.toUpperCase().indexOf("COM") == 0) {
 		window.localStorage.setItem(STORAGE_COM, com);
 	}
-	
-	// for (let [key, value] of Object.entries(localStorage)) console.log(`${key}: ${value}`);
 };
 
 IndexCode.renderArduinoCodePreview = function() {
@@ -128,12 +129,14 @@ IndexCode.renderArduinoCodePreview = function() {
 	$('#pre_previewArduino').html(prettyPrintOne($('#pre_previewArduino').html(), 'cpp'));
 };
 
-IndexCode.getStringParamFromUrl = function(name, defaultValue) {
+// Not used???
+/*IndexCode.getStringParamFromUrl = function(name, defaultValue) {
   let val = location.search.match(new RegExp('[?&]' + name + '=([^&]+)'));
   return val ? decodeURIComponent(val[1].replace(/\+/g, '%20')) : defaultValue;
-};
+};*/
 
-IndexCode.addReplaceParamToUrl = function(url, param, value) {
+// Not used???
+/*IndexCode.addReplaceParamToUrl = function(url, param, value) {
 	let rex = new RegExp("([?&])" + param + "=.*?(&|$)", "i");
 	let separator = url.indexOf('?') !== -1 ? "&" : "?";
 	if (url.match(rex)) {
@@ -141,7 +144,7 @@ IndexCode.addReplaceParamToUrl = function(url, param, value) {
 	} else {
 		return url + separator + param + "=" + value;
 	}
-};
+};*/
 
 IndexCode.loadConfig = function() {
 	// Set block workspace
@@ -158,6 +161,11 @@ IndexCode.loadConfig = function() {
 		$('#checkUpdate').prop('checked', true);
 	}
 
+	// Get deviceIndex
+	if (window.localStorage.deviceIndex) {
+		deviceIndex = window.localStorage.getItem(STORAGE_SELECTED_DEVICE);
+	}
+
 	// Load Boards/Devices for <select> in index.html
 	const boards = document.getElementById('boards');
 	let label = Blockly.Msg.optgroup; //'Arduino boards header'
@@ -166,12 +174,14 @@ IndexCode.loadConfig = function() {
 
 	// Add all options
 	let items = Blockly.Msg.option_texts.length;
-	for (let i=0; i<items; i++) {
-		let opt = document.createElement('option');
-		opt.text = Blockly.Msg.option_texts[i];
-		opt.value = i;
-		boards.appendChild(opt);
-	}
+
+	// https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement/Option
+	// https://select2.org/programmatic-control/add-select-clear-items
+	let options = Blockly.Msg.option_texts;
+	options.forEach(function(element, key) {
+		if (element == options[deviceIndex]) boards[key] = new Option(element, boards.options.length, false, true);
+    	else boards[key] = new Option(element, key);
+	});
 
 	// Load toolbox definitions
 	$("#toolboxes").val(IndexCode.selectedToolbox);
@@ -181,8 +191,8 @@ IndexCode.loadConfig = function() {
 // <select id="boards" class="board-select" onchange="IndexCode.change_board();"></select>
 IndexCode.change_board = function() {
 	$("#boards").blur(); // Remove focus from the text input
-	let deviceIndex = $("#boards").val(); // int
-	let selectedBoard = IndexCode.getBoardName(deviceIndex); // Card name (String)
+	deviceIndex = $("#boards").val(); // int
+	window.localStorage.setItem(STORAGE_SELECTED_DEVICE, deviceIndex); // Selected index
 };
 
 IndexCode.search = function() {
@@ -199,10 +209,6 @@ IndexCode.bindFunctions = function() {
 		let modalParent = $(this).attr('data-modal-parent');
 		$(modalParent).css('opacity', 1);
 	});
-	
-	/*$('#boards').on("focus", function() {
-		IndexCode.selectedBoard = $(this).val();
-	});*/
 };
 
 IndexCode.checkAll = function() {
