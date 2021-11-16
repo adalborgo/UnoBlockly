@@ -3,7 +3,7 @@
 <!-- 
 	package: UnoBlockly
 	file toolbox.xml
-	version 0.1 (07-10-2021)
+	version 0.1 (12-11-2021)
 	author Antonio Dal Borgo <adalborgo@gmail.com>
 -->
 
@@ -50,6 +50,9 @@
          <block type="math_number">
             <field name="NUM">1</field>
          </block>
+
+         <block type="math_expression" />
+
          <block type="math_arithmetic">
             <value name="A">
                <shadow type="math_number">
@@ -246,7 +249,7 @@
          <block type="ArduinobaseDetachInterrupt" />
       </category>
 
-      <category name="CAT_ARDUINO_TIME" categorystyle="arduino_category">
+      <category name="CAT_ARDUINO_TIME" categorystyle="time_category">
          <block type="ArduinobaseDelay">
             <value name="DELAY">
                <shadow type="math_number">
@@ -265,7 +268,7 @@
 		</block>
       </category>
 
-      <category name="CAT_ARDUINO_SERIAL" categorystyle="arduino_category">
+      <category name="CAT_ARDUINO_SERIAL" categorystyle="serial_category">
          <block type="ArduinoSerialBegin" />
          <block type="ArduinoSerialRead" />
          <block type="ArduinoSerialPrint" />
@@ -274,7 +277,7 @@
          <block type="ArduinoSerialTimeout" />
       </category>
 
-      <category name="CAT_SOUND" categorystyle="arduino_category">
+      <category name="CAT_SOUND" categorystyle="sound_category">
          <block type="ArduinobaseToneTime">
             <value name="PIN">
                <shadow type="math_number">
@@ -312,6 +315,16 @@
                </shadow>
             </value>
 		</block>
+
+		   <block type="music_tone">
+			<value name="PIN">
+               <shadow type="math_number">
+                  <field name="NUM">5</field>
+               </shadow>
+            </value>         
+         </block>
+
+         <block type="music_rest" />
 
 		   <block type="MelodyPlayer">
 			<value name="PIN">
@@ -709,32 +722,24 @@
       <!-- End CAT_MBOT category -->
 
 	 <category name="CAT_OTTO" categorystyle="otto_category">
-
+		<block type="ottodiy_home" />
 		<block type="ottodiy_step" />
 		<block type="ottodiy_turn" />
 		<block type="ottodiy_bend" />
 		<block type="ottodiy_shake" />
 		<block type="ottodiy_up" />
-		<block type="ottodiy_home" />
 		<block type="ottodiy_dance" />
 		<block type="ottodiy_do" />
-		<block type="ottodiy_sound" />
-		<block type="ottodiy_tone" />
-		<block type="ottodiy_tonehz">
-			<value name="Hz1"><shadow type="math_number"><field name="NUM">100</field></shadow></value>
-			<value name="duration"><shadow type="math_number">	<field name="NUM">261</field>	</shadow></value>
-			<value name="silent"><shadow type="math_number"><field name="NUM">500</field></shadow></value>
-		</block>
-		<block type="ottodiy_bendtone">
-			<value name="Hz1"><shadow type="math_number"><field name="NUM">880</field></shadow></value>
-			<value name="Hz2"><shadow type="math_number"><field name="NUM">2093</field></shadow></value>
-			<value name="prop"><shadow type="math_number"><field name="NUM">1.02</field></shadow></value>
-			<value name="duration"><shadow type="math_number">	<field name="NUM">18</field>	</shadow></value>
-			<value name="silent"><shadow type="math_number"><field name="NUM">1</field></shadow></value>
-		</block>
+      <block type="ottodiy_getdistance" />
+		<block type="ottodiy_sound">
+			<value name="PIN">
+               <shadow type="math_number">
+                  <field name="NUM">10</field>
+               </shadow>
+            </value>
+      </block>
 		<block type="ottodiy_calibration" />
 		<block type="ottodiy_eeprom" />
-		<block type="ottodiy_getdistance" />
 
 	  </category>
 

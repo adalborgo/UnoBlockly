@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file arduino_en.js
- * @version 0.1 (22-07-2021)
+ * @version 0.1 (12-11-2021)
  * @description Arduino messages
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -51,7 +51,8 @@ Blockly.Msg.ArduinoSetup = "Setup";
 Blockly.Msg.ArduinoLoop = "Loop ∞";
 Blockly.Msg.ArduinoLoop_tooltip = "All blocks placed here will run in a loop and indefinitely";
 Blockly.Msg.ArduinoSetupLoop_tooltip = "The blocks placed in 'Setup' will be executed only once.\nThe blocks placed in 'Loop' will be executed in a loop and indefinitely.";
-Blockly.Msg.code_tooltip = "Type an instruction here that is not in blocks";
+Blockly.Msg.code_tooltip = "Type an instruction that is not in blocks";
+Blockly.Msg.data_tooltip = "Enter some data that is not in blocks";
 
 // Arduino board
 Blockly.Msg.CAT_ARDUINO_BASE = "Arduino";
@@ -157,12 +158,16 @@ Blockly.Msg.ArduinobaseTone1_tooltip = "Play a note indicating frequency (Hz)";
 Blockly.Msg.ArduinobaseNotone = "Stop the sound  |";
 Blockly.Msg.ArduinobaseNotone_tooltip = "Stop the sound on the indicated pin";
 
+//--- Music ---//
+Blockly.Msg.Music_NOTE_TOOLTIP = "Play a note with duration and pin";
+Blockly.Msg.Music_REST_TOOLTIP = "Rest (musical notation)";
+
 Blockly.Msg.Melody = "Play a melody  |";
 Blockly.Msg.Melody_time = "Tempo";
 Blockly.Msg.Melody_code = "Code";
 Blockly.Msg.Melody_tooltip = "Play the melody contained in the assigned string with the MELO notation";
 Blockly.Msg.Melody_Examples_dropdown = [
-    ['Mozart', "g<<r-d- | g<< r-d-(g<dg<b)-d<*r | c*<<r-a-c*<<r-a- |(c*<af#<a)-d<r | (gr)- g. (bag | (gag)/3:1 f#)- f#. (ac*f# | ag)- g.  (bag | (gag)/3:1 f#)- f#. (ac*f#)- | ((grgr)-- (gf#ef#)--)>> ((grgr)-- (baga)--)> | (brbr)-- (d*c*bc*)-- d*< r | ((de)+  | (d-c.)-c (c-b_.)-  b_ | (( b-a.)- a (gf#ef# | (grarbr)>)- r )_)>"],
+    ['Mozart', "g<<r-d- | g<< r-d-(g<dg<b)-d<*r | c*<<r-a-c*<<r-a- |(c*<af#<a)-d<r"],
     ['Scale', "c>>> d>> e>f g< a<< b<<< c*<<<<"],
     ['Brother John', "(cdec)x2   (efgr)x2   ((gagf)-ec)x2     (c g_ c+)x2"],
     ['Moonlight Sonata', "( (cccde+dr  ceddc+.r)x2  dddd (a+ar)_ dc(b a g+.r)_ cccde+dr ceddc+.r )*"],

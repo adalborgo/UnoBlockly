@@ -50,6 +50,3 @@ Blockly.Msg.OTTODIY_TURN_TEXT = "Gira";
 Blockly.Msg.OTTODIY_BEND_TEXT = "Piega a";
 Blockly.Msg.OTTODIY_SHAKE_TEXT = "Scuoti la gamba";
 Blockly.Msg.OTTODIY_UP_TEXT = "Piedi in su";
-Blockly.Msg.OTTODIY_SOUND_TOOLTIP1 = "Suona una nota";
-Blockly.Msg.OTTODIY_SOUND_TOOLTIP2 = "Emette un suono indicando la frequenza, la durata e la pausa";
-Blockly.Msg.OTTODIY_SOUND_TOOLTIP3 = "Emette una sequenza di suoni compresi tra due frequenze";

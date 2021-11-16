@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file extra.js
- * @version 0.1 (16-07-2021)
+ * @version 0.1 (5-11-2021)
  * @description Extra functions of Blockly.Blocks & Blockly.Arduino
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -95,7 +95,7 @@ Blockly.Blocks['ArduinoCodeData'] = {
 		this.appendDummyInput()
 			.appendField(new Blockly.FieldTextInput("data"), "TEXT");
 		this.setOutput(true);
-		this.setTooltip(Blockly.Msg.code_tooltip);
+		this.setTooltip(Blockly.Msg.data_tooltip);
 		this.setHelpUrl("");
 	}
 };

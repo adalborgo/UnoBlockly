@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file math.js
- * @version 0.1 (08-07-2021)
+ * @version 0.1 (15-07-2021)
  * @description Blockly.Arduino.math
 	added: math_inc, math_dec
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
@@ -327,5 +327,23 @@ Blockly.Arduino["math_map"] = function (block) {
 	let toLow = Blockly.Arduino.valueToCode(block, "TO_LOW", Blockly.Arduino.ORDER_ATOMIC);
 	let toHigh = Blockly.Arduino.valueToCode(block, "TO_HIGH", Blockly.Arduino.ORDER_ATOMIC);
 	let code = 'map(' + value + ',' + fromLow + ',' + fromHigh + ',' + toLow + ',' + toHigh + ')';
+	return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+// Free field for expressions
+Blockly.Blocks['math_expression'] = {
+	init: function () {
+		this.setStyle("math_blocks");
+		this.appendDummyInput()
+			.appendField(new Blockly.FieldTextInput(""), "EXPRESSION");
+		this.setInputsInline(true);
+		this.setOutput(true);
+		this.setTooltip(Blockly.Msg.MATH_FREE_FIELD_TOOLTIP);
+		this.setHelpUrl("");
+	}
+};
+
+Blockly.Arduino['math_expression'] = function (block) {
+	let code = block.getFieldValue('EXPRESSION');
 	return [code, Blockly.Arduino.ORDER_ATOMIC];
 };

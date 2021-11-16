@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file serial.js
- * @version 0.1 (18-03-2021)
+ * @version 0.1 (15-11-2021)
  * @description Serial port on board
  * @see https://www.arduino.cc/reference/en/language/functions/communication/serial/
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
@@ -12,7 +12,7 @@
 // ArduinoSerialBegin
 Blockly.Blocks["ArduinoSerialBegin"]={
 	init:function(){
-		this.setStyle("arduino_blocks");
+		this.setStyle("serial_blocks");
 		var card=window.localStorage.card;
  		this.appendDummyInput()
 			.appendField(Blockly.Msg.ArduinoSerialBegin)
@@ -32,7 +32,7 @@ Blockly.Arduino["ArduinoSerialBegin"]=function(block){
 
 Blockly.Blocks["ArduinoSerialRead"]={
 	init:function(){
-		this.setStyle("arduino_blocks");
+		this.setStyle("serial_blocks");
 		var card=window.localStorage.card;
 		this.appendDummyInput().appendField(Blockly.Msg.ArduinoSerialRead); // Blockly.Msg.ArduinoSerialRead
         this.setOutput(true, "Number");
@@ -49,7 +49,7 @@ Blockly.Arduino["ArduinoSerialRead"]=function(block){
 // ArduinoSerialWrite
 Blockly.Blocks["ArduinoSerialPrint"]={
 	init:function(){
-        this.setStyle("arduino_blocks");
+        this.setStyle("serial_blocks");
         this.appendValueInput("DATA", String)
 			.appendField(Blockly.Msg.ArduinoSerialPrint)
 			.appendField(Blockly.Msg.ArduinoSerialPrintln)
@@ -70,7 +70,7 @@ Blockly.Arduino["ArduinoSerialPrint"]=function(block){
 // ArduinoSerialAvailable
 Blockly.Blocks["ArduinoSerialAvailable"]={
 	init:function(){
-        this.setStyle("arduino_blocks");
+        this.setStyle("serial_blocks");
         this.appendDummyInput()
 			.appendField(Blockly.Msg.ArduinoSerialAvailable);
         this.setInputsInline(true);
@@ -87,7 +87,7 @@ Blockly.Arduino["ArduinoSerialAvailable"]=function(block){
 // ArduinoSerialFlush
 Blockly.Blocks["ArduinoSerialFlush"]={
 	init:function(){
-        this.setStyle("arduino_blocks");
+        this.setStyle("serial_blocks");
         this.appendDummyInput()
 			.appendField(Blockly.Msg.ArduinoSerialFlush);
         this.setInputsInline(true);
@@ -107,7 +107,7 @@ Blockly.Arduino["ArduinoSerialFlush"]=function(block){
 // ArduinoSerialTimeout
 Blockly.Blocks['ArduinoSerialTimeout'] = {
     init: function () {
-		this.setStyle("arduino_blocks");
+		this.setStyle("serial_blocks");
 		this.appendDummyInput()
 			.appendField(Blockly.Msg.ArduinoSerialTimeout)
 			.appendField(new Blockly.FieldNumber(1000, 1, 100000), "TIME");

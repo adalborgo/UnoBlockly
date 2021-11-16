@@ -50,6 +50,3 @@ Blockly.Msg.OTTODIY_TURN_TEXT = "Turn";
 Blockly.Msg.OTTODIY_BEND_TEXT = "Bend";
 Blockly.Msg.OTTODIY_SHAKE_TEXT = "Shake";
 Blockly.Msg.OTTODIY_UP_TEXT = "Up";
-Blockly.Msg.OTTODIY_SOUND_TOOLTIP1 = "Play a note";
-Blockly.Msg.OTTODIY_SOUND_TOOLTIP2 = "Play a note indicating frequency, duration and pause";
-Blockly.Msg.OTTODIY_SOUND_TOOLTIP3 = "Play a sequence of sounds between two frequencies";

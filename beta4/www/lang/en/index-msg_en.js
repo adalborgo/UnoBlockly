@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file index-msg_en.js
- * @version 0.1 (05-11-2021)
+ * @version 0.1 (12-11-2021)
  * @description Generic messages
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -15,7 +15,7 @@ const INDEX_MSG = {
   btn_load: "Open",
   btn_term: "Serial monitor",
   btn_saveXML: "Save",
-  btn_preview_ino: "Arduino Code Preview",
+  btn_preview_ino: "Code Preview",
   btn_save_ino: "Save as .INO",
   btn_copy:" Copy to clipboard ",
   btn_undo: "Undo (ctrl + z)",

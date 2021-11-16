@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file ottodiy.js
- * @version 0.1 (03-06-2021)
+ * @version 0.1 (12-11-2021)
  * @description Code for OttoDIY (Modified from 'OTTO9' of OttoBlockly, by adalborgo@gmail.com)
  */
 
@@ -282,6 +282,9 @@ Blockly.Blocks['ottodiy_sound'] = {
 			.appendField(new Blockly.FieldImage('media/otto/otto_music.png', 33, 33, "*"))
 			.appendField(Blockly.Msg.OTTODIY_SOUND_TEXT)
 			.appendField(new Blockly.FieldDropdown(Blockly.Msg.OTTODIY_SOUND_CHOICE), "otto_sound");
+		this.appendValueInput("PIN")
+			.appendField(" " + Blockly.Msg.Pin)
+			.setCheck("Number");
 		this.setInputsInline(true);
 		this.setPreviousStatement(true);
 		this.setNextStatement(true);
@@ -292,123 +295,10 @@ Blockly.Blocks['ottodiy_sound'] = {
 };
 
 Blockly.Arduino['ottodiy_sound'] = function (block) {
+	let pin = Blockly.Arduino.valueToCode(block, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
 	let dropdown_otto_sound = block.getFieldValue('otto_sound');
 	Blockly.Arduino.includes_['ottodiy_lib'] = '#include <Ottodiy.h>\n' + 'Ottodiy Otto;';
-	Blockly.Arduino.setups_['ottodiy_sound'] = 'Otto.initSound();';
-	let code = 'Otto.sing(' + dropdown_otto_sound + ');\n';
-	return code;
-};
-
-Blockly.Blocks['ottodiy_tone'] = {
-	init: function () {
-		this.appendDummyInput().appendField("🎼")
-			.appendField(new Blockly.FieldDropdown([
-				["C₄ | Do₄", "262"],
-				["D₄ | Re₄", "294"],
-				["E₄ | Mi₄", "330"],
-				["F₄ | Fa₄", "349"],
-				["G₄ | Sol₄", "392"],
-				["A₄ | La₄", "440"],
-				["B₄ | Si₄", "494"],
-				["C₅ | Do₅", "523"],
-				["D₅ | Re₅", "587"],
-				["E₅ | Mi₅", "659"],
-				["F₅ | Fa₅", "698"],
-				["G₅ | Sol₅", "784"],
-				["A₅ | La₅", "880"],
-				["B₅ | Si₅", "988"],
-				["C₆ | Do₆", "1047"],
-				["D₆ | Re₆", "1175"],
-				["E₆ | Mi₆", "1319"],
-				["F₆ | Fa₆", "1397"],
-				["G₆ | Sol₆", "1568"],
-				["A₆ | La₆", "1760"],
-				["B₆ | Si₆", "1976"]
-			]), "otto_note");
-		this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(" ")
-			.appendField(new Blockly.FieldDropdown([
-				["\u266B", "125"],
-				["\u266A", "250"],
-				["\u2669", "500"],
-				["𝅗𝅥", "1000"],
-				["𝅝", "2000"]
-			]), "otto_note_duration");
-		this.setInputsInline(true);
-		this.setPreviousStatement(true);
-		this.setNextStatement(true);
-		this.setStyle("otto_blocks");
-		this.setTooltip(Blockly.Msg.OTTODIY_SOUND_TOOLTIP1);
-		this.setHelpUrl(Blockly.Msg.OTTODIY_DIY_URL);
-	}
-};
-
-Blockly.Arduino['ottodiy_tone'] = function (block) {
-	let dropdown_otto_note = block.getFieldValue('otto_note');
-	let dropdown_otto_note_duration = block.getFieldValue('otto_note_duration');
-	Blockly.Arduino.includes_['ottodiy_lib'] = '#include <Ottodiy.h>\n' + 'Ottodiy Otto;';
-	Blockly.Arduino.setups_['ottodiy_sound'] = 'Otto.initSound();';
-	let code = "Otto._tone( " + dropdown_otto_note + "," + dropdown_otto_note_duration + ",1);\n";
-	return code;
-};
-
-Blockly.Blocks['ottodiy_tonehz'] = {
-	init: function () {
-		this.appendDummyInput().appendField("🎼 Hz")
-		this.appendValueInput("Hz1")
-		this.appendValueInput("duration").setCheck("Number").appendField("⏰");
-		this.appendValueInput("silent").setCheck("Number").appendField("🔇");
-		this.setInputsInline(true);
-		this.setPreviousStatement(true);
-		this.setNextStatement(true);
-		this.setStyle("otto_blocks");
-		this.setTooltip(Blockly.Msg.OTTODIY_SOUND_TOOLTIP2);
-		this.setHelpUrl(Blockly.Msg.OTTODIY_DIY_URL);
-	}
-};
-
-Blockly.Arduino['ottodiy_tonehz'] = function (block) {
-	let Hz1 = Blockly.Arduino.valueToCode(block, 'Hz1', Blockly.Arduino.ORDER_ATOMIC);
-	let duration = Blockly.Arduino.valueToCode(block, 'duration', Blockly.Arduino.ORDER_ATOMIC);
-	let silent = Blockly.Arduino.valueToCode(block, 'silent', Blockly.Arduino.ORDER_ATOMIC);
-	Blockly.Arduino.includes_['ottodiy_lib'] = '#include <Ottodiy.h>\n' + 'Ottodiy Otto;';
-	Blockly.Arduino.setups_['ottodiy_sound'] = 'Otto.initSound();';
-	let code = "Otto._tone( " + Hz1 + "," + duration + "," + silent + "); //(float noteFrequency, long noteDuration, int silentDuration)\n";
-	return code;
-};
-
-// ottodiy_bendtone
-Blockly.Blocks['ottodiy_bendtone'] = {
-	init: function () {
-		this.appendDummyInput().appendField("🎼 Hz1")
-		this.appendValueInput("Hz1")
-		this.appendValueInput("Hz2")
-			.appendField("Hz2");
-		this.appendValueInput("prop")
-			.setCheck("Number").appendField("P");
-		this.appendValueInput("duration")
-			.setCheck("Number")
-			.appendField("⏰");
-		this.appendValueInput("silent")
-			.setCheck("Number")
-			.appendField("🔇");
-		this.setInputsInline(true);
-		this.setPreviousStatement(true);
-		this.setNextStatement(true);
-		this.setStyle("otto_blocks");
-		this.setTooltip(Blockly.Msg.OTTODIY_SOUND_TOOLTIP3);
-		this.setHelpUrl(Blockly.Msg.OTTODIY_DIY_URL);
-	}
-};
-
-Blockly.Arduino['ottodiy_bendtone'] = function (block) {
-	let Hz1 = Blockly.Arduino.valueToCode(block, 'Hz1', Blockly.Arduino.ORDER_ATOMIC);
-	let Hz2 = Blockly.Arduino.valueToCode(block, 'Hz2', Blockly.Arduino.ORDER_ATOMIC);
-	let prop = Blockly.Arduino.valueToCode(block, 'prop', Blockly.Arduino.ORDER_ATOMIC);
-	let duration = Blockly.Arduino.valueToCode(block, 'duration', Blockly.Arduino.ORDER_ATOMIC);
-	let silent = Blockly.Arduino.valueToCode(block, 'silent', Blockly.Arduino.ORDER_ATOMIC);
-	Blockly.Arduino.includes_['ottodiy_lib'] = '#include <Ottodiy.h>\n' + 'Ottodiy Otto;';
-	Blockly.Arduino.setups_['ottodiy_sound'] = 'Otto.initSound();';
-	let code = "Otto.bendTones(" + Hz1 + "," + Hz2 + "," + prop + "," + duration + "," + silent + "); // (float initFrequency, float finalFrequency, float prop, long noteDuration, int silentDuration) \n";
+	let code = 'Otto.sing(' + pin + "," + dropdown_otto_sound + ');\n';
 	return code;
 };
 

@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file blocks_it.js
- * @version 0.1 (23-07-2021)
+ * @version 0.1 (15-11-2021)
  * @description Blockly messages
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -214,6 +214,7 @@ Blockly.Msg["MATH_MAP_YMAX"] = "Ymax =";
 Blockly.Msg["MATH_MAP_END"] = ")"; 
 Blockly.Msg["MATH_MAP_TOOLTIP"] = "Trasformazione lineare: y = map(X, Xmin, Xmax, Ymin, Ymax)";
 Blockly.Msg["MATH_CHANGE_TITLE_ITEM"] = "elemento";
+Blockly.Msg["MATH_FREE_FIELD_TOOLTIP"] = "Campo libero per espressioni";
 
 // Arrays
 Blockly.Msg["CAT_ARRAYS"] = "Matrici";

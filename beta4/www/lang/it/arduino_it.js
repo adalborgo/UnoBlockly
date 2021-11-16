@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file arduino_it.js
- * @version 0.1 (22-07-2021)
+ * @version 0.1 (15-11-2021)
  * @description Arduino messages
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -52,6 +52,7 @@ Blockly.Msg.ArduinoLoop = "Ciclo ∞";
 Blockly.Msg.ArduinoLoop_tooltip = "Le istruzioni contenute in queto blocco sono eseguite ripetutamente in un ciclo senza fine";
 Blockly.Msg.ArduinoSetupLoop_tooltip = "Le istruzioni contenute in 'Impostazioni' vengono eseguite solo una volta.\nLe istruzioni contenute in 'Ciclo' sono eseguite ripetutamente in un ciclo senza fine";
 Blockly.Msg.code_tooltip = "Digita qui un'istruzione che non sia presente nei blocchi";
+Blockly.Msg.data_tooltip = "Inserisci dei dati che non siano presenti nei blocchi";
 
 // Arduino board
 Blockly.Msg.CAT_ARDUINO_BASE = "Arduino";
@@ -157,12 +158,16 @@ Blockly.Msg.ArduinobaseTone1_tooltip = "Suona una nota indicando la frequenza (H
 Blockly.Msg.ArduinobaseNotone = "Ferma il suono  |";
 Blockly.Msg.ArduinobaseNotone_tooltip = "Ferma il suono sul pin indicato";
 
+//--- Music ---//
+Blockly.Msg.Music_NOTE_TOOLTIP = "Suona una nota indicando durata e pin";
+Blockly.Msg.Music_REST_TOOLTIP = "Pausa musicale";
+
 Blockly.Msg.Melody = "Suona una melodia  |";
 Blockly.Msg.Melody_time = "Tempo";
 Blockly.Msg.Melody_code = "Codice";
 Blockly.Msg.Melody_tooltip = "Suona la melodia contenuta nella stringa assegnata con notazione MELO";
 Blockly.Msg.Melody_Examples_dropdown = [
-    ['Mozart', "g<<r-d- | g<< r-d-(g<dg<b)-d<*r | c*<<r-a-c*<<r-a- |(c*<af#<a)-d<r | (gr)- g. (bag | (gag)/3:1 f#)- f#. (ac*f# | ag)- g.  (bag | (gag)/3:1 f#)- f#. (ac*f#)- | ((grgr)-- (gf#ef#)--)>> ((grgr)-- (baga)--)> | (brbr)-- (d*c*bc*)-- d*< r | ((de)+  | (d-c.)-c (c-b_.)-  b_ | (( b-a.)- a (gf#ef# | (grarbr)>)- r )_)>"],
+    ['Mozart', "g<<r-d- | g<< r-d-(g<dg<b)-d<*r | c*<<r-a-c*<<r-a- |(c*<af#<a)-d<r"],
     ['Scala', "c>>> d>> e>f g< a<< b<<< c*<<<<"],
     ['Fra Martino', "(cdec)x2   (efgr)x2   ((gagf)-ec)x2     (c g_ c+)x2"],
     ['Al chiaro di luna', "( (cccde+dr  ceddc+.r)x2  dddd (a+ar)_ dc(b a g+.r)_ cccde+dr ceddc+.r )*"],

@@ -32,7 +32,7 @@ Blockly.Arduino['ArduinobaseLed'] = function (block) {
 // ArduinobaseDelay
 Blockly.Blocks["ArduinobaseDelay"]={
 	init:function(){
-        this.setStyle("arduino_blocks");
+        this.setStyle("time_blocks");
 		this.appendDummyInput()
 			.appendField(Blockly.Msg.ArduinobaseDelay)
         this.appendValueInput('DELAY', 'Number')
@@ -61,7 +61,7 @@ Blockly.Arduino['ArduinobaseDelay'] = function (block) {
 // ArduinobaseMillis
 Blockly.Blocks["ArduinobaseMillis"]={
 	init:function(){
-    this.setStyle("arduino_blocks");
+    this.setStyle("time_blocks");
 	this.appendDummyInput()
 		.appendField(Blockly.Msg.ArduinobaseMillis);
     this.setOutput(true, "Number");
@@ -77,7 +77,7 @@ Blockly.Arduino['ArduinobaseMillis'] = function (block) {
 // ArduinobaseMicros
 Blockly.Blocks["ArduinobaseMicros"]={
 	init:function(){
-    this.setStyle("arduino_blocks");
+    this.setStyle("time_blocks");
 	this.appendDummyInput()
 		.appendField(Blockly.Msg.ArduinobaseMicros);
     this.setOutput(true, "Number");
@@ -93,7 +93,7 @@ Blockly.Arduino['ArduinobaseMicros'] = function (block) {
 // ArduinobasePulsein
 Blockly.Blocks["ArduinobasePulsein"]={
 	init:function(){
-		this.setStyle("arduino_blocks");
+		this.setStyle("time_blocks");
 		this.appendValueInput("PIN")
 			.appendField(Blockly.Msg.ArduinobasePulsein)
 			.setCheck("Number");
@@ -118,7 +118,7 @@ Blockly.Arduino['ArduinobasePulsein'] = function (block) {
 // ArduinobaseToneTime
 Blockly.Blocks["ArduinobaseToneTime"]={
 	init:function(){ 
-	this.setStyle("arduino_blocks");
+	this.setStyle("sound_blocks");
     this.appendDummyInput()
 	    .appendField(Blockly.Msg.ArduinobaseTone)
 	this.appendValueInput("PIN")
@@ -154,7 +154,7 @@ Blockly.Arduino['ArduinobaseToneTime'] = function(block) {
 // ArduinobaseTone
 Blockly.Blocks["ArduinobaseTone"]={
 	init:function(){ 
-	this.setStyle("arduino_blocks");
+	this.setStyle("sound_blocks");
     this.appendDummyInput()
 	    .appendField(Blockly.Msg.ArduinobaseTone)
 	this.appendValueInput("PIN")
@@ -183,7 +183,7 @@ Blockly.Arduino['ArduinobaseTone'] = function(block) {
 // ArduinobaseNotone
 Blockly.Blocks['ArduinobaseNotone'] = {
     init: function () {
-		this.setStyle("arduino_blocks");
+		this.setStyle("sound_blocks");
 		this.appendDummyInput()
 			.appendField(Blockly.Msg.ArduinobaseNotone)
 		this.appendValueInput("PIN")
