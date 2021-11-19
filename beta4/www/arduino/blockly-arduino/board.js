@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file board.js
- * @version 0.1 (05-11-2021)
+ * @version 0.1 (19-11-2021)
  * @description Arduino base board command of Blockly.Blocks & Blockly.Arduino
  * @see https://arduino.cc/en/Reference/HomePage
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
@@ -236,7 +236,6 @@ Blockly.Blocks["ArduinobaseDigitalWrite"]={
         this.setStyle("arduino_blocks");
 		this.appendDummyInput()
 			.appendField(Blockly.Msg.ArduinobaseDigitalWrite)
-
 		this.appendValueInput("PIN")
 			.appendField(Blockly.Msg.Pin)
 			.setCheck("Number");
@@ -353,5 +352,53 @@ Blockly.Blocks["ArduinobaseDetachInterrupt"]={
 Blockly.Arduino["ArduinobaseDetachInterrupt"]=function(block){
 	let pin=block.getFieldValue('PIN');
 	return 'detachInterrupt('+pin+');\n';
+};
+
+// Pulse
+Blockly.Blocks['ArduinobasePulse'] = {
+	init: function () {
+		this.setStyle("arduino_blocks");
+		this.appendDummyInput()
+			.appendField(Blockly.Msg.ArduinobasePulse)
+			.appendField(new Blockly.FieldDropdown(Blockly.Msg.ArduinobasePulseMode), "MODE")
+		this.appendDummyInput().appendField(" " + Blockly.Msg.ArduinobasePulseWidth)
+		this.appendValueInput('WIDTH', 'Number')
+			.setCheck('Number')
+		this.appendDummyInput()
+			.appendField(" ")
+			.appendField(new Blockly.FieldDropdown(Blockly.Msg.ArduinobaseTime_units), "UNIT")
+			.appendField(" " + Blockly.Msg.ArduinobasePulsePreset)
+			.appendField(new Blockly.FieldCheckbox("FALSE"), "PRESET")
+		this.appendValueInput("PIN")
+			.appendField(" " + Blockly.Msg.Pin)
+			.setCheck("Number")
+		this.setInputsInline(true);
+		this.setPreviousStatement(true, null);
+		this.setNextStatement(true, null);
+		this.setTooltip(Blockly.Msg.ArduinobasePulse_tooltip);
+		this.setHelpUrl("");
+	}
+};
+
+Blockly.Arduino['ArduinobasePulse'] = function (block) {
+	let dropdown = block.getFieldValue('MODE');
+	let width = Blockly.Arduino.valueToCode(block, 'WIDTH', Blockly.Arduino.ORDER_ATOMIC);
+	let unit = block.getFieldValue('UNIT');
+	let pin = Blockly.Arduino.valueToCode(block, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
+	let dtime = "";
+	if (unit=='s') dtime = 'delay(' + 1000*width + ')';
+	else if (unit=='m') dtime = 'delay(' + width + ')';
+	else if (unit=='u') dtime = 'delayMicroseconds(' + width + ')';
+	Blockly.Arduino.setups_["pinmode_" + pin] = 'pinMode(' + pin + ',OUTPUT);';
+	let preset = (block.getFieldValue('PRESET')=='TRUE');
+	let code = "";
+	if (dropdown=="RISING") {
+		if (preset) code = "digitalWrite(" + pin + ",LOW);\ndelayMicroseconds(2);\n";
+		code += "digitalWrite(" + pin + ",HIGH);\n" + dtime + ";\ndigitalWrite(" + pin + ",LOW);\n";
+	} else {
+		if (preset) code = "digitalWrite(" + pin + ",HIGH);\ndelayMicroseconds(2);\n";
+		code += "digitalWrite(" + pin + ",LOW);\n" + dtime + ";\ndigitalWrite(" + pin + ",HIGH);\n";
+	}
+	return code;
 };
 

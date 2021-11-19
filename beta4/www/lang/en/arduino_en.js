@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file arduino_en.js
- * @version 0.1 (12-11-2021)
+ * @version 0.1 (19-11-2021)
  * @description Arduino messages
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -70,7 +70,6 @@ Blockly.Msg.digitalPins = [["D2", "2"], ["D3", "3"], ["D4", "4"], ["D5", "5"], [
 
 // Arduino UNO (analog pins: #define PIN_A0 14; (...) #define PIN_A7 21)
 Blockly.Msg.analogPins = [["A0", "14"], ["A1", "15"], ["A2", "16"], ["A3", "17"], ["A4", "18"], ["A5", "19"], ["A6", "20"], ["A7", "21"]  ];
-Blockly.Msg.grove_analogPins = [["A0", "A0"], ["A1", "A1"], ["A2", "A2"], ["A3", "A3"], ["A4", "A4"], ["A5", "A5"], ["A6", "A6"], ["A7", "A7"]];
 
 // LED buildin
 Blockly.Msg.ArduinobaseLed = "LED on board scheda";
@@ -101,6 +100,13 @@ Blockly.Msg.ArduinobaseAttachInterrupt_with = "with";
 Blockly.Msg.ArduinobaseAttachInterrupt_mode = [['rising edge', 'RISING'], ['falling edge', 'FALLING'], ['changing state', 'CHANGE'], ['low state', 'LOW']];
 Blockly.Msg.ArduinobaseDetachInterrupt = "Disable interrupt on pin";
 Blockly.Msg.ArduinobaseDetachInterrupt_tooltip = "Disable the previously assigned external interrupt";
+
+// Pulse
+Blockly.Msg.ArduinobasePulse = "Pulse";
+Blockly.Msg.ArduinobasePulseMode = [["rising", "RISING"], ["falling", "FALLING"]];
+Blockly.Msg.ArduinobasePulseWidth = "Width";
+Blockly.Msg.ArduinobasePulsePreset = "Preset";
+Blockly.Msg.ArduinobasePulse_tooltip = "Generate a pulse. If 'preset' is active, before generating the pulse bring the pin to the initial state for 2 microseconds";
 
 //--- Arduino base: time ---//
 Blockly.Msg.CAT_ARDUINO_TIME = "Time";
