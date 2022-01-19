@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file mbot.js
- * @version 0.1 (07-10-2021)
+ * @version 0.1 (18-01-2022)
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  * @description Code for Makeblock mBot
 
@@ -229,8 +229,8 @@ Blockly.Arduino['mBot_Motor'] = function (block) {
 	let pin_dir2 = 4; // direction motor 2
 	let pin_power2 = 5; // power motor 2
 
-	// Speed (0..100 -> 0..255)
-	let speed = Math.round(2.55 * Blockly.Arduino.valueToCode(block, "SPEED", Blockly.Arduino.ORDER_ATOMIC));
+	// Speed (0..255)
+	let speed = Blockly.Arduino.valueToCode(block, "SPEED", Blockly.Arduino.ORDER_ATOMIC);
 
 	// Direction
 	let dirCode = this.getFieldValue('DIR');

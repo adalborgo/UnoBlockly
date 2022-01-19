@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file devices.js
- * @version 0.1 (09-07-2021)
+ * @version 0.1 (18-01-2022)
  * @description Code for generic devices
 
  	Libraries:
@@ -268,8 +268,8 @@ Blockly.Blocks['L298N_Motorx2'] = {
 
 Blockly.Arduino["L298N_Motorx2"]=function(block) {
 
-	// Speed (0..100 -> 0..255)
-	let speed = Math.round(2.55 * Blockly.Arduino.valueToCode(block, "SPEED", Blockly.Arduino.ORDER_ATOMIC));
+	// Speed (0..255)
+	let speed = Blockly.Arduino.valueToCode(block, "SPEED", Blockly.Arduino.ORDER_ATOMIC);
     if (speed<0) speed = 0; else if (speed>255) speed = 255;
 
 	// Direction

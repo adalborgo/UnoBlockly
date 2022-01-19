@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file devices-msg_en.js
- * @version 0.1 (09-07-2021)
+ * @version 0.1 (18-01-2022)
  * @description Generic devices messages
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -37,5 +37,5 @@ Blockly.Msg.devices_l298n_EN2 = "EN2";
 Blockly.Msg.devices_l298n_tooltip = "Set the pins of the L298N controller (2 motors)";
 Blockly.Msg.devices_motors = "Motors  ";
 Blockly.Msg.devices_motors_tooltip = "Drive motors";
-Blockly.Msg.devices_motors_speed = "Speed (%)";
+Blockly.Msg.devices_motors_speed = "Speed (from 0 to 255)";
 Blockly.Msg.devices_motors_dir = "Direction";

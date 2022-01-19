@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file mbot-msg_en.js
- * @version 0.1 (07-10-2021)
+ * @version 0.1 (18-01-2022)
  * @description Makeblock mBot messages
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -53,7 +53,7 @@ Blockly.Msg.mBotLightSensor_tooltip = "Returns the ambient brightness (%)";
 // Motors
 Blockly.Msg.mBotMotor = "Motors  ";
 Blockly.Msg.mBotMotor_tooltip = "Drive motors";
-Blockly.Msg.mBotMotor_speed = "Speed (%)";
+Blockly.Msg.mBotMotor_speed = "Speed (from 0 to 255)";
 Blockly.Msg.mBotMotor_dir = "Direction";
 Blockly.Msg.mBotMotor_dir_dropdown = [[Blockly.Msg.dir_forward, "FORWARD"], [Blockly.Msg.dir_backward, "BACKWARD"]];
 Blockly.Msg.mBotMotor_side_dropdown = [[Blockly.Msg.left_right, "ALL"], [Blockly.Msg.left, "LEFT"], [Blockly.Msg.right, "RIGHT"]];

@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file devices-msg_it.js
- * @version 0.1 (09-07-2021)
+ * @version 0.1 (18-01-2022)
  * @description Generic devices messages
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -37,5 +37,5 @@ Blockly.Msg.devices_l298n_EN2 = "EN2";
 Blockly.Msg.devices_l298n_tooltip = "Assegna i pin del controllore L298N (2 motori)";
 Blockly.Msg.devices_motors = "Motori  ";
 Blockly.Msg.devices_motors_tooltip = "Azionamento motori";
-Blockly.Msg.devices_motors_speed = "Velocità (%)";
+Blockly.Msg.devices_motors_speed = "Velocità (da 0 a 255)";
 Blockly.Msg.devices_motors_dir = "Direzione";

@@ -3,7 +3,7 @@
 <!-- 
 	package: UnoBlockly
 	file toolbox.xml
-	version 0.1 (18-11-2021)
+	version 0.1 (19-01-2022)
 	author Antonio Dal Borgo <adalborgo@gmail.com>
 -->
 
@@ -456,7 +456,7 @@
 			<block type="L298N_Motorx2">
    			<value name="SPEED">
                <shadow type="math_number">
-                  <field name="NUM">75</field>
+                  <field name="NUM">200</field>
                </shadow>
             </value>
 			</block>
@@ -579,17 +579,17 @@
          <block type="mBot_Rgbled">
             <value name="IRED">
                <shadow type="math_number">
-                  <field name="NUM">50</field>
+                  <field name="NUM">128</field>
                </shadow>
             </value>
             <value name="IGREEN">
                <shadow type="math_number">
-                  <field name="NUM">50</field>
+                  <field name="NUM">128</field>
                </shadow>
             </value>
             <value name="IBLUE">
                <shadow type="math_number">
-                  <field name="NUM">50</field>
+                  <field name="NUM">128</field>
                </shadow>
             </value>
          </block>
@@ -620,7 +620,7 @@
          <block type="mBot_Motor">
             <value name="SPEED">
                <shadow type="math_number">
-                  <field name="NUM">75</field>
+                  <field name="NUM">200</field>
                </shadow>
             </value>
          </block>
