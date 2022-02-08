@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file arrays.js
- * @version 0.1 (23-07-2021)
+ * @version 0.2 (07-02-2022)
  * @description Arrays of Blockly.Blocks & Blockly.Arduino
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  * @see https://developers.google.com/blockly/reference/js/Blockly.FieldVariable
@@ -9,12 +9,25 @@
 
 'use strict';
 
+const VAR_ARRAY = "$var_array";
+
+/**
+  @see header.js: excludes '$var_array' from the variable declaration
+  // Definitions
+  for (let name in Blockly.Arduino.definitions_) {
+	let def_name = Blockly.Arduino.definitions_[name];
+	// Removes lines containing strings '$define' or '$var_array'
+	let s = stripDefineArray(def_name);
+	if (s.length>0) definitions.push(s);
+  }
+*/
+
 //--- array_create ---//
 Blockly.Blocks["array_create"] = {
     init: function() {
 		this.appendDummyInput().appendField(Blockly.Msg.ARRAY_CREATE)
-            .appendField(new Blockly.FieldVariable(), 'VAR')
-			.appendField(Blockly.Msg.VARIABLES_TYPE)
+            .appendField(new Blockly.FieldVariable("", null, [VAR_ARRAY], VAR_ARRAY), "VAR")
+            .appendField(Blockly.Msg.VARIABLES_TYPE)
 			.appendField(new Blockly.FieldDropdown(Blockly.Msg.VAR_TYPES), 'TYPE');
 
 		this.appendDummyInput()
@@ -23,9 +36,9 @@ Blockly.Blocks["array_create"] = {
 			.appendField(new Blockly.FieldDropdown(Blockly.Msg.ARRAY_DIMS,
 				function(option) {this.sourceBlock_.updateShape_(option)} ),"DIM");
 
-		this.appendDummyInput("D0")
-			.appendField(Blockly.Msg.ARRAY_DIM_ELEMENTS)
-			.appendField(new Blockly.FieldNumber(2, 1, 100), "D0")
+        this.appendValueInput("D0")
+            .appendField(Blockly.Msg.ARRAY_DIM_ELEMENTS)
+            .setCheck("Number")
 
         this.setInputsInline(true);
         this.setPreviousStatement(true, null);
@@ -50,12 +63,13 @@ Blockly.Blocks["array_create"] = {
     },
 	updateShape_: function(option) {
 		for (let i = 1; i <= Blockly.Msg.ARRAY_DIM.length; i++) {
-			if (this.getInput("D"+i)) this.removeInput("D"+i) 
+			if (this.getInput("D" + i)) this.removeInput("D" + i) 
 		}
-		
+
 		for (let i = 1; i<option; i++) {
-			this.appendDummyInput("D" + i).appendField(new Blockly.FieldNumber(2, 1, 100), "D" + i);
+            this.appendValueInput("D" + i).setCheck("Number")
 		}
+
     }
 };
 
@@ -69,8 +83,9 @@ Blockly.Arduino['array_create']=function(block){
 	let dimension = block.getFieldValue("DIM");
 	let k = '';
 	for (let i = 0; i < dimension; i++) {
-		k += "[" + block.getFieldValue("D" + i) + "]"
-	}
+        k += "[" + Blockly.Arduino.valueToCode(block, "D" + i, Blockly.Arduino.ORDER_ATOMIC) + "]";
+    }
+
 	Blockly.Arduino.variables_[varName] = typeBlock + ' ' + varName + k + ';';
 	return '';
 };
@@ -78,10 +93,9 @@ Blockly.Arduino['array_create']=function(block){
 //--- vector_create_with ---//
 Blockly.Blocks["vector_create_with"] = {
      init: function() {
-		 
 		this.appendDummyInput()
 			.appendField(Blockly.Msg.ARRAY_CREATE_VECTOR)
-			.appendField(new Blockly.FieldVariable(), 'VAR')
+			.appendField(new Blockly.FieldVariable("", null, [VAR_ARRAY], VAR_ARRAY), "VAR")
 			.appendField(Blockly.Msg.VARIABLES_TYPE)
 			.appendField(new Blockly.FieldDropdown(Blockly.Msg.VAR_TYPES), 'TYPE');
 
@@ -133,6 +147,7 @@ Blockly.Arduino["vector_create_with"] = function (block) {
 	let isString = typeBlock== 'String'; // Check String
 	let items = block.getFieldValue("ITEMS");
 	let k = typeBlock + ' ' + varName + '[] = {';
+    
 	for (let i = 0; i < items; i++) {
 		let data = block.getFieldValue("D" + i);
 		k += (isString) ? '"' + data + '"' : data; 
@@ -149,7 +164,7 @@ Blockly.Blocks["vector_create_with_string"] = {
 		 
 		this.appendDummyInput()
 			.appendField(Blockly.Msg.ARRAY_CREATE_VECTOR)
-			.appendField(new Blockly.FieldVariable(), 'VAR')
+			.appendField(new Blockly.FieldVariable("", null, [VAR_ARRAY], VAR_ARRAY), "VAR")
 			.appendField(Blockly.Msg.VARIABLES_TYPE)
 			.appendField(new Blockly.FieldDropdown(Blockly.Msg.VAR_TYPES), 'TYPE');
 
@@ -158,7 +173,7 @@ Blockly.Blocks["vector_create_with_string"] = {
 			.appendField(new Blockly.FieldTextInput(";"), "SEP")
 		 
         this.appendDummyInput()
-			.appendField(" " + Blockly.Msg.mBotLEDMatrixData)
+			.appendField(" " + Blockly.Msg.ARRAY_DIM_ITEMS)
 			.appendField(new Blockly.FieldTextInput("        "), "DATA");
 	 
         this.setInputsInline(true);
@@ -304,7 +319,7 @@ Blockly.Blocks["array_setIndex"] = {
     init: function() {
 		this.appendDummyInput()
 			.appendField(Blockly.Msg.ARRAY_SET_INDEX)
-			.appendField(new Blockly.FieldVariable(), 'VAR')
+			.appendField(new Blockly.FieldVariable("", null, [VAR_ARRAY], VAR_ARRAY), "VAR")
 			.appendField(Blockly.Msg.ARRAY_DIM)
 			.appendField(new Blockly.FieldDropdown(Blockly.Msg.ARRAY_DIMS, function(option){
                 this.sourceBlock_.updateShape_(option)
@@ -361,7 +376,7 @@ Blockly.Blocks["array_getIndex"] = {
     init: function() {
         this.appendDummyInput()
 			.appendField(Blockly.Msg.ARRAY_GETINDEX_ITEM)
-			.appendField(new Blockly.FieldVariable(), 'VAR')
+			.appendField(new Blockly.FieldVariable("", null, [VAR_ARRAY], VAR_ARRAY), "VAR")
 			.appendField(Blockly.Msg.ARRAY_DIM)
 			.appendField(new Blockly.FieldDropdown(Blockly.Msg.ARRAY_DIMS,function(option) {
                 this.sourceBlock_.updateShape_(option)
@@ -411,7 +426,7 @@ Blockly.Blocks["array_getSize"] = {
     init: function() {
         this.appendDummyInput()
 			.appendField(Blockly.Msg.SIZE)
-			.appendField(new Blockly.FieldVariable(), 'VAR');
+			.appendField(new Blockly.FieldVariable("", null, [VAR_ARRAY], VAR_ARRAY), "VAR")
         this.setOutput(true);
         this.setInputsInline(true);
         this.setStyle("array_blocks");
@@ -431,7 +446,7 @@ Blockly.Blocks["getArray"] = {
     init: function() {
         this.appendDummyInput()
 			.appendField(Blockly.Msg.ARRAY_GET_ARRAY_VECTOR)
-			.appendField(new Blockly.FieldVariable(), 'VAR')
+			.appendField(new Blockly.FieldVariable("", null, [VAR_ARRAY], VAR_ARRAY), "VAR")
         this.setOutput(true);
         this.setInputsInline(true);
         this.setStyle("array_blocks");

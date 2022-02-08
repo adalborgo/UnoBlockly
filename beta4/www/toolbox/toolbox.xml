@@ -3,7 +3,7 @@
 <!-- 
 	package: UnoBlockly
 	file toolbox.xml
-	version 0.1 (19-01-2022)
+	version 0.1 (07-02-2022)
 	author Antonio Dal Borgo <adalborgo@gmail.com>
 -->
 
@@ -204,9 +204,7 @@
          <block type="array_setIndex" />
          <block type="array_getIndex" />
 		   <block type="array_getSize" />
-         <block type="getArray">
-            <field name="VAR"> </field>
-         </block>
+         <block type="getArray" />
       </category>
 
       <category name="CAT_ARDUINO_BASE" categorystyle="arduino_category">

@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file header.js
- * @version 0.1 (13-07-2021)
+ * @version 0.2 (07-02-2022)
  * @description Header of Blockly.Arduino
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -116,10 +116,12 @@
 			includes.push(Blockly.Arduino.includes_[name]);
 		}
 
-		// definitions space (exclude $define)
+		// Definitions
 		for (let name in Blockly.Arduino.definitions_) {
 			let def_name = Blockly.Arduino.definitions_[name];
-			definitions.push(stripDefine(def_name));
+			// Removes lines containing strings '$define' or '$var_array'
+			let s = stripDefineArray(def_name);
+			if (s.length>0) definitions.push(s);
 		}
 		
 		// variables space
@@ -185,8 +187,9 @@
 		let inc_def = s_definitions.length;
 
 		let defs = '';
-		if (inc_len) defs += s_includes + '\n';
+		if (inc_len) defs = s_includes + '\n';
 		if (inc_def) defs += s_definitions + '\n';
+
 		let s_defs = stripEmptyLine(defs);
 
 		let s_functions = functions.join('\n');
@@ -214,15 +217,19 @@
 		return ret;
 	}
 	
-	function stripDefine(str) {
+	/*
+	  Removes lines containing strings '$define' or '$var_array'
+	*/
+	function stripDefineArray(str) {
 		let ret = '';
 		let sar = str.split(/\r?\n/);
-		let isDefine = 0;
+		let isDefine, isArray = 0;
 		for (let i = 0; i<sar.length; i++) {
 			let l = sar[i].trim().length;
 			if (l) {
-				isDefine = sar[i].indexOf('$define')!=-1;
-				if (!isDefine) ret +=  sar[i] + '\n';
+				isDefine = sar[i].indexOf('$define')!=-1; // Found '$define'
+				isArray = sar[i].indexOf('$var_array')!=-1; // Found '$var_array'
+				if (!isDefine && !isArray) ret +=  sar[i] + '\n';
 			}
 		}
 		return ret;

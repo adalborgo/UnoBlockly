@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file index-code.js
- * @version 0.1 (08-11-2021)
+ * @version 0.1 (25-01-2022)
  * @description Compilation for Arduino board only
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -31,7 +31,8 @@ const sketchFile = sketchName + '.ino';
 // NB. The file must be contained in a folder with the same name (sketch)
 
 // const sketchFolder    = 'C:/Users/(user_name)/AppData/Roaming/UnoBlockly/Cache/' + sketchName + '/'; 
-const sketchFolder = homedir.replace(/\\/g, '/') + '/AppData/Roaming/' + APP_NAME + '/Cache/' + sketchName + '/';
+// const sketchFolder = homedir.replace(/\\/g, '/') + '/AppData/Roaming/' + APP_NAME + '/Cache/' + sketchName + '/';
+const sketchFolder = homedir.replace(/\\/g, '/') + '/AppData/Local/Temp/' + sketchName + '/';
 const writePathname = sketchFolder + sketchFile;
 
 // cmd = 'arduino-cli.exe upload --port ' + serialPort.value + ' --fqbn ' + upload_arg + ' sketch/sketch.ino'
