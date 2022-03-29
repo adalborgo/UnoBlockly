@@ -36,15 +36,15 @@ UnoBlockly is still under development and some features will be implemented in f
 **Installation**
 
 UnoBlockly was developed for Windows 10 and can be found at this link:
-- for installation: ([UnoBlockly_x64-Install-beta0.4.5.exe](https://www.dibis.it/UnoBlockly/UnoBlockly_x64-Install-beta0.4.5.exe))
-- portable version: ([UnoBlockly_x64-beta0.4.5.zip](https://www.dibis.it/UnoBlockly/UnoBlockly_x64-beta0.4.5.zip))
+- for installation: ([UnoBlockly_x64-Install-beta0.4.7.exe](https://www.dibis.it/UnoBlockly/UnoBlockly_x64-Install-beta0.4.7.exe))
+- portable version: ([UnoBlockly_x64-beta0.4.7.zip](https://www.dibis.it/UnoBlockly/UnoBlockly_x64-beta0.4.7.zip))
 
 
 The software integrates the Arduino compiler and the necessary libraries, so once installed it is ready for use; only if the computer does not automatically recognize the USB port is it necessary to install the appropriate driver, in this case it is advisable to download it from the following link:
 
 **Multilingual version**
 
-At the moment UnoBlockly only supports English and Italian languages, I hope soon to have the possibility to add other languages with the help of the international community. All the words used in the interfaces are localized and for each language a specific folder is reserved which contains all the files that need to be translated. Thanks to all those who want to contribute.
+At the moment UnoBlockly only supports English, Japanese and Italian languages, I hope soon to have the possibility to add other languages with the help of the international community. All the words used in the interfaces are localized and for each language a specific folder is reserved which contains all the files that need to be translated. Thanks to all those who want to contribute.
 
 **Examples**
 
