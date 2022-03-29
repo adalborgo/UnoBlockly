@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file index-code.js
- * @version 0.1 (16-11-2021)
+ * @version 0.1 (09-03-2022)
  * @description Main index.html functions
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -23,7 +23,7 @@ const ZOOM_START = 0.8;
 
 // Board types
 // see: Blockly.Msg.option_texts
-const BOARD_TYPES = ["uno", "nano", "nano_old", "uno", "nano_old"];
+const BOARD_TYPES = ["uno", "nano", "nano_old", "uno", "nano_old", "bt"];
 
 // Items of window.localStorage
 const STORAGE_LANG = "lang";

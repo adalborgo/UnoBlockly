@@ -23,7 +23,8 @@ Languages.LANGUAGE_NAME = {
   //'ru': 'Pусский',
   //'heb': 'עִברִית',
   //'cn': '中文',
-  'en': 'English'
+  'en': 'English',
+  'jp': '日本語'
 };
 
 Languages.LANGUAGE_RTL = ['ar', 'fa', 'he'];

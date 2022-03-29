@@ -1,7 +1,7 @@
 ﻿/**
  * @package: UnoBlockly
  * @file boards-profile.js
- * @version 0.1 (25-06-2021)
+ * @version 0.2 (09-03-2022)
  * @description Boards data
  */
 
@@ -24,6 +24,12 @@ var profile = {
 	    description: "Arduino Uno",
 		interrupt: [["2", "2"], ["3", "3"]],
 		upload_arg: "arduino:avr:uno",
+		cpu: "atmega328p"
+	},
+	bt: {
+	    description: "Arduino BT",
+		interrupt: [["2", "2"], ["3", "3"]],
+		upload_arg: "arduino:avr:bt",
 		cpu: "atmega328p"
 	}
 };

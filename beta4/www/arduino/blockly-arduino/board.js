@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file board.js
- * @version 0.1 (19-11-2021)
+ * @version 0.2 (28-03-2022)
  * @description Arduino base board command of Blockly.Blocks & Blockly.Arduino
  * @see https://arduino.cc/en/Reference/HomePage
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
@@ -284,7 +284,7 @@ Blockly.Blocks["ArduinobaseAnalogWrite"]={
 		this.setStyle("arduino_blocks");
         this.appendDummyInput()
 			.appendField(Blockly.Msg.ArduinobaseAnalogWrite)
-			.appendField(new Blockly.FieldDropdown(Blockly.Msg.analogPins), "PIN");
+			.appendField(new Blockly.FieldDropdown(Blockly.Msg.PWMPins), "PIN");
         this.appendValueInput('VALUE', 'Number')
 			.appendField(Blockly.Msg.EQUAL)
 			.setCheck('Number');

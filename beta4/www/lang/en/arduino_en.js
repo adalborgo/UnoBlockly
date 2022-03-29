@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file arduino_en.js
- * @version 0.1 (19-11-2021)
+ * @version 0.2 (28-03-2022)
  * @description Arduino messages
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -10,7 +10,7 @@
 
 // Selection Arduino boards (IndexCode.getBoards)
 Blockly.Msg.optgroup = 'Arduino boards';
-Blockly.Msg.option_texts = ["Arduino Uno", "Arduino Nano", "Arduino Nano (old bootloader)", "mBot", "OttoDIY"];
+Blockly.Msg.option_texts = ["Arduino Uno", "Arduino Nano", "Arduino Nano (old bootloader)", "mBot", "OttoDIY", "Arduino BT"];
 
 // Common to all blocks
 Blockly.Msg.HELPURL = "";
@@ -71,8 +71,11 @@ Blockly.Msg.digitalPins = [["D2", "2"], ["D3", "3"], ["D4", "4"], ["D5", "5"], [
 // Arduino UNO (analog pins: #define PIN_A0 14; (...) #define PIN_A7 21)
 Blockly.Msg.analogPins = [["A0", "14"], ["A1", "15"], ["A2", "16"], ["A3", "17"], ["A4", "18"], ["A5", "19"], ["A6", "20"], ["A7", "21"]  ];
 
+// PWM pins (Uno, Nano, Mini): 3, 5, 6, 9, 10, 11
+Blockly.Msg.PWMPins = [["D3", "3"], ["D5", "5"], ["D6", "6"], ["D9", "9"], ["D10", "10"], ["D11", "11"]];
+
 // LED buildin
-Blockly.Msg.ArduinobaseLed = "LED on board scheda";
+Blockly.Msg.ArduinobaseLed = "LED on board";
 Blockly.Msg.ArduinobaseLled_tooltip = "Switch on / off the LED on the board";
 Blockly.Msg.FIELDDROPDOWN_ON_OFF = [["ACCESO", Blockly.Msg.high], ["SPENTO", Blockly.Msg.low]];
 
