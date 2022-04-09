@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file extra.js
- * @version 0.1 (5-11-2021)
+ * @version 0.2 (07-04-2022)
  * @description Extra functions of Blockly.Blocks & Blockly.Arduino
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -71,6 +71,24 @@ Blockly.Arduino["ArduinoSetupLoop"] = function (block) {
 	return '';
 };
 
+// ArduinoDefine
+Blockly.Blocks["ArduinoDefine"] = {
+	init: function () {
+		this.setStyle("arduino_blocks");
+		this.appendDummyInput().appendField(Blockly.Msg.ArduinoDefine);
+		this.appendStatementInput("DO");
+		this.setTooltip(Blockly.Msg.ArduinoDefine_tooltip);
+		this.setHelpUrl("");
+	}
+};
+
+Blockly.Arduino["ArduinoDefine"] = function (block) {
+	let define = Blockly.Arduino.statementToCode(block, "DO");
+	if (Blockly.Arduino.INFINITE_LOOP_TRAP) define = Blockly.Arduino.INFINITE_LOOP_TRAP.replace(/%1/g, "'" + block.id + "'") + branch;
+	Blockly.Arduino.includes_["ArduinoDefine"] = define;
+	return "";
+};
+
 // ArduinoCode
 Blockly.Blocks["ArduinoCode"] = {
 	init: function () {
@@ -104,6 +122,38 @@ Blockly.Arduino['ArduinoCodeData'] = function (block) {
 	return [block.getFieldValue("TEXT"), Blockly.Arduino.ORDER_ATOMIC];
 };
 
+////////////////////////
+// ArduinoLOW
+Blockly.Blocks['ArduinoLOW'] = {
+	init: function () {
+		this.setStyle("arduino_blocks");
+		this.appendDummyInput().appendField(Blockly.Msg.low);
+		this.setOutput(true);
+		this.setTooltip(Blockly.Msg.low);
+		this.setHelpUrl("");
+	}
+};
+
+Blockly.Arduino['ArduinoLOW'] = function (block) {
+	return ['LOW', Blockly.Arduino.ORDER_ATOMIC];
+};
+
+// ArduinoHIGH
+Blockly.Blocks['ArduinoHIGH'] = {
+	init: function () {
+		this.setStyle("arduino_blocks");
+		this.appendDummyInput().appendField(Blockly.Msg.high);
+		this.setOutput(true);
+		this.setTooltip(Blockly.Msg.high);
+		this.setHelpUrl("");
+	}
+};
+
+Blockly.Arduino['ArduinoHIGH'] = function (block) {
+	return ['HIGH', Blockly.Arduino.ORDER_ATOMIC];
+};
+
+///////////////////////
 // ArduinoInclude
 Blockly.Blocks['ArduinoInclude'] = {
 	init: function () {

@@ -113,7 +113,7 @@
 
 		// includes space
 		for (let name in Blockly.Arduino.includes_) {
-			includes.push(Blockly.Arduino.includes_[name]);
+			includes.push(trimLine(Blockly.Arduino.includes_[name]));
 		}
 
 		// Definitions
@@ -206,6 +206,23 @@
 				- str.split(/\r?\n/); // Split lines
 			*/
 	};
+
+	function trimLine(text) {
+		let ret = "";
+		let sar = text.match(/[^\r\n]+/g); // text.split(/\r?\n/);
+		let multiline = (sar) ? sar.length>1 : false;
+		if (multiline) {
+			for (let i = 0; i<sar.length; i++) {
+				let s = sar[i].trim();
+				if (s.length) ret += s + '\n';
+			}
+			ret +=  '\n';
+		} else {
+			ret = text;
+		}
+
+		return ret;
+	}
 
 	function stripEmptyLine(str) {
 		let ret = '';

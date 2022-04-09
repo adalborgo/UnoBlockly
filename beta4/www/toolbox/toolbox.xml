@@ -3,7 +3,7 @@
 <!-- 
 	package: UnoBlockly
 	file toolbox.xml
-	version 0.1 (07-02-2022)
+	version 0.2 (xx-03-2022)
 	author Antonio Dal Borgo <adalborgo@gmail.com>
 -->
 
@@ -252,9 +252,12 @@
 
          <block type="ArduinoCodeData" />
          <block type="ArduinoCode" />
+         <block type="ArduinoLOW" />
+         <block type="ArduinoHIGH" />
 		   <block type="Remark" />
          <block type="Remark_header" />
-         <!--block type="ArduinoDefine" / -->
+         <block type="ArduinoDefine" />
+         <block type="ArduinoInclude" />
          <block type="ArduinoSetupLoop" />
          <block type="ArduinobaseAttachInterrupt" />
          <block type="ArduinobaseDetachInterrupt" />
@@ -570,6 +573,10 @@
          <block type="lis3dhtr_values" />
       </category>
       <!-- End CAT_SEEED_BEG category -->
+
+      <!-- Begin CAT_OWLBOT  category -->
+      
+      <!-- End CAT_OWLBOT  category -->
 
       <!-- Begin CAT_MBOT category -->
       <category name="CAT_MBOT" categorystyle="mBot_category">

@@ -7,7 +7,7 @@
  */
 
 const APP_NAME = 'UnoBlockly'; // Important!!!
-const APP_VERSION = '(Beta0.4.7)';
+const APP_VERSION = '(Beta0.4.8)';
 const EXTENSION = "ubk";
 const LATEST_URL = "https://www.dibis.it/UnoBlockly/latest.js";
 

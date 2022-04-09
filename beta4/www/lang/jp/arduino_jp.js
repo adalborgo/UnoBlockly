@@ -1,9 +1,9 @@
 /**
  * @package: UnoBlockly
  * @file arduino_en.js
- * @version 0.2 (28-03-2022)
+ * @version 0.2 (09-04-2022)
  * @description Arduino messages
- * @author Antonio Dal Borgo <adalborgo@gmail.com>
+ * @author Antonio Dal Borgo <adalborgo@gmail.com> (Translated by Toshiyuki Nakamura)
  */
 
 'use strict';
@@ -65,8 +65,8 @@ Blockly.Msg.ArduinobaseDPins_tooltip = "デジタルピン";//"Digital pin";
 Blockly.Msg.ArduinobaseAPins_tooltip = "アナログピン";//"Analog pin";
 
 // Arduino UNO (digital pins = 0..13)
-Blockly.Msg.digitalPins = [["D2", "2"], ["D3", "3"], ["D4", "4"], ["D5", "5"], ["D6", "6"], ["D7", "7"],
-    ["D8", "8"], ["D9", "9"], ["D10", "10"], ["D11", "11"], ["D12", "12"], ["D13", "13"], ["D0", "0"], ["D1", "1"]];
+Blockly.Msg.digitalPins = [["D2", "2"], ["~D3", "3"], ["D4", "4"], ["~D5", "5"], ["~D6", "6"], ["D7", "7"],
+    ["D8", "8"], ["~D9", "9"], ["~D10", "10"], ["~D11", "11"], ["D12", "12"], ["D13", "13"], ["D0", "0"], ["D1", "1"]];
 
 // Arduino UNO (analog pins: #define PIN_A0 14; (...) #define PIN_A7 21)
 Blockly.Msg.analogPins = [["A0", "14"], ["A1", "15"], ["A2", "16"], ["A3", "17"], ["A4", "18"], ["A5", "19"], ["A6", "20"], ["A7", "21"]  ];
@@ -94,7 +94,7 @@ Blockly.Msg.ArduinobaseAnalogRead_tooltip = "0から1023の間の値を返しま
 
 // Arduino base: analog write (pwm)
 Blockly.Msg.ArduinobaseAnalogWrite = "PWM値をセット";//"Set the value (PWM)";
-Blockly.Msg.ArduinobaseAnalogWrite_tooltip = "アナログピンに0から1023の間の値(PWM)をセットします";//"Set a value between 0 and 1023 on the analog pin (PWM)";
+Blockly.Msg.ArduinobaseAnalogWrite_tooltip = "アナログピンに0から255の間の値(PWM)をセットします";//"Set a value between 0 and 255 on the analog pin (PWM)";
 
 // Interrupt
 Blockly.Msg.ArduinobaseAttachInterrupt = "割り込みを有効化　ピン";//"Enable the interrupt on the pin";

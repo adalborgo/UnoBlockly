@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file loops.js
- * @version 0.1 (08-07-2021)
+ * @version 0.1 (09-04-2022)
  * @description Blockly.Arduino.loops
 	Override: controls_for
 	The loop variables are local, NOT global
@@ -79,9 +79,10 @@ Blockly.Arduino['controls_for'] = function (block) {
 
 	let incVar = parseInt(inc_dec);
 	let inc_decSign = (inc_dec>=0) ?  '+' : '-';
+	let versus = (inc_dec>=0) ? '<=': '>=';
 	let inc_decType = (Math.abs(inc_dec)==1) ? (inc_decSign + inc_decSign) : (inc_decSign + '=' + Math.abs(inc_dec));
-
-	return 'for (int ' + variable0 + ' = ' + argument0 + '; ' +  variable0 + '<=' + argument1 + '; ' + variable0 + inc_decType + ') {\n' + branch + '}\n';
+	let code = 'for (int ' + variable0 + ' = ' + argument0 + '; ' +  variable0 + versus + argument1 + '; ' + variable0 + inc_decType + ') {\n' + branch + '}\n';
+	return code;
 };
 
 // Not used!

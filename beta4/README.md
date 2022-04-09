@@ -4,9 +4,9 @@
 
 <h1 align="center">UnoBlockly</h1>
 
-UnoBlockly is a visual programming language, based on Google&#39;s Blockly, for programming Arduino boards and devices based on the Atmega328 microcontroller, such as Arduino UNO, Arduino Nano. In particular, some modules dedicated to Seeed Studio Grove Beginner Kit, Makeblock mBot, OttoDIY are available.
+UnoBlockly is a visual programming environment, based on Google&#39;s Blockly, for programming Arduino boards and devices based on the Atmega328 microcontroller, such as Arduino UNO, Arduino Nano. In particular, some modules dedicated to Seeed Studio Grove Beginner Kit, Makeblock mBot, OttoDIY are available.
 
-Block programming is particularly useful for those who undertake a learning path, moreover, the possibility of being able to work at the same time even with the generated code, facilitates the transition to programming with traditional languages.
+The software can be useful above all for beginners but also for teachers of Arduino courses, moreover, the possibility of being able to work at the same time even with the generated code, facilitates the transition to programming with traditional languages.
 
 <p align="center"><img src="https://github.com/adalborgo/UnoBlockly/blob/beta4/images/example-block1.png" alt="Block" width="80%"/></p>
 
@@ -35,25 +35,28 @@ UnoBlockly is still under development and some features will be implemented in f
 
 **Installation**
 
-UnoBlockly has been developed and tested on Windows 10. It can be installed by unzipping the zipped file or using the **.exe** file for installation, this second option is the recommended one.
+UnoBlockly was developed for Windows 10 and can be found at this link:
+- for installation: ([UnoBlockly_x64-Install-beta0.4.8.exe](https://www.dibis.it/UnoBlockly/UnoBlockly_x64-Install-beta0.4.8.exe))
+- portable version: ([UnoBlockly_x64-beta0.4.8.zip](https://www.dibis.it/UnoBlockly/UnoBlockly_x64-beta0.4.8.zip))
+
 
 The software integrates the Arduino compiler and the necessary libraries, so once installed it is ready for use; only if the computer does not automatically recognize the USB port is it necessary to install the appropriate driver, in this case it is advisable to download it from the following link:
 
 **Multilingual version**
 
-At the moment UnoBlockly only supports English and Italian languages, I hope soon to have the possibility to add other languages with the help of the international community. All the words used in the interfaces are localized and for each language a specific folder is reserved which contains all the files that need to be translated. Thanks to all those who want to contribute.
+At the moment UnoBlockly only supports English, Japanese and Italian languages, I hope soon to have the possibility to add other languages with the help of the international community. All the words used in the interfaces are localized and for each language a specific folder is reserved which contains all the files that need to be translated. Thanks to all those who want to contribute.
 
 **Examples**
 
 For immediate use and educational purposes, some sample sketches are available.
 
-**Generic examples** (examples.zip)
+**Generic examples** ([examples.zip](https://www.dibis.it/j4/images/unoblockly/examples/en/examples.zip))
 1. Blink the LED on the board (blink.ubk)
 2. Blink a LED connected to digital pin 4 (blink-pin4.ubk)
 3. Repeat a two-tone sound 5 times (sound\_two-tone.ubk)
 4. Play a short melody using Melody notation (melody.ubk)
 
-**Examples for the Grove Beginner Kit** (examples-sbk.zip)
+**Examples for the Grove Beginner Kit** ([examples-sbk.zip](https://www.dibis.it/j4/images/unoblockly/examples/en/examples-sbk.zip))
 1. Blink the red LED (sbk-blink.ubk)
 2. Generate a variable sound (sbk-variable\_sound.ubk)
 3. By pressing the button, the LED turns on and a two-tone sound is generated (sbk-button-led-buzzer.ubk)
@@ -61,19 +64,19 @@ For immediate use and educational purposes, some sample sketches are available.
 5. Fill the display with the &#39;X&#39; character (sbk-display\_fill.ubk)
 6. Shows the rotation angle of the potentiometer on the display (sbk-encoder-display.ubk)
 7. Shows the temperature, humidity and pressure data on the display (sbk-meteo.ubk)
-8. Shows the values ??detected by the accelerometer on the display (sbk-acceleration.ubk)
-9. Gives an indication of the light intensity of the environment (sbk-light\_intensity.ubk)
-10. Gives an indication of the ambient noise (sbk-microphone.ubk)
+8. Shows the acceleration on the display (sbk-acceleration.ubk)
+9. Indicates the light intensity of the environment (sbk-light\_intensity.ubk)
+10. Indicates the ambient noise (sbk-microphone.ubk)
 
-**Makeblock mBot examples** (examples-mBot.zip)
+**Makeblock mBot examples** ([examples-mBot.zip](https://www.dibis.it/j4/images/unoblockly/examples/en/examples-mBot.zip))
 1. Generate a sequence of sounds from 300 to 1800 Hz (mBot-sound300-1800.ubk)
 2. Measure the distance to an object via the ultrasonic sensor and send the data to the serial port (mBot-distance.ubk)
 3. Generates sounds with a frequency that varies according to the distance measured by the ultrasonic sensor (mBot-Theremin.ubk)
 4. Turn on RGB LEDs with different colors (mBot-RGB.ubk)
 5. By pressing the button, the LEDs emit red light otherwise green light (mBot-button.ubk)
-6. Gives an indication of the ambient light intensity (mBot-light\_intensity.ubk)
+6. Indicates the light intensity of the environment (mBot-light\_intensity.ubk)
 
-**Examples for OttoDIY** (examples-ottodiy.zip)
+**Examples for OttoDIY** ([examples-ottodiy.zip](https://www.dibis.it/j4/images/unoblockly/examples/en/examples-ottodiy.zip))
 1. Checking the position of legs and feet (ottodiy-check.ubk)
 2. Leg and foot calibration (ottodiy-calibrate.ubk)
 3. Ottodiy starts dancing if you put your hand at a distance of less than 20 cm (ottodiy-distance\_dance.ubk)
