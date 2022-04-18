@@ -1,9 +1,9 @@
 /**
  * @package: UnoBlockly
  * @file arduino_en.js
- * @version 0.2 (09-04-2022)
+ * @version 0.2 (14-04-2022)
  * @description Arduino messages
- * @author Antonio Dal Borgo <adalborgo@gmail.com> (Translated by Toshiyuki Nakamura)
+ * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
 
 'use strict';
@@ -37,6 +37,15 @@ Blockly.Msg.green = "緑"
 Blockly.Msg.blue = "青"
 Blockly.Msg.dir_forward = "前";
 Blockly.Msg.dir_backward = "後";
+Blockly.Msg.coordX = "X"
+Blockly.Msg.coordY = "Y"
+Blockly.Msg.coordZ = "Z"
+Blockly.Msg.coordx = "x"
+Blockly.Msg.coordy = "y"
+Blockly.Msg.coordz = "z"
+Blockly.Msg.Number = "数値";//"Number";
+Blockly.Msg.Text = "文字";//"Text";
+Blockly.Msg.Data = "データ";//"Data";
 
 //----- Arduino base -----//
 

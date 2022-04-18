@@ -2,7 +2,7 @@
  * @package: UnoBlockly
  * @file grove_beginner-msg_it.js
  * @version 0.1 (21-06-2021)
- * @description Grove Begginner Kit messages
+ * @description Grove Beginner Kit messages
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
 

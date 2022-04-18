@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file blocks_en.js
- * @version 0.1 (15-11-2021)
+ * @version 0.2 (14-04-2022)
  * @description Blockly messages
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -355,6 +355,8 @@ Blockly.Msg["TEXT_APPEND_VARIABLE"] = "item";
 Blockly.Msg["TEXT_CREATE_JOIN_ITEM_TITLE_ITEM"] = "item";
 Blockly.Msg["TEXT_FROM_NUMBER"] = "String(x)";
 Blockly.Msg["TEXT_FROM_NUMBER_TOOLTIP"] = "Convert from number to string";
+Blockly.Msg["TEXT_FROM_FLOAT"] = "String(x, dec)";
+Blockly.Msg["TEXT_FROM_FLOAT_DECIMAL"] = "decimals";
 
 //--- Variables ---//
 Blockly.Msg["CAT_VARIABLES"] = "Variables";

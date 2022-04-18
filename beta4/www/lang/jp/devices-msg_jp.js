@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file devices-msg_en.js
- * @version 0.1 (18-01-2022)
+ * @version 0.1 (13-04-2022)
  * @description Generic devices messages
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -39,3 +39,13 @@ Blockly.Msg.devices_motors = "モーター ";//"Motors  ";
 Blockly.Msg.devices_motors_tooltip = "モーターを駆動します。";//"Drive motors";
 Blockly.Msg.devices_motors_speed = "速度（0～255）";//"Speed (from 0 to 255)";
 Blockly.Msg.devices_motors_dir = "方向";//"Direction";
+
+// MPU6050
+Blockly.Msg.devices_mpu6050 = "MPU6050";
+Blockly.Msg.devices_mpu6050_accel = "加速度"; //Acceleration";
+Blockly.Msg.devices_mpu6050_gyro = "角速度"; // "Angular velocity";
+Blockly.Msg.devices_mpu6050_tooltip = "加速度（最大±2g）。 角速度（最大±500度/秒）"; //"Acceleration (max ±2 g). Angular velocity (max ±500 deg/s)";
+
+// Temperature sensor (DS18B20)
+Blockly.Msg.devices_DS18B20 =  "温度  [DS18B20]  (°C)"; //"Temperature (°C)";
+Blockly.Msg.devices_DS18B20_tooltip = "温度測定"; //"Temperature measurement (°C)";

@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file devices-msg_en.js
- * @version 0.1 (18-01-2022)
+ * @version 0.1 (15-04-2022)
  * @description Generic devices messages
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -39,3 +39,13 @@ Blockly.Msg.devices_motors = "Motors  ";
 Blockly.Msg.devices_motors_tooltip = "Drive motors";
 Blockly.Msg.devices_motors_speed = "Speed (from 0 to 255)";
 Blockly.Msg.devices_motors_dir = "Direction";
+
+// MPU6050
+Blockly.Msg.devices_mpu6050 = "MPU6050";
+Blockly.Msg.devices_mpu6050_accel = "Acceleration";
+Blockly.Msg.devices_mpu6050_gyro = "Angular velocity";
+Blockly.Msg.devices_mpu6050_tooltip = "Acceleration (max ±2 g). Angular velocity (max ±500 deg/s)";
+
+// Temperature sensor (DS18B20)
+Blockly.Msg.devices_DS18B20 = "Temperature [DS18B20]  (°C)";
+Blockly.Msg.devices_DS18B20_tooltip = "Temperature measurement with DS18B20 (°C)";

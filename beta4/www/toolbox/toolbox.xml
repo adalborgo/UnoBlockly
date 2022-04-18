@@ -3,13 +3,13 @@
 <!-- 
 	package: UnoBlockly
 	file toolbox.xml
-	version 0.2 (xx-03-2022)
+	version 0.2 (18-04-2022)
 	author Antonio Dal Borgo <adalborgo@gmail.com>
 -->
 
 <xml id="toolbox" style="display: none;">
    <toolbox>
-      <parameter id="defaultCategories">CAT_LOGIC,CAT_LOOPS,CAT_MATH,CAT_TEXT,CAT_VARIABLES,CAT_FUNCTIONS,CAT_ARRAYS,CAT_ARDUINO_BASE,CAT_ARDUINO_TIME,CAT_ARDUINO_SERIAL,CAT_SOUND,CAT_DEVICES,CAT_SEEED_BEG,CAT_MBOT,CAT_OTTO</parameter>
+      <parameter id="defaultCategories">CAT_LOGIC,CAT_LOOPS,CAT_MATH,CAT_TEXT,CAT_VARIABLES,CAT_FUNCTIONS,CAT_ARRAYS,CAT_ARDUINO_BASE,CAT_ARDUINO_TIME,CAT_ARDUINO_SERIAL,CAT_SOUND,CAT_DEVICES,CAT_SEEED_BEG,CAT_MBOT,CAT_OWLBOT,CAT_OTTO</parameter>
 
       <category name="CAT_LOGIC" categorystyle="logic_category">
          <block type="controls_if" />
@@ -184,6 +184,19 @@
             </value>
          </block>
          
+         <block type="text_from_float">
+            <value name="DATA">
+               <shadow type="math_number">
+                  <field name="NUM">1</field>
+               </shadow>
+            </value>
+            <value name="DEC">
+               <shadow type="math_number">
+                  <field name="NUM">2</field>
+               </shadow>
+            </value>
+         </block>
+
          <block type="text_length" />
          <block type="text_isEmpty" />
       </category>
@@ -208,8 +221,8 @@
       </category>
 
       <category name="CAT_ARDUINO_BASE" categorystyle="arduino_category">
-	    <block type="ArduinobaseDPins" />
-		<block type="ArduinobaseAPins" />
+	      <block type="ArduinobaseDPins" />
+		   <block type="ArduinobaseAPins" />
          <block type="ArduinobaseLed" />
 
          <block type="ArduinobaseDigitalRead">
@@ -462,6 +475,14 @@
             </value>
 			</block>
 
+         <block type="Temperature_18B20">
+   			<value name="DATA_PIN">
+               <shadow type="math_number">
+                  <field name="NUM">2</field>
+               </shadow>
+            </value>
+			</block>
+
 	  </category>
 	  
       <category name="CAT_SEEED_BEG" categorystyle="seeedbeg_category">
@@ -474,7 +495,7 @@
             </value>
 		</block>
 
-         <block type="GroveseeedButton">
+      <block type="GroveseeedButton">
 		  <value name="PIN">
                <shadow type="math_number">
                   <field name="NUM">6</field>
@@ -575,7 +596,89 @@
       <!-- End CAT_SEEED_BEG category -->
 
       <!-- Begin CAT_OWLBOT  category -->
+      <category name="CAT_OWLBOT" categorystyle="owlBot_category">
       
+         <block type="OwlBot_Rgbled">
+            <value name="IRED">
+               <shadow type="math_number">
+                  <field name="NUM">0</field>
+               </shadow>
+            </value>
+            <value name="IGREEN">
+               <shadow type="math_number">
+                  <field name="NUM">0</field>
+               </shadow>
+            </value>
+            <value name="IBLUE">
+               <shadow type="math_number">
+                  <field name="NUM">0</field>
+               </shadow>
+            </value>
+         </block>
+
+         <block type="OwlBot_BuzzerPin" />
+         <block type="OwlBot_Button" />
+         <block type="OwlBot_Distance" />
+         <block type="OwlBot_Battery" />
+
+         <block type="OwlBot_Motor">
+            <value name="SPEED">
+               <shadow type="math_number">
+                  <field name="NUM">50</field>
+               </shadow>
+            </value>
+         </block>
+
+         <block type="OwlBot_IRTrack" />
+         <block type="OwlBot_MPU6050_values" />
+
+         <!-- OwlBot LEDMatrix sub category -->
+         <category name="CAT_OWLBOT_LEDMatrix" categorystyle="owlBot_category">
+            <block type="OwlBot_LEDMatrixClear" />
+            <block type="OwlBot_LEDMatrixSmileys" />
+            <block type="OwlBot_LEDMatrixBrightness">
+               <value name="BRIGHTNESS">
+                  <shadow type="math_number">
+                     <field name="NUM">3</field>
+                  </shadow>
+               </value>
+            </block>
+            <block type="OwlBot_LEDMatrixNumber">
+               <value name="DATA">
+                  <shadow type="math_number">
+                     <field name="NUM">0</field>
+                  </shadow>
+               </value>
+            </block>
+            <block type="OwlBot_LEDMatrixFloat">
+               <value name="DATA">
+                  <shadow type="math_number">
+                     <field name="NUM">0</field>
+                  </shadow>
+               </value>
+               <value name="DEC">
+                  <shadow type="math_number">
+                     <field name="NUM">2</field>
+                  </shadow>
+               </value>
+            </block>
+            <block type="OwlBot_LEDMatrixDraw">
+               <value name="COORD_X">
+                  <shadow type="math_number">
+                     <field name="NUM">0</field>
+                  </shadow>
+               </value>
+            </block>
+            <block type="OwlBot_LEDMatrixData">
+               <value name="COORD_X">
+                  <shadow type="math_number">
+                     <field name="NUM">0</field>
+                  </shadow>
+               </value>
+            </block>
+         </category>
+
+      </category>
       <!-- End CAT_OWLBOT  category -->
 
       <!-- Begin CAT_MBOT category -->
@@ -644,7 +747,7 @@
             </value>
          </block>
 
-         <!-- LEDMatrix sub category -->
+         <!-- mBot LEDMatrix sub category -->
          <category name="CAT_MBOT_LEDMatrix" categorystyle="mBot_category">
 
          <block type="mBot_LEDMatrixData">

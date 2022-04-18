@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file themes.js
- * @version 0.1 (15-11-2021)
+ * @version 0.2 (12-04-2022)
  * @description Added some blocks to Blockly.Themes.Classic
  * @see
 	https://developers.google.com/blockly/guides/configure/web/themes
@@ -64,6 +64,9 @@ Blockly.Themes.Custom.defaultBlockStyles = {
 	arduino_blocks: {
 		colourPrimary: "180"
 	},
+	owlBot_blocks: {
+		colourPrimary: "#228B22"
+	},
 	mBot_blocks: {
 		colourPrimary: "#2a93e8"
 	},
@@ -122,6 +125,9 @@ Blockly.Themes.Custom.categoryStyles = {
 	},
 	arduino_category: {
 		colour: "180"
+	},
+	owlBot_category: {
+		colour: "#228B22"
 	},
 	mBot_category: {
 		colour: "#2a93e8"

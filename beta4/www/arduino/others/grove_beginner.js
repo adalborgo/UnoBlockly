@@ -342,10 +342,10 @@ Blockly.Blocks["lis3dhtr_values"] = {
 		this.appendDummyInput()
 			.appendField(Blockly.Msg.Groveseeed_lis3dhtr_values)
 			.appendField(new Blockly.FieldDropdown([
-				['X', '0'],
-				['Y', '1'],
-				['Z', '2']
-			]), "TypeAxis");
+				[Blockly.Msg.coordX, '0'],
+				[Blockly.Msg.coordY, '1'],
+				[Blockly.Msg.coordZ, '2']
+			]), "AXIS");
 		this.setHelpUrl("");
 		this.setOutput(true, "Number");
 		this.setTooltip(Blockly.Msg.Groveseeed_lis3dhtr_values_tooltip)
@@ -357,7 +357,7 @@ Blockly.Arduino["lis3dhtr_values"] = function (block) {
 	Blockly.Arduino.variables_["lis3dhtr"] = "LIS3DHTR<TwoWire> lis;";
 	Blockly.Arduino.setups_["lis3dhtr"] = 'lis.begin(Wire, 0x19);\n  lis.setFullScaleRange(LIS3DHTR_RANGE_2G);\n  lis.setOutputDataRate(LIS3DHTR_DATARATE_50HZ);\n  lis.setHighSolution(true);';
 
-	let axis = this.getFieldValue('TypeAxis');
+	let axis = this.getFieldValue('AXIS');
 	let code;
 	switch (axis) {
 		case '0':

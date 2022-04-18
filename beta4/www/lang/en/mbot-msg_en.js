@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file mbot-msg_en.js
- * @version 0.1 (18-01-2022)
+ * @version 0.1 (14-04-2022)
  * @description Makeblock mBot messages
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -17,13 +17,6 @@ Blockly.Msg.mbot_slot_dropdown = [['1', '1'],['2', '2']];
 
 Blockly.Msg.mbot_port = "Port";
 Blockly.Msg.mbot_port_dropdown = [['1', '1'],['2', '2'],['3', '3'],['4', '4']];
-
-Blockly.Msg.mbot_number = "Number";
-Blockly.Msg.mbot_text = "Text";
-Blockly.Msg.mbot_data = "Data";
-
-Blockly.Msg.mbot_coordX = "x"
-Blockly.Msg.mbot_coordY = "y"
 
 // Ultrasonic distance sensor
 Blockly.Msg.mBotDistance = "Distance (cm)  |";

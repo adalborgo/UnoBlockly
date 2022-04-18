@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file mbot.js
- * @version 0.1 (18-01-2022)
+ * @version 0.2 (14-04-2022)
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  * @description Code for Makeblock mBot
 
@@ -59,7 +59,7 @@ Blockly.Blocks["mBot_Distance"] = {
 };
 
 Blockly.Arduino["mBot_Distance"] = function (block) {
-	let port = BlockSub.port(block);
+	let port = mBotSub.port(block);
 
 	Blockly.Arduino.includes_["mBotMeMCore"]='#include <MeMCore.h>';
 	Blockly.Arduino.variables_["mBotDistance"] = 'MeUltrasonicSensor ultraSensor(PORT_' + port + ');';
@@ -74,7 +74,7 @@ Blockly.Blocks['mBot_Rgbled'] = {
 			.appendField(new Blockly.FieldImage("media/devices/mBot-bianco.png",32, 28))
 			.appendField(Blockly.Msg.mBotRgbled)
 			.appendField("|  ");
-		BlockSub.block_side(this);
+		mBotSub.block_side(this);
 		this.appendDummyInput().appendField(" ");
 		this.appendValueInput("IRED", "Number").setCheck("Number")
 			.appendField(Blockly.Msg.red);
@@ -208,7 +208,7 @@ Blockly.Blocks['mBot_Motor'] = {
 		this.appendDummyInput()
 			.appendField(new Blockly.FieldImage("media/devices/mBot-bianco.png",32, 28))
 			.appendField(Blockly.Msg.mBotMotor);
-		BlockSub.block_side(this);
+		mBotSub.block_side(this);
 		this.appendDummyInput()
 			.appendField("  " + Blockly.Msg.mBotMotor_dir)
 			.appendField(new Blockly.FieldDropdown(Blockly.Msg.mBotMotor_dir_dropdown), "DIR");
@@ -276,7 +276,7 @@ Blockly.Blocks["mBot_Linefollower"] = {
 };
 
 Blockly.Arduino["mBot_Linefollower"] = function (block) {
-	let port = BlockSub.port(block);
+	let port = mBotSub.port(block);
 
 	Blockly.Arduino.includes_["mBotMeMCore"]='#include <MeMCore.h>';
 	Blockly.Arduino.variables_["mBotLinefollower"] = 'MeLineFollower lineFinder(PORT_' + port + ');';
@@ -368,7 +368,7 @@ Blockly.Blocks["mBot_Sound"] = {
 };
 
 Blockly.Arduino["mBot_Sound"] = function (block) {
-	let port = BlockSub.port(block);
+	let port = mBotSub.port(block);
 	let sound = 0;
 	Blockly.Arduino.includes_["mBotMeMCore"]='#include <MeMCore.h>';
 	Blockly.Arduino.variables_["mBotSound"] = 'MeSoundSensor soundSensor_' + port + '(' + port + ');';
@@ -387,7 +387,7 @@ Blockly.Blocks["mBot_Seg7"] = {
 			.appendField(new Blockly.FieldDropdown(Blockly.Msg.mbot_port_dropdown), "PORT");
 
 		this.appendValueInput("DATA")
-			.appendField("  " + Blockly.Msg.mbot_number)
+			.appendField("  " + Blockly.Msg.Number)
 			.setCheck("Number");
 
 		this.setInputsInline(true);
@@ -400,7 +400,7 @@ Blockly.Blocks["mBot_Seg7"] = {
 };
 
 Blockly.Arduino["mBot_Seg7"] = function (block) {
-	let port = BlockSub.port(block);
+	let port = mBotSub.port(block);
 	let data = Blockly.Arduino.valueToCode(block, 'DATA', Blockly.Arduino.ORDER_ATOMIC);
 	Blockly.Arduino.includes_["mBotMeMCore"]='#include <MeMCore.h>';
 	Blockly.Arduino.variables_["mBotSeg7"] = 'Me7SegmentDisplay seg7_' + port + '(' + port + ');';
@@ -417,7 +417,7 @@ Blockly.Blocks["mBot_LEDMatrixDraw"] = {
 			.appendField("                                    " + Blockly.Msg.mbot_port)
 			.appendField(new Blockly.FieldDropdown(Blockly.Msg.mbot_port_dropdown), "PORT");
 
-		BlockSub.block_bright_coord(this, Blockly.ALIGN_RIGHT);
+		mBotSub.block_bright_coord(this, Blockly.ALIGN_RIGHT);
 
 		Blockly.FieldCheckbox.CHECK_CHAR = "⚪"; // "⚫" "▉" "🔲"
 
@@ -456,9 +456,9 @@ Blockly.Blocks["mBot_LEDMatrixDraw"] = {
 
 Blockly.Arduino["mBot_LEDMatrixDraw"] = function (block) {
 	let port = this.getFieldValue('PORT');
-	let brightness = BlockSub.bright(block);
-	let coord_x = BlockSub.coord_x(block);
-	let coord_y = BlockSub.coord_y(block);
+	let brightness = mBotSub.bright(block);
+	let coord_x = mBotSub.coord_x(block);
+	let coord_y = mBotSub.coord_y(block);
 
 	Blockly.Arduino.includes_["mBotMeMCore"]='#include <MeMCore.h>';
 	Blockly.Arduino.variables_["mBotLEDMatrix"] = 
@@ -466,7 +466,7 @@ Blockly.Arduino["mBot_LEDMatrixDraw"] = function (block) {
 		'unsigned char drawBuffer[16];\n' +
 		'unsigned char *drawTemp;';
 
-	Blockly.Arduino.setups_["mBotRgbled"] = 'ledMtx_' + port + '.setColorIndex(1);\n';
+	Blockly.Arduino.setups_["mBotLEDMatrix"] = 'ledMtx_' + port + '.setColorIndex(1);\n';
 
 	let code =
 		'ledMtx_' + port + '.setBrightness(' + brightness + ');\n';
@@ -501,7 +501,7 @@ Blockly.Blocks["mBot_LEDMatrixClear"] = {
 			.appendField(Blockly.Msg.mBotLEDMatrixClear)
 			.appendField(" |")
 
-		BlockSub.block_port(this);
+		mBotSub.block_port(this);
 
 		this.setInputsInline(true);
 		this.setPreviousStatement(true, null);
@@ -539,14 +539,14 @@ Blockly.Blocks["mBot_LEDMatrixNumber"] = {
 			.appendField(Blockly.Msg.mBotLEDMatrix)
 			.appendField(" |");
 
-		BlockSub.block_port(this);
+		mBotSub.block_port(this);
 
 		this.appendValueInput("BRIGHTNESS")
 			.appendField(" " +Blockly.Msg.mBotLEDMatrixBright)
 			.setCheck("Number");
 
 		this.appendValueInput("DATA")
-			.appendField("  " + Blockly.Msg.mbot_number)
+			.appendField("  " + Blockly.Msg.Number)
 			.setCheck("Number");
 
 			this.setInputsInline(true);
@@ -559,7 +559,7 @@ Blockly.Blocks["mBot_LEDMatrixNumber"] = {
 
 Blockly.Arduino["mBot_LEDMatrixNumber"] = function (block) {
 	let port = this.getFieldValue('PORT');
-	let brightness = BlockSub.bright(block);
+	let brightness = mBotSub.bright(block);
 	let data = Blockly.Arduino.valueToCode(block, 'DATA', Blockly.Arduino.ORDER_ATOMIC);
 
 	Blockly.Arduino.includes_["mBotMeMCore"]='#include <MeMCore.h>';
@@ -587,12 +587,11 @@ Blockly.Blocks["mBot_LEDMatrixText"] = {
 			.appendField(Blockly.Msg.mBotLEDMatrix)
 			.appendField(" |");
 
-		BlockSub.block_port(this);
-		BlockSub.block_bright_coord(this);
+		mBotSub.block_port(this);
+		mBotSub.block_bright_coord(this);
 
-		//this.appendValueInput("TEXT").appendField("  " + Blockly.Msg.mbot_text);
 		this.appendDummyInput()
-			.appendField("  " + Blockly.Msg.mbot_text)
+			.appendField("  " + Blockly.Msg.Text)
 			.appendField(new Blockly.FieldTextInput("  "), "TEXT")
 
 		this.setInputsInline(true);
@@ -605,9 +604,9 @@ Blockly.Blocks["mBot_LEDMatrixText"] = {
 
 Blockly.Arduino["mBot_LEDMatrixText"] = function (block) {
 	let port = this.getFieldValue('PORT');
-	let brightness = BlockSub.bright(block);
-	let coord_x = BlockSub.coord_x(block);
-	let coord_y = BlockSub.coord_y(block);
+	let brightness = mBotSub.bright(block);
+	let coord_x = mBotSub.coord_x(block);
+	let coord_y = mBotSub.coord_y(block);
 
 	//let text = Blockly.Arduino.valueToCode(block, 'TEXT', Blockly.Arduino.ORDER_ATOMIC);
 	let text = block.getFieldValue("TEXT");
@@ -640,8 +639,8 @@ Blockly.Blocks["mBot_LEDMatrixSmileys"] = {
 			.appendField(Blockly.Msg.mBotLEDMatrix)
 			.appendField(" |");
 
-		BlockSub.block_port(this);
-		BlockSub.block_bright_coord(this);
+		mBotSub.block_port(this);
+		mBotSub.block_bright_coord(this);
 
 		this.appendDummyInput()
 			.appendField("  ")
@@ -656,10 +655,10 @@ Blockly.Blocks["mBot_LEDMatrixSmileys"] = {
 };
 
 Blockly.Arduino["mBot_LEDMatrixSmileys"] = function (block) {
-	let port = BlockSub.port(block);
-	let brightness = BlockSub.bright(block);
-	let coord_x = BlockSub.coord_x(block);
-	let coord_y = BlockSub.coord_y(block);
+	let port = mBotSub.port(block);
+	let brightness = mBotSub.bright(block);
+	let coord_x = mBotSub.coord_x(block);
+	let coord_y = mBotSub.coord_y(block);
 	let smile = this.getFieldValue('SMILE');
 
 	Blockly.Arduino.includes_["mBotMeMCore"]='#include <MeMCore.h>';
@@ -690,11 +689,11 @@ Blockly.Blocks["mBot_LEDMatrixData"] = {
 			.appendField(Blockly.Msg.mBotLEDMatrix)
 			.appendField(" |");
 
-		BlockSub.block_port(this);
-		BlockSub.block_bright_coord(this);
+		mBotSub.block_port(this);
+		mBotSub.block_bright_coord(this);
 
 		this.appendDummyInput()
-			.appendField(" " + Blockly.Msg.mbot_data)
+			.appendField(" " + Blockly.Msg.Data)
 			.appendField(new Blockly.FieldTextInput("        "), "DATA");
 
 			this.setInputsInline(true);
@@ -706,10 +705,10 @@ Blockly.Blocks["mBot_LEDMatrixData"] = {
 };
 
 Blockly.Arduino["mBot_LEDMatrixData"] = function (block) {
-	let port = BlockSub.port(block);
-	let brightness = BlockSub.bright(block);
-	let coord_x = BlockSub.coord_x(block);
-	let coord_y = BlockSub.coord_y(block);
+	let port = mBotSub.port(block);
+	let brightness = mBotSub.bright(block);
+	let coord_x = mBotSub.coord_x(block);
+	let coord_y = mBotSub.coord_y(block);
 	let data = block.getFieldValue("DATA").trim();
 
 	Blockly.Arduino.includes_["mBotMeMCore"]='#include <MeMCore.h>';
@@ -730,10 +729,10 @@ Blockly.Arduino["mBot_LEDMatrixData"] = function (block) {
 	return  code;
 }
 
-//----- BlockSub -----//
-let BlockSub = {};
+//----- mBotSub -----//
+let mBotSub = {};
 
-BlockSub.block_port = function(block, align) {
+mBotSub.block_port = function(block, align) {
 	if (!align) align = Blockly.ALIGN_LEFT;
 	block.appendDummyInput()
 		.appendField(Blockly.Msg.mbot_port)
@@ -741,14 +740,14 @@ BlockSub.block_port = function(block, align) {
 		.appendField(new Blockly.FieldDropdown(Blockly.Msg.mbot_port_dropdown), "PORT");
 }
 
-BlockSub.block_side = function(block, align) {
+mBotSub.block_side = function(block, align) {
 	if (!align) align = Blockly.ALIGN_LEFT;
 	block.appendDummyInput()
 		.setAlign(align)
 		.appendField(new Blockly.FieldDropdown(Blockly.Msg.mBotMotor_side_dropdown), "SIDE");
 }
 
-BlockSub.block_bright_coord = function(block, align) {
+mBotSub.block_bright_coord = function(block, align) {
 	if (!align) align = Blockly.ALIGN_LEFT;
 
 	block.appendValueInput("BRIGHTNESS")
@@ -759,27 +758,25 @@ BlockSub.block_bright_coord = function(block, align) {
 
 	block.appendValueInput("COORD_X", "Number").setCheck("Number")
 		.setAlign(align)
-		.appendField(Blockly.Msg.mbot_coordX);
+		.appendField(Blockly.Msg.coordX);
 
 	block.appendValueInput("COORD_Y", "Number").setCheck("Number")
 		.setAlign(align)
-		.appendField(Blockly.Msg.mbot_coordY);
+		.appendField(Blockly.Msg.coordY);
 };
 
-BlockSub.port = function(block) {
+mBotSub.port = function(block) {
 	return block.getFieldValue('PORT');
 }
 
-BlockSub.bright = function(block) {
+mBotSub.bright = function(block) {
 	return Blockly.Arduino.valueToCode(block, "BRIGHTNESS", Blockly.Arduino.ORDER_NONE);
 }
 
-BlockSub.coord_x = function(block) {
+mBotSub.coord_x = function(block) {
 	return Blockly.Arduino.valueToCode(block, "COORD_X", Blockly.Arduino.ORDER_NONE);
 }
 
-BlockSub.coord_y = function(block) {
+mBotSub.coord_y = function(block) {
 	return Blockly.Arduino.valueToCode(block, "COORD_Y", Blockly.Arduino.ORDER_NONE);
 }
-
-

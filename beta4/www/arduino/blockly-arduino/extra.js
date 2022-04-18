@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file extra.js
- * @version 0.2 (07-04-2022)
+ * @version 0.2 (12-04-2022)
  * @description Extra functions of Blockly.Blocks & Blockly.Arduino
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -153,7 +153,6 @@ Blockly.Arduino['ArduinoHIGH'] = function (block) {
 	return ['HIGH', Blockly.Arduino.ORDER_ATOMIC];
 };
 
-///////////////////////
 // ArduinoInclude
 Blockly.Blocks['ArduinoInclude'] = {
 	init: function () {
@@ -172,6 +171,7 @@ Blockly.Arduino['ArduinoInclude'] = function (block) {
 	return '';
 };
 
+// Remark
 Blockly.Blocks['Remark'] = {
 	init: function () {
 		this.setColour(60);
@@ -204,6 +204,7 @@ Blockly.Arduino['Remark'] = function(block) {
 	return code + '\n';
 };
 
+// Remark_header
 Blockly.Blocks['Remark_header'] = {
 	init: function () {
 		this.setColour(60);
@@ -231,11 +232,11 @@ Blockly.Arduino['Remark_header'] = function(block) {
 		code = '// ' + text;
 	}
 
-	Blockly.Arduino.includes_['include_remark_header']=code;
+	Blockly.Arduino.includes_['include_remark_header'] = code;
 	return '';
 };
 
-// Convert from number to string (Inserted in the 'text' category)
+// text_from_number: convert from number to string (Inserted in the 'text' category)
 Blockly.Blocks['text_from_number'] = {
 	init: function () {
 		this.setStyle("text_blocks");
@@ -252,5 +253,30 @@ Blockly.Blocks['text_from_number'] = {
 
 Blockly.Arduino["text_from_number"] = function (block) {
 	let x = Blockly.Arduino.valueToCode(this, "DATA", Blockly.Arduino.ORDER_NONE);
-	return ['String(' + x + ').c_str()', Blockly.Arduino.ORDER_ATOMIC];
+	return ['String(' + x + ')', Blockly.Arduino.ORDER_ATOMIC];
+};
+
+// text_from_float: convert from float to string (Inserted in the 'text' category)
+Blockly.Blocks['text_from_float'] = {
+	init: function () {
+		this.setStyle("text_blocks");
+		this.appendDummyInput()
+			.appendField(Blockly.Msg.TEXT_FROM_FLOAT);
+		this.appendValueInput("DATA")
+			.setCheck("Number")
+		this.appendDummyInput()
+			.appendField(Blockly.Msg.TEXT_FROM_FLOAT_DECIMAL)
+		this.appendValueInput("DEC")
+			.setCheck("Number")
+		this.setInputsInline(true);
+		this.setOutput(true);
+		this.setTooltip(Blockly.Msg.TEXT_FROM_NUMBER_TOOLTIP);
+		this.setHelpUrl("");
+	}
+};
+
+Blockly.Arduino["text_from_float"] = function (block) {
+	let x = Blockly.Arduino.valueToCode(this, "DATA", Blockly.Arduino.ORDER_NONE);
+	let dec = Blockly.Arduino.valueToCode(this, "DEC", Blockly.Arduino.ORDER_NONE);
+	return ['String(' + x + ','+ dec +')', Blockly.Arduino.ORDER_ATOMIC];
 };

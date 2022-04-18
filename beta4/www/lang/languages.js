@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file index-code.js
- * @version 0.1 (13-07-2021)
+ * @version 0.2 (05-04-2022)
  * @description Manages language files
  * @author Antonio Dal Borgo <adalborgo@gmail.com>
  */
@@ -125,6 +125,7 @@ Languages.getMessages = function(arduino) {
     document.write('<script src="lang/' + Languages.LANG + '/otto-msg_' + Languages.LANG + '.js"></script>\n');
     document.write('<script src="lang/' + Languages.LANG + '/grove_beginner-msg_' + Languages.LANG + '.js"></script>\n');
     document.write('<script src="lang/' + Languages.LANG + '/mBot-msg_' + Languages.LANG + '.js"></script>\n');
+    document.write('<script src="lang/' + Languages.LANG + '/owlbot-msg_' + Languages.LANG + '.js"></script>\n');
   }
 };
 

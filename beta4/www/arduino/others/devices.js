@@ -1,7 +1,7 @@
 /**
  * @package: UnoBlockly
  * @file devices.js
- * @version 0.1 (18-01-2022)
+ * @version 0.2 (16-04-2022)
  * @description Code for generic devices
 
  	Libraries:
@@ -296,4 +296,29 @@ Blockly.Arduino["L298N_Motorx2"]=function(block) {
 		code = motor1 + motor2;
 	
 	return code;
+};
+
+// Read temperature sensor
+Blockly.Blocks["Temperature_18B20"] = {
+	init: function () {
+		this.setStyle("devices_blocks");
+		this.appendDummyInput()
+			.appendField(Blockly.Msg.devices_DS18B20)
+		this.appendValueInput("DATA_PIN")
+			.appendField("|  Data pin")
+			.setCheck("Number");
+		this.setInputsInline(true);
+		this.setOutput(true, "Number");
+		this.setTooltip(Blockly.Msg.devices_DS18B20_tooltip);
+	}
+};
+
+Blockly.Arduino["Temperature_18B20"] = function (block) {
+	let dataPin = Blockly.Arduino.valueToCode(block, 'DATA_PIN', Blockly.Arduino.ORDER_ATOMIC);
+	Blockly.Arduino.includes_["Temperature_18B20"]='#include "DS18B20Simple.h"';
+	Blockly.Arduino.variables_["Temperature_18B20"] =
+		'OneWire oneWire(' + dataPin + ');\n' + 'DS18B20Simple sensors(&oneWire);';
+	Blockly.Arduino.setups_["Temperature_18B20"] = 'sensors.begin();';
+	let code = "sensors.getCelsius()";
+	return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
