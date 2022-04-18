@@ -13,7 +13,7 @@ Blockly.Msg.CAT_OWLBOT = "OwlBot";
 Blockly.Msg.CAT_OWLBOT_LEDMatrix = "LED Matrix";
 
 // Ultrasonic distance sensor
-Blockly.Msg.OwlBotDistance = "Distance (mm)";
+Blockly.Msg.OwlBotDistance = "Distance (cm)";
 Blockly.Msg.OwlBotDistance_tooltip = "Get the distance of an obstacle (mm)";
 
 Blockly.Msg.OwlBotBattery = "Battery";

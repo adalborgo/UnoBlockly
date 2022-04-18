@@ -13,7 +13,7 @@ Blockly.Msg.CAT_OWLBOT = "OwlBot";
 Blockly.Msg.CAT_OWLBOT_LEDMatrix = "Matrice LED";
 
 // Ultrasonic distance sensor
-Blockly.Msg.OwlBotDistance = "Distanza (mm)";
+Blockly.Msg.OwlBotDistance = "Distanza (cm)";
 Blockly.Msg.OwlBotDistance_tooltip = "Misura della distanza (in cm) con sensore ad ultrasuoni (da 3 cm a 150 cm)";
 
 Blockly.Msg.OwlBotBattery = "Batteria";
